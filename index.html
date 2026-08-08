@@ -45,7 +45,7 @@
         }
 
         .container {
-            max-width: 960px;
+            max-width: 860px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
@@ -363,7 +363,7 @@
             cursor: not-allowed;
         }
 
-        /* Campo criança dentro do checkbox */
+        /* Campo criança */
         .campo-crianca-wrapper {
             flex: 1;
             min-width: 180px;
@@ -391,11 +391,11 @@
             box-shadow: 0 0 0 3px rgba(26, 106, 138, 0.12);
         }
 
-        /* Endereço */
-        .endereco-box {
+        /* Tipo de atendimento - indicador visual */
+        .tipo-atendimento {
             background: linear-gradient(135deg, #eef6fb, #e3eef7);
             border-radius: 14px;
-            padding: 14px 18px;
+            padding: 12px 18px;
             margin: 6px 0 8px;
             border: 1px solid #c8dce8;
             display: flex;
@@ -403,18 +403,34 @@
             gap: 12px;
         }
 
-        .endereco-box i {
-            color: #1a6a8a;
+        .tipo-atendimento i {
             font-size: 1.2rem;
+            width: 30px;
+            text-align: center;
         }
 
-        .endereco-box span {
+        .tipo-atendimento .tipo-texto {
             font-size: 0.9rem;
             color: #1a3a4e;
         }
 
-        .endereco-box strong {
+        .tipo-atendimento .tipo-texto strong {
             color: #0a2f44;
+        }
+
+        .tipo-atendimento .tipo-badge {
+            margin-left: auto;
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            background: #1a6a8a;
+            color: white;
+        }
+
+        .tipo-atendimento .tipo-badge.apenas-responsavel {
+            background: #f1c40f;
+            color: #7a5d00;
         }
 
         /* Botões */
@@ -666,13 +682,22 @@
             color: #856404;
         }
 
-        .badge-trazer-sim {
-            color: #1a6a8a;
+        .badge-tipo {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 30px;
+            font-size: 0.65rem;
             font-weight: 700;
         }
 
-        .badge-trazer-nao {
-            color: #999;
+        .badge-tipo.responsavel {
+            background: #fef9e7;
+            color: #7a5d00;
+        }
+
+        .badge-tipo.responsavel-crianca {
+            background: #e6f2f9;
+            color: #0a2f44;
         }
 
         .sem-resultados {
@@ -777,6 +802,13 @@
             .checkbox-group {
                 flex-direction: column;
             }
+
+            .tipo-atendimento {
+                flex-wrap: wrap;
+            }
+            .tipo-atendimento .tipo-badge {
+                margin-left: 0;
+            }
         }
 
         @media (max-width: 480px) {
@@ -811,11 +843,6 @@
                 font-size: 0.8rem;
                 padding: 4px 16px;
             }
-
-            .endereco-box {
-                font-size: 0.8rem;
-                padding: 10px 14px;
-            }
         }
     </style>
 </head>
@@ -843,7 +870,7 @@
                 </div>
 
                 <div class="card-body">
-                    <!-- Linha 1: Responsável -->
+                    <!-- Linha 1: Responsável + Telefone -->
                     <div class="grid-2">
                         <div class="campo">
                             <label for="responsavel"><i class="fas fa-user"></i> Responsável</label>
@@ -856,23 +883,13 @@
                         </div>
                     </div>
 
-                    <!-- Linha 2: Checkboxes + Criança -->
+                    <!-- Checkbox: Há criança/adolescente envolvido? -->
                     <div class="checkbox-group">
-                        <!-- Checkbox 1: Há criança -->
-                        <div class="checkbox-item" id="itemTemCrianca">
+                        <div class="checkbox-item active" id="itemTemCrianca">
                             <input type="checkbox" id="temCrianca" checked>
                             <label for="temCrianca">
-                                <i class="fas fa-child"></i> Criança/Adolescente
+                                <i class="fas fa-child"></i> Criança/Adolescente envolvido?
                             </label>
-                        </div>
-
-                        <!-- Checkbox 2: Trazer criança -->
-                        <div class="checkbox-item trazer-active" id="itemTrazerCrianca">
-                            <input type="checkbox" id="trazerCrianca">
-                            <label for="trazerCrianca">
-                                <i class="fas fa-people-arrows"></i> Trazer Criança
-                            </label>
-                            <span class="status-label" id="trazerStatus">NÃO TRAZER</span>
                         </div>
                     </div>
 
@@ -881,7 +898,7 @@
                         <input type="text" id="crianca" placeholder="Nome da criança/adolescente" value="ANA CLARA">
                     </div>
 
-                    <!-- Linha 3: Data, Hora, Conselheiro -->
+                    <!-- Linha 2: Data + Hora + Conselheiro -->
                     <div class="grid-3">
                         <div class="campo">
                             <label for="data"><i class="fas fa-calendar-alt"></i> Data</label>
@@ -906,10 +923,14 @@
                         </div>
                     </div>
 
-                    <!-- Endereço -->
-                    <div class="endereco-box">
-                        <i class="fas fa-location-dot"></i>
-                        <span><strong>Endereço:</strong> Área especial Quadra 21, ao lado da UBS 01 do Paranoá.</span>
+                    <!-- Indicador do tipo de atendimento -->
+                    <div class="tipo-atendimento" id="tipoAtendimento">
+                        <i class="fas fa-info-circle" style="color:#1a6a8a;"></i>
+                        <span class="tipo-texto">
+                            <strong>Atendimento:</strong> 
+                            <span id="tipoDescricao">RESPONSÁVEL + CRIANÇA</span>
+                        </span>
+                        <span class="tipo-badge" id="tipoBadge">COM CRIANÇA</span>
                     </div>
 
                     <!-- Botões -->
@@ -965,7 +986,7 @@
                                     <th>#</th>
                                     <th>Responsável</th>
                                     <th>Criança</th>
-                                    <th>Trazer</th>
+                                    <th>Tipo</th>
                                     <th>Data</th>
                                     <th>Hora</th>
                                     <th>Conselheiro</th>
@@ -998,9 +1019,6 @@
             const itemTemCrianca = document.getElementById('itemTemCrianca');
             const campoCrianca = document.getElementById('campoCrianca');
             const criancaInput = document.getElementById('crianca');
-            const trazerCrianca = document.getElementById('trazerCrianca');
-            const itemTrazerCrianca = document.getElementById('itemTrazerCrianca');
-            const trazerStatus = document.getElementById('trazerStatus');
             const dataInput = document.getElementById('data');
             const horaInput = document.getElementById('hora');
             const conselheiro = document.getElementById('conselheiro');
@@ -1009,6 +1027,9 @@
             const btnSalvar = document.getElementById('btnSalvarHistorico');
             const saudacaoLabel = document.getElementById('saudacaoLabel');
             const telefoneDestino = document.getElementById('telefoneDestino');
+            const tipoDescricao = document.getElementById('tipoDescricao');
+            const tipoBadge = document.getElementById('tipoBadge');
+            const tipoAtendimento = document.getElementById('tipoAtendimento');
 
             const pesquisarInput = document.getElementById('pesquisar');
             const btnPesquisar = document.getElementById('btnPesquisar');
@@ -1088,7 +1109,6 @@
                 const dataRaw = dataInput.value || "2026-08-08";
                 const horaRaw = horaInput.value || "10:00";
                 const conselheiroSel = conselheiro.value || "NADELÇO";
-                const trazer = trazerCrianca.checked;
                 const temCriancaChecked = temCrianca.checked;
 
                 const saudacao = obterSaudacao(horaRaw);
@@ -1101,26 +1121,38 @@
 
                 let msg = `${saudacao.toUpperCase()}, COMO VAI? \n`;
                 msg += `SOMOS DO CONSELHO TUTELAR DO PARANOÁ. \n`;
-                msg += `SOLICITAMOS A PRESENÇA DO(A) SENHOR(A) ${nomeResp.toUpperCase()}`;
 
-                if (temCriancaChecked && nomeCrianca !== '') {
-                    msg += `, QUE É RESPONSÁVEL POR ${nomeCrianca.toUpperCase()}`;
-                } else if (temCriancaChecked && nomeCrianca === '') {
-                    msg += ` (RESPONSÁVEL POR CRIANÇA/ADOLESCENTE NÃO INFORMADO(A))`;
+                // ===== LÓGICA PRINCIPAL =====
+                // Se NÃO tem criança (apenas responsável)
+                if (!temCriancaChecked) {
+                    msg += `SOLICITAMOS A PRESENÇA DO(A) SENHOR(A) ${nomeResp.toUpperCase()} PARA ESCLARECIMENTO. \n`;
+                    msg += `RESSALTAMOS QUE ESTE É UM ATENDIMENTO COM O(A) SENHOR(A) RESPONSÁVEL. \n`;
+                    msg += `NÃO É NECESSÁRIO TRAZER A CRIANÇA/ADOLESCENTE NESTE MOMENTO, `;
+                    msg += `POIS ENTENDEMOS QUE ESTE É UM CASO QUE PODE SER TRATADO COM O(A) RESPONSÁVEL. \n`;
+                    msg += `PORTANTO, NÃO SERÁ NECESSÁRIA A DOCUMENTAÇÃO DA CRIANÇA. \n\n`;
+                } 
+                // Se TEM criança
+                else {
+                    if (nomeCrianca === '') {
+                        msg += `SOLICITAMOS A PRESENÇA DO(A) SENHOR(A) ${nomeResp.toUpperCase()} `;
+                        msg += `(RESPONSÁVEL POR CRIANÇA/ADOLESCENTE NÃO INFORMADO(A)) PARA ESCLARECIMENTO. \n`;
+                    } else {
+                        msg += `SOLICITAMOS A PRESENÇA DO(A) SENHOR(A) ${nomeResp.toUpperCase()}, `;
+                        msg += `QUE É RESPONSÁVEL POR ${nomeCrianca.toUpperCase()}, PARA ESCLARECIMENTO. \n`;
+                    }
+                    msg += `RESSALTAMOS QUE ESTE É UM ATENDIMENTO QUE ENVOLVE A CRIANÇA/ADOLESCENTE. \n`;
+                    msg += `SOLICITAMOS QUE O(A) SENHOR(A) TRAGA A CRIANÇA/ADOLESCENTE E A DOCUMENTAÇÃO PESSOAL DE AMBOS. \n\n`;
                 }
 
-                msg += ` PARA ESCLARECIMENTO. \n`;
-
-                if (temCriancaChecked && nomeCrianca !== '' && trazer) {
-                    msg += `SOLICITAMOS QUE O(A) SENHOR(A) TRAGA A CRIANÇA/ADOLESCENTE ${nomeCrianca.toUpperCase()}. \n`;
-                } else if (temCriancaChecked && nomeCrianca !== '' && !trazer) {
-                    msg += `NÃO É NECESSÁRIO TRAZER A CRIANÇA/ADOLESCENTE NESTE MOMENTO. \n`;
-                }
-
+                // Parte comum
                 msg += `REITERAMOS QUE O(A) SENHOR(A) DEVE COMPARECER NO DIA ${dataFormatada} ÀS ${horaRaw} `;
                 msg += `NA SEDE DO CONSELHO TUTELAR DO PARANOÁ COM O(A) CONSELHEIRO(A) ${conselheiroSel.toUpperCase()}. \n\n`;
-                msg += `*TRAZER DOCUMENTAÇÃO PESSOAL DO RESPONSÁVEL E DA CRIANÇA, E A CRIANÇA/ADOLESCENTE* \n\n`;
-                msg += `ENDEREÇO: ${ENDERECO.toUpperCase()} \n\n`;
+
+                // Se tem criança, inclui o aviso de documentação
+                if (temCriancaChecked && nomeCrianca !== '') {
+                    msg += `*TRAZER DOCUMENTAÇÃO PESSOAL DO RESPONSÁVEL E DA CRIANÇA, E A CRIANÇA/ADOLESCENTE* \n\n`;
+                }
+
                 msg += `CONFIRMAR RECEBIMENTO. \n\n`;
                 msg += `OBS.: *LEMBRANDO QUE CONSTITUI CRIME E INFRAÇÃO ADMINISTRATIVA, PREVISTA NOS ARTIGOS 236 E 249 DA REFERIDA LEI QUE PREVÊ PENA DE DETENÇÃO DE SEIS MESES A DOIS ANOS, O NÃO COMPARECIMENTO INJUSTIFICADO.*`;
 
@@ -1187,37 +1219,15 @@
             function atualizarTudo() {
                 const horaRaw = horaInput.value || "10:00";
                 const saudacao = obterSaudacao(horaRaw);
-                
+                const temCriancaChecked = temCrianca.checked;
+                const nomeCrianca = criancaInput.value.trim();
+
+                // Saudação
                 let icone = '🌅';
                 if (saudacao === 'Bom dia') icone = '🌅';
                 else if (saudacao === 'Boa tarde') icone = '☀️';
                 else if (saudacao === 'Boa noite') icone = '🌙';
-                
                 saudacaoLabel.textContent = `${icone} ${saudacao.toUpperCase()}`;
-
-                // Trazer status
-                const temCriancaChecked = temCrianca.checked;
-                const nomeCrianca = criancaInput.value.trim();
-
-                if (!temCriancaChecked || nomeCrianca === '') {
-                    trazerCrianca.checked = false;
-                    trazerCrianca.disabled = true;
-                    itemTrazerCrianca.classList.add('disabled');
-                    trazerStatus.textContent = 'SEM CRIANÇA';
-                    trazerStatus.style.color = '#999';
-                } else {
-                    trazerCrianca.disabled = false;
-                    itemTrazerCrianca.classList.remove('disabled');
-                    if (trazerCrianca.checked) {
-                        trazerStatus.textContent = 'TRAZER';
-                        trazerStatus.style.color = '#7a5d00';
-                        itemTrazerCrianca.classList.add('trazer-active');
-                    } else {
-                        trazerStatus.textContent = 'NÃO TRAZER';
-                        trazerStatus.style.color = '#8a7a40';
-                        itemTrazerCrianca.classList.remove('trazer-active');
-                    }
-                }
 
                 // Campo criança
                 if (temCriancaChecked) {
@@ -1227,6 +1237,25 @@
                     campoCrianca.classList.remove('visible');
                     criancaInput.value = '';
                     itemTemCrianca.classList.remove('active');
+                }
+
+                // Tipo de atendimento
+                if (!temCriancaChecked) {
+                    tipoDescricao.textContent = 'APENAS RESPONSÁVEL';
+                    tipoBadge.textContent = 'SEM CRIANÇA';
+                    tipoBadge.className = 'tipo-badge apenas-responsavel';
+                    tipoAtendimento.style.borderLeft = '4px solid #f1c40f';
+                    document.querySelector('.tipo-atendimento i').style.color = '#f1c40f';
+                } else {
+                    if (nomeCrianca !== '') {
+                        tipoDescricao.textContent = `RESPONSÁVEL + CRIANÇA (${nomeCrianca.toUpperCase()})`;
+                    } else {
+                        tipoDescricao.textContent = 'RESPONSÁVEL + CRIANÇA (NÃO INFORMADA)';
+                    }
+                    tipoBadge.textContent = 'COM CRIANÇA';
+                    tipoBadge.className = 'tipo-badge';
+                    tipoAtendimento.style.borderLeft = '4px solid #1a6a8a';
+                    document.querySelector('.tipo-atendimento i').style.color = '#1a6a8a';
                 }
 
                 // Telefone destino
@@ -1252,14 +1281,14 @@
                     let html = '';
                     resultados.forEach((item, index) => {
                         const statusClass = item.status === 'Enviado' ? 'badge-enviado' : 'badge-pendente';
-                        const trazerTexto = item.trazer ? 'SIM' : 'NÃO';
-                        const trazerClass = item.trazer ? 'badge-trazer-sim' : 'badge-trazer-nao';
+                        const tipoClass = item.tipo === 'Apenas Responsável' ? 'responsavel' : 'responsavel-crianca';
+                        const tipoLabel = item.tipo || 'Responsável + Criança';
                         html += `
                             <tr>
                                 <td>${index + 1}</td>
                                 <td><strong>${item.responsavel || '-'}</strong></td>
                                 <td>${item.crianca || '-'}</td>
-                                <td class="${trazerClass}" style="text-align:center; font-weight:600;">${trazerTexto}</td>
+                                <td><span class="badge-tipo ${tipoClass}">${tipoLabel}</span></td>
                                 <td>${item.data || '-'}</td>
                                 <td>${item.hora || '-'}</td>
                                 <td>${item.conselheiro || '-'}</td>
@@ -1285,7 +1314,7 @@
                 const conselheiroSel = conselheiro.value || 'NADELÇO';
                 const telefoneVal = telefone.value.trim() || 'NÃO INFORMADO';
                 const mensagem = gerarMensagem();
-                const trazer = trazerCrianca.checked;
+                const temCriancaChecked = temCrianca.checked;
 
                 let dataFormatada = dataRaw;
                 if (dataRaw.includes('-')) {
@@ -1297,7 +1326,7 @@
                     id: idCounter++,
                     responsavel: nomeResp.toUpperCase(),
                     crianca: nomeCrianca ? nomeCrianca.toUpperCase() : '',
-                    trazer: trazer,
+                    tipo: temCriancaChecked ? 'Responsável + Criança' : 'Apenas Responsável',
                     data: dataFormatada,
                     hora: horaRaw,
                     conselheiro: conselheiroSel.toUpperCase(),
@@ -1328,7 +1357,6 @@
             responsavel.addEventListener('input', atualizarTudo);
             temCrianca.addEventListener('change', atualizarTudo);
             criancaInput.addEventListener('input', atualizarTudo);
-            trazerCrianca.addEventListener('change', atualizarTudo);
             dataInput.addEventListener('change', atualizarTudo);
             horaInput.addEventListener('change', atualizarTudo);
             horaInput.addEventListener('input', atualizarTudo);
