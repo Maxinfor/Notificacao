@@ -14,64 +14,166 @@
         }
 
         body {
-            background: linear-gradient(145deg, #0a2f44, #1a5a7a);
+            background: linear-gradient(135deg, #0a2f44 0%, #1a6a8a 50%, #0d4b66 100%);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             padding: 24px 16px;
+            position: relative;
         }
 
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Navegação entre páginas */
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-tab {
+            padding: 14px 32px;
+            background: rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.7);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-tab:hover {
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .nav-tab.active {
+            background: #ffffff;
+            color: #0a2f44;
+            border-color: #ffffff;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-tab i {
+            font-size: 1.2rem;
+        }
+
+        .pagina {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .pagina.ativa {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Cards */
         .card {
             background: #ffffff;
-            border-radius: 32px;
-            padding: 32px 28px 30px;
-            max-width: 720px;
+            border-radius: 40px;
+            padding: 36px 32px 32px;
+            max-width: 900px;
             width: 100%;
-            box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.6);
-            transition: 0.2s;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin: 0 auto;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            transition: 0.3s;
+            position: relative;
+            z-index: 1;
         }
 
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.55);
+        }
+
+        /* Cabeçalho */
         .card-header {
             text-align: center;
-            margin-bottom: 18px;
+            margin-bottom: 22px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid #e6f2f9;
         }
 
         .card-header h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #0b3d5a;
+            font-size: 2.1rem;
+            font-weight: 800;
+            color: #0a2f44;
             letter-spacing: -0.5px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 14px;
             flex-wrap: wrap;
         }
 
         .card-header h1 i {
-            color: #1a5a7a;
-            font-size: 2rem;
+            color: #1a6a8a;
+            font-size: 2.2rem;
+            background: #e6f2f9;
+            padding: 10px;
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .sub-badge {
-            background: #dceef7;
-            color: #0b3d5a;
+            background: linear-gradient(135deg, #e6f2f9, #d0e6f0);
+            color: #0a2f44;
             font-weight: 600;
-            padding: 8px 22px;
+            padding: 8px 28px;
             border-radius: 40px;
             font-size: 0.95rem;
             display: inline-block;
-            margin-top: 2px;
-            border: 1px solid #aacadd;
+            margin-top: 6px;
+            border: 1px solid #b8d0de;
             letter-spacing: 0.3px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
-        .card-body {
-            margin-top: 10px;
+        .sub-badge i {
+            margin-right: 6px;
+            color: #1a6a8a;
         }
 
+        /* Campos */
         .campo {
             margin-bottom: 18px;
             display: flex;
@@ -80,44 +182,52 @@
 
         .campo label {
             font-weight: 600;
-            color: #1f3a4b;
+            color: #1a3a4e;
             margin-bottom: 6px;
             font-size: 0.95rem;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .campo label i {
-            color: #1a5a7a;
-            width: 20px;
+            color: #1a6a8a;
+            width: 22px;
             font-size: 1.1rem;
+            text-align: center;
         }
 
         .campo input,
         .campo select {
             padding: 14px 18px;
-            border: 2px solid #b8d0de;
+            border: 2px solid #d0e0e8;
             border-radius: 18px;
             font-size: 1rem;
-            background: #ffffff;
-            transition: 0.25s ease;
+            background: #fafcfd;
+            transition: all 0.25s ease;
             width: 100%;
             -webkit-appearance: none;
             appearance: none;
             color: #1a2e3f;
+            text-transform: uppercase;
         }
 
         .campo input:focus,
         .campo select:focus {
-            border-color: #1a5a7a;
+            border-color: #1a6a8a;
             outline: none;
             background: #ffffff;
-            box-shadow: 0 0 0 4px rgba(26, 90, 122, 0.12);
+            box-shadow: 0 0 0 4px rgba(26, 106, 138, 0.12);
+            transform: scale(1.01);
+        }
+
+        .campo input::placeholder {
+            color: #a0b8c8;
+            text-transform: none;
         }
 
         .campo select {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231a5a7a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231a6a8a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 16px center;
             background-size: 18px;
@@ -125,31 +235,41 @@
         }
 
         .checkbox-wrapper {
-            background: #e6f2f9;
-            border-radius: 20px;
-            padding: 14px 20px;
+            background: linear-gradient(135deg, #eef6fb, #e3eef7);
+            border-radius: 22px;
+            padding: 16px 22px;
             margin: 8px 0 14px;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 16px 20px;
-            border: 1px solid #b8d0de;
+            gap: 16px 24px;
+            border: 1px solid #c8dce8;
+            transition: 0.2s;
+        }
+
+        .checkbox-wrapper:hover {
+            border-color: #1a6a8a;
         }
 
         .checkbox-wrapper label {
             font-weight: 600;
-            color: #0b3d5a;
+            color: #0a2f44;
             font-size: 1rem;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             cursor: pointer;
         }
 
+        .checkbox-wrapper label i {
+            color: #1a6a8a;
+            font-size: 1.2rem;
+        }
+
         .checkbox-wrapper input[type="checkbox"] {
-            width: 22px;
-            height: 22px;
-            accent-color: #1a5a7a;
+            width: 24px;
+            height: 24px;
+            accent-color: #1a6a8a;
             transform: scale(1.1);
             cursor: pointer;
             flex-shrink: 0;
@@ -162,64 +282,111 @@
 
         .checkbox-wrapper #campoCrianca input {
             width: 100%;
-            padding: 12px 16px;
+            padding: 12px 18px;
             border-radius: 16px;
-            border: 2px solid #b8d0de;
+            border: 2px solid #c8dce8;
             background: #ffffff;
             font-size: 1rem;
             transition: 0.2s;
             color: #1a2e3f;
+            text-transform: uppercase;
         }
 
         .checkbox-wrapper #campoCrianca input:focus {
-            border-color: #1a5a7a;
-            box-shadow: 0 0 0 3px rgba(26, 90, 122, 0.15);
+            border-color: #1a6a8a;
+            box-shadow: 0 0 0 3px rgba(26, 106, 138, 0.15);
             outline: none;
         }
 
+        .linha-dupla {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 6px;
+        }
+
+        .linha-dupla .campo {
+            flex: 1;
+            min-width: 130px;
+            margin-bottom: 0;
+        }
+
+        .saudacao-indicator {
+            display: inline-block;
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-left: 8px;
+            background: linear-gradient(135deg, #d4e8f2, #c0dceb);
+            color: #0a2f44;
+            transition: 0.3s;
+            border: 1px solid #b0ccdd;
+        }
+
         .destaque-endereco {
-            background: #e6f2f9;
-            border-left: 6px solid #1a5a7a;
-            padding: 14px 18px;
-            border-radius: 16px;
+            background: linear-gradient(135deg, #eef6fb, #e3eef7);
+            border-left: 6px solid #1a6a8a;
+            padding: 16px 20px;
+            border-radius: 18px;
             margin: 16px 0 18px;
             font-size: 0.95rem;
-            color: #1f3a4b;
+            color: #1a3a4e;
             display: flex;
             align-items: flex-start;
-            gap: 10px;
+            gap: 12px;
+            border: 1px solid #c8dce8;
         }
 
         .destaque-endereco i {
-            color: #1a5a7a;
-            font-size: 1.2rem;
+            color: #1a6a8a;
+            font-size: 1.3rem;
             margin-top: 2px;
         }
 
         .preview-box {
-            background: #eef6fb;
-            border-radius: 20px;
-            padding: 18px 20px;
-            margin: 18px 0 14px;
-            border: 1px solid #b8d0de;
-            max-height: 230px;
+            background: linear-gradient(135deg, #f0f7fb, #e6f2f9);
+            border-radius: 22px;
+            padding: 20px 22px;
+            margin: 18px 0 16px;
+            border: 1px solid #c8dce8;
+            max-height: 240px;
             overflow-y: auto;
             font-size: 0.92rem;
-            line-height: 1.6;
+            line-height: 1.7;
             color: #1a2e3f;
             white-space: pre-wrap;
             word-break: break-word;
+            transition: 0.2s;
+        }
+
+        .preview-box:hover {
+            border-color: #1a6a8a;
         }
 
         .preview-box strong {
-            color: #0b3d5a;
+            color: #0a2f44;
+        }
+
+        .preview-box::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .preview-box::-webkit-scrollbar-track {
+            background: #d0e0e8;
+            border-radius: 10px;
+        }
+
+        .preview-box::-webkit-scrollbar-thumb {
+            background: #1a6a8a;
+            border-radius: 10px;
         }
 
         .btn-whatsapp {
-            background: #25d366;
+            background: linear-gradient(135deg, #25d366, #1da851);
             color: white;
             border: none;
-            padding: 18px 18px;
+            padding: 18px 20px;
             border-radius: 60px;
             font-size: 1.25rem;
             font-weight: 700;
@@ -228,69 +395,289 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 14px;
-            transition: all 0.15s ease;
-            box-shadow: 0 8px 0 #1b9e4a;
-            margin-top: 8px;
+            gap: 16px;
+            transition: all 0.2s ease;
+            box-shadow: 0 8px 0 #15803d, 0 6px 20px rgba(37, 211, 102, 0.3);
+            margin-top: 10px;
             letter-spacing: 0.4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-whatsapp::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .btn-whatsapp:hover::before {
+            opacity: 1;
         }
 
         .btn-whatsapp:hover {
-            transform: scale(1.01);
-            background: #20b85e;
-            box-shadow: 0 5px 0 #15803d;
+            transform: translateY(-2px) scale(1.01);
+            background: linear-gradient(135deg, #2ad86b, #1fb854);
+            box-shadow: 0 10px 0 #15803d, 0 8px 25px rgba(37, 211, 102, 0.4);
         }
 
         .btn-whatsapp:active {
-            transform: scale(0.97);
-            box-shadow: 0 3px 0 #15803d;
+            transform: translateY(4px) scale(0.98);
+            box-shadow: 0 4px 0 #15803d;
         }
 
         .btn-whatsapp i {
-            font-size: 1.8rem;
+            font-size: 2rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .btn-whatsapp .telefone-destino {
+            font-size: 0.85rem;
+            font-weight: 400;
+            opacity: 0.9;
+            background: rgba(255,255,255,0.15);
+            padding: 4px 14px;
+            border-radius: 30px;
+            margin-left: 4px;
+        }
+
+        .btn-salvar {
+            background: linear-gradient(135deg, #1a6a8a, #0d4b66);
+            color: white;
+            border: none;
+            padding: 16px 20px;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            width: 100%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            transition: all 0.2s ease;
+            box-shadow: 0 6px 0 #08344a, 0 4px 15px rgba(26, 106, 138, 0.3);
+            margin-top: 8px;
+        }
+
+        .btn-salvar:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #1f7a9e, #0f5575);
+            box-shadow: 0 8px 0 #08344a, 0 6px 20px rgba(26, 106, 138, 0.4);
+        }
+
+        .btn-salvar:active {
+            transform: translateY(4px) scale(0.98);
+            box-shadow: 0 3px 0 #08344a;
+        }
+
+        .btn-salvar i {
+            font-size: 1.4rem;
         }
 
         .footer-obs {
             font-size: 0.7rem;
-            color: #5d6f7f;
+            color: #7a8f9f;
             text-align: center;
             margin-top: 18px;
-            border-top: 1px solid #dce4ec;
+            border-top: 1px solid #e0eaf0;
             padding-top: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .footer-obs i {
+            color: #1a6a8a;
         }
 
         .hidden {
             display: none !important;
         }
 
-        /* Indicador de saudação */
-        .saudacao-indicator {
-            display: inline-block;
-            padding: 4px 16px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-left: 8px;
-            background: #d4e8f2;
-            color: #0b3d5a;
+        /* ====== PÁGINA 2 - HISTÓRICO ====== */
+        .barra-pesquisa {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
-        /* Ajustes Mobile */
+        .barra-pesquisa .campo {
+            flex: 1;
+            margin-bottom: 0;
+            min-width: 200px;
+        }
+
+        .barra-pesquisa .campo input {
+            text-transform: none;
+        }
+
+        .btn-pesquisar {
+            background: linear-gradient(135deg, #1a6a8a, #0d4b66);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 0 #08344a;
+            white-space: nowrap;
+        }
+
+        .btn-pesquisar:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #1f7a9e, #0f5575);
+            box-shadow: 0 6px 0 #08344a;
+        }
+
+        .btn-pesquisar:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #08344a;
+        }
+
+        .btn-limpar {
+            background: #e6f2f9;
+            color: #0a2f44;
+            border: 2px solid #c8dce8;
+            padding: 14px 28px;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .btn-limpar:hover {
+            background: #d0e6f0;
+            border-color: #1a6a8a;
+        }
+
+        .contador {
+            background: #e6f2f9;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #0a2f44;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        .contador i {
+            color: #1a6a8a;
+            margin-right: 6px;
+        }
+
+        .tabela-container {
+            overflow-x: auto;
+            border-radius: 18px;
+            border: 1px solid #d0e0e8;
+            background: #fafcfd;
+        }
+
+        .tabela-notificacoes {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            min-width: 700px;
+        }
+
+        .tabela-notificacoes thead {
+            background: linear-gradient(135deg, #1a6a8a, #0d4b66);
+            color: white;
+        }
+
+        .tabela-notificacoes thead th {
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .tabela-notificacoes tbody td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e6f2f9;
+            color: #1a2e3f;
+            vertical-align: top;
+        }
+
+        .tabela-notificacoes tbody tr:hover {
+            background: #f0f7fb;
+        }
+
+        .tabela-notificacoes tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tabela-notificacoes .badge-status {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-enviado {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge-pendente {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .sem-resultados {
+            text-align: center;
+            padding: 40px 20px;
+            color: #7a8f9f;
+        }
+
+        .sem-resultados i {
+            font-size: 3rem;
+            color: #c8dce8;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        /* Responsivo */
         @media (max-width: 550px) {
             .card {
-                padding: 22px 16px 24px;
+                padding: 24px 16px 22px;
+                border-radius: 28px;
             }
             .card-header h1 {
-                font-size: 1.6rem;
-                gap: 8px;
+                font-size: 1.5rem;
+                gap: 10px;
             }
             .card-header h1 i {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
+                width: 45px;
+                height: 45px;
+                padding: 8px;
             }
             .checkbox-wrapper {
                 flex-direction: column;
                 align-items: stretch;
-                gap: 12px;
+                gap: 14px;
                 padding: 16px;
             }
             .checkbox-wrapper #campoCrianca {
@@ -300,115 +687,241 @@
                 font-size: 1.1rem;
                 padding: 16px;
             }
+            .btn-whatsapp i {
+                font-size: 1.6rem;
+            }
             .preview-box {
                 font-size: 0.85rem;
-                max-height: 180px;
-                padding: 14px;
+                max-height: 170px;
+                padding: 14px 16px;
             }
             .destaque-endereco {
                 font-size: 0.88rem;
                 padding: 12px 14px;
             }
+            .linha-dupla {
+                gap: 12px;
+            }
+            .linha-dupla .campo {
+                min-width: 100px;
+            }
+            .saudacao-indicator {
+                font-size: 0.7rem;
+                padding: 3px 12px;
+            }
+            .nav-tab {
+                padding: 10px 18px;
+                font-size: 0.85rem;
+            }
+            .nav-tab i {
+                font-size: 1rem;
+            }
+            .barra-pesquisa {
+                flex-direction: column;
+            }
+            .barra-pesquisa .campo {
+                min-width: unset;
+            }
+            .btn-pesquisar, .btn-limpar {
+                width: 100%;
+                justify-content: center;
+                padding: 12px 20px;
+            }
+            .tabela-notificacoes {
+                font-size: 0.8rem;
+                min-width: 500px;
+            }
+            .tabela-notificacoes thead th,
+            .tabela-notificacoes tbody td {
+                padding: 10px 12px;
+            }
+            .btn-salvar {
+                font-size: 1rem;
+                padding: 14px;
+            }
         }
 
         @media (max-width: 400px) {
             .card-header h1 {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
             .campo input, .campo select {
                 padding: 12px 14px;
                 font-size: 0.95rem;
             }
+            .btn-whatsapp .telefone-destino {
+                display: none;
+            }
+            .tabela-notificacoes {
+                font-size: 0.7rem;
+                min-width: 400px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="card-header">
-            <h1>
-                <i class="fas fa-gavel"></i> NOTIFICAÇÃO
-            </h1>
-            <span class="sub-badge"><i class="fas fa-map-pin" style="margin-right: 6px;"></i>Conselho Tutelar do Paranoá</span>
-        </div>
+    <!-- Navegação -->
+    <div class="nav-tabs">
+        <button class="nav-tab active" data-pagina="pagina1">
+            <i class="fas fa-pen"></i> Nova Notificação
+        </button>
+        <button class="nav-tab" data-pagina="pagina2">
+            <i class="fas fa-history"></i> Histórico
+            <span style="background: #e74c3c; color: white; border-radius: 50%; padding: 0 8px; font-size: 0.7rem;" id="contadorHistorico">0</span>
+        </button>
+    </div>
 
-        <div class="card-body">
-            <!-- Responsável -->
-            <div class="campo">
-                <label for="responsavel"><i class="fas fa-user"></i> Nome do Responsável</label>
-                <input type="text" id="responsavel" placeholder="Ex: João Silva" value="Maria Oliveira">
+    <!-- ===================== PÁGINA 1 ===================== -->
+    <div id="pagina1" class="pagina ativa">
+        <div class="card">
+            <div class="card-header">
+                <h1>
+                    <i class="fas fa-gavel"></i> NOTIFICAÇÃO
+                </h1>
+                <span class="sub-badge"><i class="fas fa-map-pin"></i>Conselho Tutelar do Paranoá</span>
             </div>
 
-            <!-- Checkbox + campo criança -->
-            <div class="checkbox-wrapper">
-                <label for="temCrianca">
-                    <i class="fas fa-child"></i> Marque se houver criança
-                    <input type="checkbox" id="temCrianca">
-                </label>
-                <div id="campoCrianca" class="hidden">
-                    <input type="text" id="crianca" placeholder="Nome da criança/adolescente" value="Ana Clara">
+            <div class="card-body">
+                <div class="campo">
+                    <label for="responsavel"><i class="fas fa-user"></i> Nome do Responsável</label>
+                    <input type="text" id="responsavel" placeholder="Ex: João Silva" value="MARIA OLIVEIRA">
                 </div>
-            </div>
 
-            <!-- Data e Hora -->
-            <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 8px;">
-                <div style="flex: 1; min-width: 140px;">
-                    <div class="campo" style="margin-bottom: 0;">
+                <div class="checkbox-wrapper">
+                    <label for="temCrianca">
+                        <i class="fas fa-child"></i> Marque se houver criança
+                        <input type="checkbox" id="temCrianca" checked>
+                    </label>
+                    <div id="campoCrianca">
+                        <input type="text" id="crianca" placeholder="Nome da criança/adolescente" value="ANA CLARA">
+                    </div>
+                </div>
+
+                <div class="linha-dupla">
+                    <div class="campo">
                         <label for="data"><i class="fas fa-calendar-alt"></i> Data</label>
                         <input type="date" id="data" value="2026-08-08">
                     </div>
-                </div>
-                <div style="flex: 1; min-width: 120px;">
-                    <div class="campo" style="margin-bottom: 0;">
+                    <div class="campo">
                         <label for="hora">
                             <i class="fas fa-clock"></i> Hora
-                            <span class="saudacao-indicator" id="saudacaoLabel">🌅 Bom dia</span>
+                            <span class="saudacao-indicator" id="saudacaoLabel">🌅 BOM DIA</span>
                         </label>
                         <input type="time" id="hora" value="10:00">
                     </div>
                 </div>
+
+                <div class="campo">
+                    <label for="conselheiro"><i class="fas fa-user-tie"></i> Conselheiro(a)</label>
+                    <select id="conselheiro">
+                        <option value="CLÁUDIA">CLÁUDIA</option>
+                        <option value="LUCINEA">LUCINEA</option>
+                        <option value="NADELÇO" selected>NADELÇO</option>
+                        <option value="SAMARA">SAMARA</option>
+                        <option value="SANDRA">SANDRA</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="telefone"><i class="fas fa-phone"></i> Telefone (com DDD)</label>
+                    <input type="tel" id="telefone" placeholder="Ex: 61999999999" value="61999998888">
+                    <small style="color: #7a8f9f; margin-top: 4px; font-size: 0.75rem;">
+                        <i class="fas fa-info-circle"></i> Digite apenas números, com DDD (ex: 61999998888)
+                    </small>
+                </div>
+
+                <div class="destaque-endereco">
+                    <i class="fas fa-location-dot"></i>
+                    <span><strong>Endereço:</strong> Área especial Quadra 21, ao lado da UBS 01 do Paranoá.</span>
+                </div>
+
+                <div class="preview-box" id="previewMensagem">
+                    BOM DIA, COMO VAI? 
+                    SOMOS DO CONSELHO TUTELAR DO PARANOÁ. 
+                    SOLICITAMOS A PRESENÇA DO(A) SENHOR(A) <strong>MARIA OLIVEIRA</strong>, QUE É RESPONSÁVEL POR <strong>ANA CLARA</strong> PARA ESCLARECIMENTO. 
+                    REITERAMOS QUE O(A) SENHOR(A) DEVE COMPARECER NO DIA <strong>08/08/2026</strong> ÀS <strong>10:00</strong> NA SEDE DO CONSELHO TUTELAR DO PARANOÁ COM O(A) CONSELHEIRO(A) <strong>NADELÇO</strong>.
+                    ...
+                </div>
+
+                <button class="btn-whatsapp" id="btnWhatsapp">
+                    <i class="fab fa-whatsapp"></i> 
+                    ENVIAR VIA WHATSAPP
+                    <span class="telefone-destino" id="telefoneDestino">→ (61) 99999-8888</span>
+                </button>
+
+                <button class="btn-salvar" id="btnSalvarHistorico">
+                    <i class="fas fa-save"></i> SALVAR NO HISTÓRICO
+                </button>
+
+                <div class="footer-obs">
+                    <i class="fas fa-info-circle"></i> Ao clicar em "Salvar", a notificação será armazenada no histórico
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== PÁGINA 2 ===================== -->
+    <div id="pagina2" class="pagina">
+        <div class="card">
+            <div class="card-header">
+                <h1>
+                    <i class="fas fa-history"></i> HISTÓRICO
+                </h1>
+                <span class="sub-badge"><i class="fas fa-clock"></i> Notificações enviadas</span>
             </div>
 
-            <!-- Conselheiro -->
-            <div class="campo">
-                <label for="conselheiro"><i class="fas fa-user-tie"></i> Conselheiro(a)</label>
-                <select id="conselheiro">
-                    <option value="Cláudia">Cláudia</option>
-                    <option value="Lucinea">Lucinea</option>
-                    <option value="Nadelço" selected>Nadelço</option>
-                    <option value="Samara">Samara</option>
-                    <option value="Sandra">Sandra</option>
-                </select>
-            </div>
+            <div class="card-body">
+                <div class="barra-pesquisa">
+                    <div class="campo">
+                        <label for="pesquisar"><i class="fas fa-search"></i> Pesquisar</label>
+                        <input type="text" id="pesquisar" placeholder="Busque por qualquer termo...">
+                    </div>
+                    <button class="btn-pesquisar" id="btnPesquisar">
+                        <i class="fas fa-search"></i> PESQUISAR
+                    </button>
+                    <button class="btn-limpar" id="btnLimparPesquisa">
+                        <i class="fas fa-times"></i> LIMPAR
+                    </button>
+                </div>
 
-            <!-- Endereço -->
-            <div class="destaque-endereco">
-                <i class="fas fa-location-dot"></i>
-                <span><strong>Endereço:</strong> Área especial Quadra 21, ao lado da UBS 01 do Paranoá.</span>
-            </div>
+                <div class="contador" id="contadorRegistros">
+                    <i class="fas fa-file-alt"></i> <span id="numRegistros">0</span> registro(s) encontrado(s)
+                </div>
 
-            <!-- Pré-visualização -->
-            <div class="preview-box" id="previewMensagem">
-                Bom dia, como vai? 
-                Somos do Conselho Tutelar do Paranoá. 
-                Solicitamos a presença do(a) senhor(a) <strong>Maria Oliveira</strong>, que é responsável por <strong>Ana Clara</strong> para esclarecimento. 
-                Reiteramos que o(a) senhor(a) deve comparecer no dia <strong>08/08/2026</strong> às <strong>10:00</strong> na Sede do Conselho Tutelar do Paranoá com o(a) Conselheiro(a) <strong>Nadelço</strong>.
-                ...
-            </div>
-
-            <!-- Botão WhatsApp -->
-            <button class="btn-whatsapp" id="btnWhatsapp">
-                <i class="fab fa-whatsapp"></i> Enviar via WhatsApp
-            </button>
-
-            <div class="footer-obs">
-                <i class="fas fa-info-circle"></i> Ao clicar, a mensagem será gerada e aberta no WhatsApp.
+                <div class="tabela-container">
+                    <table class="tabela-notificacoes">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Responsável</th>
+                                <th>Criança</th>
+                                <th>Data</th>
+                                <th>Hora</th>
+                                <th>Conselheiro</th>
+                                <th>Telefone</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelaCorpo">
+                            <tr>
+                                <td colspan="8" class="sem-resultados">
+                                    <i class="fas fa-inbox"></i>
+                                    Nenhuma notificação salva ainda.<br>
+                                    <small style="color: #a0b8c8;">Salve uma notificação na página "Nova Notificação"</small>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
         (function() {
-            // DOM elements
+            // ========================================
+            // ELEMENTOS PÁGINA 1
+            // ========================================
             const responsavel = document.getElementById('responsavel');
             const temCrianca = document.getElementById('temCrianca');
             const campoCrianca = document.getElementById('campoCrianca');
@@ -416,92 +929,169 @@
             const dataInput = document.getElementById('data');
             const horaInput = document.getElementById('hora');
             const conselheiro = document.getElementById('conselheiro');
+            const telefone = document.getElementById('telefone');
             const preview = document.getElementById('previewMensagem');
             const btnWhats = document.getElementById('btnWhatsapp');
+            const btnSalvar = document.getElementById('btnSalvarHistorico');
             const saudacaoLabel = document.getElementById('saudacaoLabel');
+            const telefoneDestino = document.getElementById('telefoneDestino');
 
+            // ========================================
+            // ELEMENTOS PÁGINA 2
+            // ========================================
+            const pesquisarInput = document.getElementById('pesquisar');
+            const btnPesquisar = document.getElementById('btnPesquisar');
+            const btnLimparPesquisa = document.getElementById('btnLimparPesquisa');
+            const tabelaCorpo = document.getElementById('tabelaCorpo');
+            const numRegistros = document.getElementById('numRegistros');
+            const contadorHistorico = document.getElementById('contadorHistorico');
+
+            // ========================================
+            // NAVEGAÇÃO ENTRE PÁGINAS
+            // ========================================
+            const tabs = document.querySelectorAll('.nav-tab');
+            const paginas = {
+                pagina1: document.getElementById('pagina1'),
+                pagina2: document.getElementById('pagina2')
+            };
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const paginaId = this.dataset.pagina;
+                    Object.keys(paginas).forEach(key => {
+                        paginas[key].classList.toggle('ativa', key === paginaId);
+                    });
+                });
+            });
+
+            // ========================================
+            // CONSTANTES
+            // ========================================
             const ENDERECO = "Área especial Quadra 21, ao lado da UBS 01 do Paranoá.";
+            let historico = [];
+            let idCounter = 0;
 
-            // Função para obter a saudação baseada no horário
+            // ========================================
+            // CARREGAR HISTÓRICO DO LOCALSTORAGE
+            // ========================================
+            function carregarHistorico() {
+                const saved = localStorage.getItem('notificacoes_historico');
+                if (saved) {
+                    try {
+                        historico = JSON.parse(saved);
+                        if (historico.length > 0) {
+                            idCounter = Math.max(...historico.map(item => item.id || 0)) + 1;
+                        }
+                    } catch (e) {
+                        historico = [];
+                    }
+                }
+                atualizarTabela();
+            }
+
+            // ========================================
+            // SALVAR HISTÓRICO NO LOCALSTORAGE
+            // ========================================
+            function salvarHistoricoStorage() {
+                localStorage.setItem('notificacoes_historico', JSON.stringify(historico));
+            }
+
+            // ========================================
+            // FUNÇÕES DE SAUDAÇÃO
+            // ========================================
             function obterSaudacao(horaStr) {
                 if (!horaStr) return "Bom dia";
-                
                 const partes = horaStr.split(':');
                 const hora = parseInt(partes[0]);
                 const minuto = parseInt(partes[1] || 0);
                 const horaDecimal = hora + (minuto / 60);
 
-                if (horaDecimal >= 8 && horaDecimal < 12) {
-                    return "Bom dia";
-                } else if (horaDecimal >= 13 && horaDecimal < 18) {
-                    return "Boa tarde";
-                } else if (horaDecimal >= 18 || horaDecimal < 5) {
-                    return "Boa noite";
-                } else {
-                    // Entre 5h e 8h ou entre 12h e 13h - usamos bom dia como padrão
-                    return "Bom dia";
-                }
+                if (horaDecimal >= 8 && horaDecimal < 12) return "Bom dia";
+                else if (horaDecimal >= 13 && horaDecimal < 18) return "Boa tarde";
+                else if (horaDecimal >= 18 || horaDecimal < 5) return "Boa noite";
+                else return "Bom dia";
             }
 
-            // Função para gerar a mensagem completa
+            // ========================================
+            // GERAR MENSAGEM
+            // ========================================
             function gerarMensagem() {
                 const nomeResp = responsavel.value.trim() || "[NOME DO RESPONSÁVEL]";
                 const nomeCrianca = criancaInput.value.trim();
                 const dataRaw = dataInput.value || "2026-08-08";
                 const horaRaw = horaInput.value || "10:00";
-                const conselheiroSel = conselheiro.value || "Nadelço";
+                const conselheiroSel = conselheiro.value || "NADELÇO";
 
-                // Obtém a saudação dinâmica
                 const saudacao = obterSaudacao(horaRaw);
 
-                // Formata data
                 let dataFormatada = dataRaw;
                 if (dataRaw.includes('-')) {
                     const partes = dataRaw.split('-');
                     dataFormatada = `${partes[2]}/${partes[1]}/${partes[0]}`;
                 }
 
-                // Montagem da mensagem
-                let msg = `${saudacao}, como vai? \n`;
-                msg += `Somos do Conselho Tutelar do Paranoá. \n`;
-                msg += `Solicitamos a presença do(a) senhor(a) ${nomeResp}`;
+                let msg = `${saudacao.toUpperCase()}, COMO VAI? \n`;
+                msg += `SOMOS DO CONSELHO TUTELAR DO PARANOÁ. \n`;
+                msg += `SOLICITAMOS A PRESENÇA DO(A) SENHOR(A) ${nomeResp.toUpperCase()}`;
 
                 if (temCrianca.checked && nomeCrianca !== '') {
-                    msg += `, que é responsável por ${nomeCrianca}`;
+                    msg += `, QUE É RESPONSÁVEL POR ${nomeCrianca.toUpperCase()}`;
                 } else if (temCrianca.checked && nomeCrianca === '') {
-                    msg += ` (responsável por criança/adolescente não informado(a))`;
+                    msg += ` (RESPONSÁVEL POR CRIANÇA/ADOLESCENTE NÃO INFORMADO(A))`;
                 }
 
-                msg += ` para esclarecimento. \n`;
-                msg += `Reiteramos que o(a) senhor(a) deve comparecer no dia ${dataFormatada} às ${horaRaw} `;
-                msg += `na Sede do Conselho Tutelar do Paranoá com o(a) Conselheiro(a) ${conselheiroSel}. \n\n`;
+                msg += ` PARA ESCLARECIMENTO. \n`;
+                msg += `REITERAMOS QUE O(A) SENHOR(A) DEVE COMPARECER NO DIA ${dataFormatada} ÀS ${horaRaw} `;
+                msg += `NA SEDE DO CONSELHO TUTELAR DO PARANOÁ COM O(A) CONSELHEIRO(A) ${conselheiroSel.toUpperCase()}. \n\n`;
                 msg += `*TRAZER DOCUMENTAÇÃO PESSOAL DO RESPONSÁVEL E DA CRIANÇA, E A CRIANÇA/ADOLESCENTE* \n\n`;
-                msg += `Endereço: ${ENDERECO} \n\n`;
-                msg += `Confirmar recebimento. \n\n`;
-                msg += `Obs.: *Lembrando que constitui crime e infração Administrativa, prevista nos artigos 236 e 249 da referida lei que prevê pena de detenção de seis meses a dois anos, o não comparecimento injustificado.*`;
+                msg += `ENDEREÇO: ${ENDERECO.toUpperCase()} \n\n`;
+                msg += `CONFIRMAR RECEBIMENTO. \n\n`;
+                msg += `OBS.: *LEMBRANDO QUE CONSTITUI CRIME E INFRAÇÃO ADMINISTRATIVA, PREVISTA NOS ARTIGOS 236 E 249 DA REFERIDA LEI QUE PREVÊ PENA DE DETENÇÃO DE SEIS MESES A DOIS ANOS, O NÃO COMPARECIMENTO INJUSTIFICADO.*`;
 
                 return msg;
             }
 
-            // Atualiza o indicador de saudação e o preview
+            // ========================================
+            // FORMATAR TELEFONE
+            // ========================================
+            function formatarTelefoneExibicao(numero) {
+                const limpo = numero.replace(/\D/g, '');
+                if (limpo.length === 11) {
+                    return `(${limpo.substring(0,2)}) ${limpo.substring(2,7)}-${limpo.substring(7,11)}`;
+                } else if (limpo.length === 10) {
+                    return `(${limpo.substring(0,2)}) ${limpo.substring(2,6)}-${limpo.substring(6,10)}`;
+                }
+                return numero;
+            }
+
+            // ========================================
+            // ATUALIZAR PREVIEW
+            // ========================================
             function atualizarTudo() {
                 const horaRaw = horaInput.value || "10:00";
                 const saudacao = obterSaudacao(horaRaw);
                 
-                // Ícone da saudação
                 let icone = '🌅';
                 if (saudacao === 'Bom dia') icone = '🌅';
                 else if (saudacao === 'Boa tarde') icone = '☀️';
                 else if (saudacao === 'Boa noite') icone = '🌙';
                 
-                saudacaoLabel.textContent = `${icone} ${saudacao}`;
+                saudacaoLabel.textContent = `${icone} ${saudacao.toUpperCase()}`;
                 
-                // Atualiza preview
                 const msg = gerarMensagem();
                 preview.innerHTML = msg.replace(/\n/g, '<br>');
+
+                const tel = telefone.value.trim() || 'Número não informado';
+                const telFormatado = formatarTelefoneExibicao(tel);
+                telefoneDestino.textContent = tel !== '' ? `→ ${telFormatado}` : '→ NÚMERO NÃO INFORMADO';
             }
 
-            // Mostra/esconde campo criança
+            // ========================================
+            // TOGGLE CAMPO CRIANÇA
+            // ========================================
             function toggleCampoCrianca() {
                 if (temCrianca.checked) {
                     campoCrianca.classList.remove('hidden');
@@ -512,7 +1102,145 @@
                 atualizarTudo();
             }
 
-            // Event listeners
+            // ========================================
+            // FUNÇÃO DE PESQUISA COM ACENTOS
+            // ========================================
+            function removerAcentos(texto) {
+                const acentos = {
+                    'á': 'a', 'à': 'a', 'â': 'a', 'ã': 'a', 'ä': 'a',
+                    'é': 'e', 'è': 'e', 'ê': 'e', 'ë': 'e',
+                    'í': 'i', 'ì': 'i', 'î': 'i', 'ï': 'i',
+                    'ó': 'o', 'ò': 'o', 'ô': 'o', 'õ': 'o', 'ö': 'o',
+                    'ú': 'u', 'ù': 'u', 'û': 'u', 'ü': 'u',
+                    'ç': 'c', 'ñ': 'n',
+                    'Á': 'A', 'À': 'A', 'Â': 'A', 'Ã': 'A', 'Ä': 'A',
+                    'É': 'E', 'È': 'E', 'Ê': 'E', 'Ë': 'E',
+                    'Í': 'I', 'Ì': 'I', 'Î': 'I', 'Ï': 'I',
+                    'Ó': 'O', 'Ò': 'O', 'Ô': 'O', 'Õ': 'O', 'Ö': 'O',
+                    'Ú': 'U', 'Ù': 'U', 'Û': 'U', 'Ü': 'U',
+                    'Ç': 'C', 'Ñ': 'N'
+                };
+                return texto.replace(/[áàâãäéèêëíìîïóòôõöúùûüçñÁÀÂÃÄÉÈÊËÍÌÎÏÓÒÔÕÖÚÙÛÜÇÑ]/g, match => acentos[match] || match);
+            }
+
+            function normalizarPesquisa(texto) {
+                return removerAcentos(texto.toLowerCase().trim());
+            }
+
+            function filtrarHistorico(termo) {
+                if (!termo || termo.trim() === '') {
+                    return historico;
+                }
+                const termoNormalizado = normalizarPesquisa(termo);
+                return historico.filter(item => {
+                    const campos = [
+                        item.responsavel || '',
+                        item.crianca || '',
+                        item.data || '',
+                        item.hora || '',
+                        item.conselheiro || '',
+                        item.telefone || '',
+                        item.mensagem || ''
+                    ];
+                    return campos.some(campo => {
+                        if (!campo) return false;
+                        return normalizarPesquisa(campo).includes(termoNormalizado);
+                    });
+                });
+            }
+
+            // ========================================
+            // ATUALIZAR TABELA
+            // ========================================
+            function atualizarTabela(filtro = '') {
+                const resultados = filtrarHistorico(filtro);
+                
+                if (resultados.length === 0) {
+                    tabelaCorpo.innerHTML = `
+                        <tr>
+                            <td colspan="8" class="sem-resultados">
+                                <i class="fas fa-inbox"></i>
+                                ${filtro ? 'Nenhum resultado encontrado para esta pesquisa.' : 'Nenhuma notificação salva ainda.'}<br>
+                                <small style="color: #a0b8c8;">${filtro ? 'Tente outros termos' : 'Salve uma notificação na página "Nova Notificação"'}</small>
+                            </td>
+                        </tr>
+                    `;
+                } else {
+                    let html = '';
+                    resultados.forEach((item, index) => {
+                        const statusClass = item.status === 'Enviado' ? 'badge-enviado' : 'badge-pendente';
+                        html += `
+                            <tr>
+                                <td>${index + 1}</td>
+                                <td><strong>${item.responsavel || '-'}</strong></td>
+                                <td>${item.crianca || '-'}</td>
+                                <td>${item.data || '-'}</td>
+                                <td>${item.hora || '-'}</td>
+                                <td>${item.conselheiro || '-'}</td>
+                                <td>${item.telefone || '-'}</td>
+                                <td><span class="badge-status ${statusClass}">${item.status || 'Pendente'}</span></td>
+                            </tr>
+                        `;
+                    });
+                    tabelaCorpo.innerHTML = html;
+                }
+
+                numRegistros.textContent = resultados.length;
+                contadorHistorico.textContent = historico.length;
+            }
+
+            // ========================================
+            // SALVAR NOTIFICAÇÃO NO HISTÓRICO
+            // ========================================
+            function salvarNotificacao() {
+                const nomeResp = responsavel.value.trim() || 'NÃO INFORMADO';
+                const nomeCrianca = temCrianca.checked ? criancaInput.value.trim() : '';
+                const dataRaw = dataInput.value || '2026-08-08';
+                const horaRaw = horaInput.value || '10:00';
+                const conselheiroSel = conselheiro.value || 'NADELÇO';
+                const telefoneVal = telefone.value.trim() || 'NÃO INFORMADO';
+                const mensagem = gerarMensagem();
+
+                let dataFormatada = dataRaw;
+                if (dataRaw.includes('-')) {
+                    const partes = dataRaw.split('-');
+                    dataFormatada = `${partes[2]}/${partes[1]}/${partes[0]}`;
+                }
+
+                const registro = {
+                    id: idCounter++,
+                    responsavel: nomeResp.toUpperCase(),
+                    crianca: nomeCrianca ? nomeCrianca.toUpperCase() : '',
+                    data: dataFormatada,
+                    hora: horaRaw,
+                    conselheiro: conselheiroSel.toUpperCase(),
+                    telefone: formatarTelefoneExibicao(telefoneVal),
+                    mensagem: mensagem,
+                    status: 'Pendente',
+                    dataCriacao: new Date().toLocaleString()
+                };
+
+                historico.unshift(registro);
+                salvarHistoricoStorage();
+                atualizarTabela(pesquisarInput.value);
+
+                // Feedback visual
+                const btnSalvarOriginal = btnSalvar.innerHTML;
+                btnSalvar.innerHTML = '<i class="fas fa-check"></i> SALVO!';
+                btnSalvar.style.background = 'linear-gradient(135deg, #28a745, #1e7e34)';
+                setTimeout(() => {
+                    btnSalvar.innerHTML = btnSalvarOriginal;
+                    btnSalvar.style.background = '';
+                }, 2000);
+
+                // Atualiza contador
+                contadorHistorico.textContent = historico.length;
+            }
+
+            // ========================================
+            // EVENT LISTENERS
+            // ========================================
+            // Página 1
             responsavel.addEventListener('input', atualizarTudo);
             temCrianca.addEventListener('change', toggleCampoCrianca);
             criancaInput.addEventListener('input', atualizarTudo);
@@ -520,8 +1248,57 @@
             horaInput.addEventListener('change', atualizarTudo);
             horaInput.addEventListener('input', atualizarTudo);
             conselheiro.addEventListener('change', atualizarTudo);
+            telefone.addEventListener('input', atualizarTudo);
 
-            // Data padrão: hoje
+            // Página 2 - Pesquisa
+            function executarPesquisa() {
+                const termo = pesquisarInput.value;
+                atualizarTabela(termo);
+            }
+
+            btnPesquisar.addEventListener('click', executarPesquisa);
+            pesquisarInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    executarPesquisa();
+                }
+            });
+
+            btnLimparPesquisa.addEventListener('click', function() {
+                pesquisarInput.value = '';
+                atualizarTabela('');
+                pesquisarInput.focus();
+            });
+
+            // Botão WhatsApp
+            btnWhats.addEventListener('click', function(e) {
+                e.preventDefault();
+                const mensagem = gerarMensagem();
+                const textoCodificado = encodeURIComponent(mensagem);
+                
+                let telefoneLimpo = telefone.value.trim().replace(/\D/g, '');
+                let url;
+                if (telefoneLimpo && telefoneLimpo.length >= 10) {
+                    if (!telefoneLimpo.startsWith('55') && telefoneLimpo.length >= 10) {
+                        telefoneLimpo = '55' + telefoneLimpo;
+                    }
+                    url = `https://wa.me/${telefoneLimpo}?text=${textoCodificado}`;
+                } else {
+                    url = `https://wa.me/?text=${textoCodificado}`;
+                }
+                window.open(url, '_blank');
+
+                // Marca como enviado se existir no histórico (último item)
+                if (historico.length > 0 && historico[0].status === 'Pendente') {
+                    historico[0].status = 'Enviado';
+                    salvarHistoricoStorage();
+                    atualizarTabela(pesquisarInput.value);
+                }
+            });
+
+            // Botão Salvar no Histórico
+            btnSalvar.addEventListener('click', salvarNotificacao);
+
+            // Data padrão
             function setarDataPadrao() {
                 const hoje = new Date();
                 const ano = hoje.getFullYear();
@@ -531,20 +1308,12 @@
             }
             setarDataPadrao();
 
-            // Inicializa estado do campo criança
+            // Inicializa
             toggleCampoCrianca();
-
-            // Botão WhatsApp
-            btnWhats.addEventListener('click', function(e) {
-                e.preventDefault();
-                const mensagem = gerarMensagem();
-                const textoCodificado = encodeURIComponent(mensagem);
-                const url = `https://wa.me/?text=${textoCodificado}`;
-                window.open(url, '_blank');
-            });
-
-            // Preview inicial
+            carregarHistorico();
             setTimeout(atualizarTudo, 80);
+            contadorHistorico.textContent = historico.length;
+
         })();
     </script>
 </body>
