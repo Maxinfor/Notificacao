@@ -878,14 +878,14 @@
 
                     <!-- Campo nome da criança (aparece quando tem criança) -->
                     <div class="campo-crianca-wrapper visible" id="campoCrianca">
-                        <input type="text" id="crianca" placeholder="Nome da criança/adolescente" value="ANA CLARA">
+                        <input type="text" id="crianca" placeholder="Nome da criança/adolescente" value="TANIA">
                     </div>
 
                     <!-- Linha 2: Data + Hora + Conselheiro -->
                     <div class="grid-3">
                         <div class="campo">
                             <label for="data"><i class="fas fa-calendar-alt"></i> Data</label>
-                            <input type="date" id="data" value="2026-08-08">
+                            <input type="date" id="data" value="2026-08-12">
                         </div>
                         <div class="campo">
                             <label for="hora">
@@ -897,11 +897,11 @@
                         <div class="campo">
                             <label for="conselheiro"><i class="fas fa-user-tie"></i> Conselheiro(a)</label>
                             <select id="conselheiro">
-                                <option value="CLÁUDIA">CLÁUDIA</option>
-                                <option value="LUCINEA">LUCINEA</option>
-                                <option value="NADELÇO" selected>NADELÇO</option>
-                                <option value="SAMARA">SAMARA</option>
-                                <option value="SANDRA">SANDRA</option>
+                                <option value="Cláudia">Cláudia</option>
+                                <option value="Lucinea">Lucinea</option>
+                                <option value="Nadelço" selected>Nadelço</option>
+                                <option value="Samara">Samara</option>
+                                <option value="Sandra">Sandra</option>
                             </select>
                         </div>
                     </div>
@@ -1044,7 +1044,6 @@
             // ========================================
             // CONSTANTES
             // ========================================
-            const ENDERECO = "Área especial Quadra 21, ao lado da UBS 01 do Paranoá.";
             let historico = [];
             let idCounter = 0;
 
@@ -1080,10 +1079,6 @@
                 const minuto = parseInt(partes[1] || 0);
                 const horaDecimal = hora + (minuto / 60);
 
-                // Horário de Brasília (GMT-3)
-                // Bom dia: 05:00 até 11:59
-                // Boa tarde: 12:00 até 17:59
-                // Boa noite: 18:00 até 04:59
                 if (horaDecimal >= 5 && horaDecimal < 12) {
                     return "Bom dia";
                 } else if (horaDecimal >= 12 && horaDecimal < 18) {
@@ -1093,62 +1088,77 @@
                 }
             }
 
+            // ========================================
+            // GERAR MENSAGEM - NOVO FORMATO
+            // ========================================
             function gerarMensagem() {
-                const nomeResp = responsavel.value.trim() || "[NOME DO RESPONSÁVEL]";
+                const nomeResp = responsavel.value.trim() || "RESPONSÁVEL";
                 const nomeCrianca = criancaInput.value.trim();
                 const dataRaw = dataInput.value || "2026-08-08";
                 const horaRaw = horaInput.value || "10:00";
-                const conselheiroSel = conselheiro.value || "NADELÇO";
+                const conselheiroSel = conselheiro.value || "Conselheiro(a)";
                 const temCriancaChecked = temCrianca.checked;
 
                 const saudacao = obterSaudacao(horaRaw);
 
+                // Formata data
                 let dataFormatada = dataRaw;
                 if (dataRaw.includes('-')) {
                     const partes = dataRaw.split('-');
                     dataFormatada = `${partes[2]}/${partes[1]}/${partes[0]}`;
                 }
 
-                let msg = `${saudacao.toUpperCase()}, COMO VAI? \n`;
-                msg += `SOMOS DO CONSELHO TUTELAR DO PARANOÁ. \n`;
+                // Formata hora (remove minutos se for 00)
+                let horaFormatada = horaRaw;
+                if (horaRaw.endsWith(':00')) {
+                    horaFormatada = horaRaw.replace(':00', 'h');
+                } else {
+                    horaFormatada = horaRaw.replace(':', 'h');
+                }
+
+                // Determina tratamento (Sr./Sra.)
+                const tratamento = 'Sra.';
+
+                // Monta a mensagem no novo formato
+                let msg = `${saudacao}! Como vai?\n\n`;
+                msg += `Somos do Conselho Tutelar do Paranoá.\n\n`;
 
                 // ===== LÓGICA PRINCIPAL =====
-                // Se NÃO tem criança (apenas responsável)
                 if (!temCriancaChecked) {
-                    msg += `SOLICITAMOS A PRESENÇA DO(A) SENHOR(A) ${nomeResp.toUpperCase()} PARA ESCLARECIMENTO. \n`;
-                    msg += `RESSALTAMOS QUE ESTE É UM ATENDIMENTO COM O(A) SENHOR(A) RESPONSÁVEL. \n`;
-                    msg += `NÃO É NECESSÁRIO TRAZER A CRIANÇA/ADOLESCENTE NESTE MOMENTO, `;
-                    msg += `POIS ENTENDEMOS QUE ESTE É UM CASO QUE PODE SER TRATADO COM O(A) RESPONSÁVEL. \n`;
-                    msg += `PORTANTO, NÃO SERÁ NECESSÁRIA A DOCUMENTAÇÃO DA CRIANÇA. \n\n`;
-                } 
-                // Se TEM criança
-                else {
+                    // Apenas responsável
+                    msg += `Solicitamos o comparecimento da ${tratamento} ${nomeResp}, para atendimento e esclarecimentos relacionados à criança/adolescente.\n\n`;
+                    msg += `Ressaltamos que este é um atendimento com a responsável, não sendo necessário trazer a criança/adolescente neste momento.\n\n`;
+                } else {
+                    // Com criança
                     if (nomeCrianca === '') {
-                        msg += `SOLICITAMOS A PRESENÇA DO(A) SENHOR(A) ${nomeResp.toUpperCase()} `;
-                        msg += `(RESPONSÁVEL POR CRIANÇA/ADOLESCENTE NÃO INFORMADO(A)) PARA ESCLARECIMENTO. \n`;
+                        msg += `Solicitamos o comparecimento da ${tratamento} ${nomeResp}, responsável por criança/adolescente não informado(a), para atendimento e esclarecimentos relacionados à criança/adolescente.\n\n`;
                     } else {
-                        msg += `SOLICITAMOS A PRESENÇA DO(A) SENHOR(A) ${nomeResp.toUpperCase()}, `;
-                        msg += `QUE É RESPONSÁVEL POR ${nomeCrianca.toUpperCase()}, PARA ESCLARECIMENTO. \n`;
+                        msg += `Solicitamos o comparecimento da ${tratamento} ${nomeResp}, responsável por ${nomeCrianca}, para atendimento e esclarecimentos relacionados à criança/adolescente.\n\n`;
                     }
-                    msg += `RESSALTAMOS QUE ESTE É UM ATENDIMENTO QUE ENVOLVE A CRIANÇA/ADOLESCENTE. \n`;
-                    msg += `SOLICITAMOS QUE O(A) SENHOR(A) TRAGA A CRIANÇA/ADOLESCENTE E A DOCUMENTAÇÃO PESSOAL DE AMBOS. \n\n`;
+                    msg += `Solicitamos que a responsável compareça acompanhada de ${nomeCrianca || 'criança/adolescente'} e apresente, se disponíveis:\n\n`;
+                    msg += `• Documento de identificação da responsável;\n`;
+                    msg += `• Documento de identificação da criança/adolescente ou certidão de nascimento;\n`;
+                    msg += `• Comprovante de residência;\n`;
+                    msg += `• Cartão de vacinação;\n`;
+                    msg += `• Laudos ou relatórios, quando houver e forem pertinentes ao atendimento.\n\n`;
                 }
 
-                // Parte comum
-                msg += `REITERAMOS QUE O(A) SENHOR(A) DEVE COMPARECER NO DIA ${dataFormatada} ÀS ${horaRaw} `;
-                msg += `NA SEDE DO CONSELHO TUTELAR DO PARANOÁ COM O(A) CONSELHEIRO(A) ${conselheiroSel.toUpperCase()}. \n\n`;
+                // Dados do atendimento
+                msg += `📅 Data: ${dataFormatada}\n`;
+                msg += `⏰ Horário: ${horaFormatada}\n`;
+                msg += `👤 Atendimento: Conselheira Tutelar ${conselheiroSel}\n`;
+                msg += `📍 Local: Conselho Tutelar do Paranoá – Área Especial, Quadra 21, ao lado da UBS 01.\n\n`;
 
-                // Se tem criança, inclui o aviso de documentação
-                if (temCriancaChecked && nomeCrianca !== '') {
-                    msg += `*TRAZER DOCUMENTAÇÃO PESSOAL DO RESPONSÁVEL E DA CRIANÇA, E A CRIANÇA/ADOLESCENTE* \n\n`;
-                }
-
-                msg += `CONFIRMAR RECEBIMENTO. \n\n`;
-                msg += `OBS.: *LEMBRANDO QUE CONSTITUI CRIME E INFRAÇÃO ADMINISTRATIVA, PREVISTA NOS ARTIGOS 236 E 249 DA REFERIDA LEI QUE PREVÊ PENA DE DETENÇÃO DE SEIS MESES A DOIS ANOS, O NÃO COMPARECIMENTO INJUSTIFICADO.*`;
+                // Conclusão
+                msg += `Favor confirmar o recebimento desta mensagem.\n\n`;
+                msg += `⚠️ O não comparecimento injustificado poderá acarretar as medidas previstas no Estatuto da Criança e do Adolescente (ECA).`;
 
                 return msg;
             }
 
+            // ========================================
+            // FORMATAR TELEFONE
+            // ========================================
             function formatarTelefoneExibicao(numero) {
                 const limpo = numero.replace(/\D/g, '');
                 if (limpo.length === 11) {
@@ -1159,6 +1169,9 @@
                 return numero;
             }
 
+            // ========================================
+            // FUNÇÕES DE PESQUISA
+            // ========================================
             function removerAcentos(texto) {
                 const acentos = {
                     'á': 'a', 'à': 'a', 'â': 'a', 'ã': 'a', 'ä': 'a',
