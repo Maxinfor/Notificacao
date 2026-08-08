@@ -14,7 +14,7 @@
         }
 
         body {
-            background: linear-gradient(145deg, #0a2f44, #154c66);
+            background: linear-gradient(145deg, #0a2f44, #1a5a7a);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -51,12 +51,12 @@
         }
 
         .card-header h1 i {
-            color: #f1c40f;
+            color: #1a5a7a;
             font-size: 2rem;
         }
 
         .sub-badge {
-            background: #eaf3f9;
+            background: #dceef7;
             color: #0b3d5a;
             font-weight: 600;
             padding: 8px 22px;
@@ -64,7 +64,7 @@
             font-size: 0.95rem;
             display: inline-block;
             margin-top: 2px;
-            border: 1px solid #c9dde9;
+            border: 1px solid #aacadd;
             letter-spacing: 0.3px;
         }
 
@@ -89,7 +89,7 @@
         }
 
         .campo label i {
-            color: #1b6b87;
+            color: #1a5a7a;
             width: 20px;
             font-size: 1.1rem;
         }
@@ -97,26 +97,27 @@
         .campo input,
         .campo select {
             padding: 14px 18px;
-            border: 2px solid #dce4ec;
+            border: 2px solid #b8d0de;
             border-radius: 18px;
             font-size: 1rem;
-            background: #f9fbfd;
+            background: #ffffff;
             transition: 0.25s ease;
             width: 100%;
             -webkit-appearance: none;
             appearance: none;
+            color: #1a2e3f;
         }
 
         .campo input:focus,
         .campo select:focus {
-            border-color: #1b6b87;
+            border-color: #1a5a7a;
             outline: none;
             background: #ffffff;
-            box-shadow: 0 0 0 4px rgba(27, 107, 135, 0.12);
+            box-shadow: 0 0 0 4px rgba(26, 90, 122, 0.12);
         }
 
         .campo select {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231b6b87' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231a5a7a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 16px center;
             background-size: 18px;
@@ -124,7 +125,7 @@
         }
 
         .checkbox-wrapper {
-            background: #eef5fa;
+            background: #e6f2f9;
             border-radius: 20px;
             padding: 14px 20px;
             margin: 8px 0 14px;
@@ -132,7 +133,7 @@
             flex-wrap: wrap;
             align-items: center;
             gap: 16px 20px;
-            border: 1px solid #d2e1ec;
+            border: 1px solid #b8d0de;
         }
 
         .checkbox-wrapper label {
@@ -148,7 +149,7 @@
         .checkbox-wrapper input[type="checkbox"] {
             width: 22px;
             height: 22px;
-            accent-color: #1b6b87;
+            accent-color: #1a5a7a;
             transform: scale(1.1);
             cursor: pointer;
             flex-shrink: 0;
@@ -163,21 +164,22 @@
             width: 100%;
             padding: 12px 16px;
             border-radius: 16px;
-            border: 2px solid #cbdde9;
-            background: white;
+            border: 2px solid #b8d0de;
+            background: #ffffff;
             font-size: 1rem;
             transition: 0.2s;
+            color: #1a2e3f;
         }
 
         .checkbox-wrapper #campoCrianca input:focus {
-            border-color: #1b6b87;
-            box-shadow: 0 0 0 3px rgba(27, 107, 135, 0.15);
+            border-color: #1a5a7a;
+            box-shadow: 0 0 0 3px rgba(26, 90, 122, 0.15);
             outline: none;
         }
 
         .destaque-endereco {
-            background: #fef9e7;
-            border-left: 6px solid #f1c40f;
+            background: #e6f2f9;
+            border-left: 6px solid #1a5a7a;
             padding: 14px 18px;
             border-radius: 16px;
             margin: 16px 0 18px;
@@ -189,17 +191,17 @@
         }
 
         .destaque-endereco i {
-            color: #b7950b;
+            color: #1a5a7a;
             font-size: 1.2rem;
             margin-top: 2px;
         }
 
         .preview-box {
-            background: #e9f2f8;
+            background: #eef6fb;
             border-radius: 20px;
             padding: 18px 20px;
             margin: 18px 0 14px;
-            border: 1px solid #c9dde9;
+            border: 1px solid #b8d0de;
             max-height: 230px;
             overflow-y: auto;
             font-size: 0.92rem;
@@ -253,12 +255,24 @@
             color: #5d6f7f;
             text-align: center;
             margin-top: 18px;
-            border-top: 1px solid #dde5ed;
+            border-top: 1px solid #dce4ec;
             padding-top: 14px;
         }
 
         .hidden {
             display: none !important;
+        }
+
+        /* Indicador de saudação */
+        .saudacao-indicator {
+            display: inline-block;
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 8px;
+            background: #d4e8f2;
+            color: #0b3d5a;
         }
 
         /* Ajustes Mobile */
@@ -324,7 +338,7 @@
                 <input type="text" id="responsavel" placeholder="Ex: João Silva" value="Maria Oliveira">
             </div>
 
-            <!-- Checkbox + campo criança (mesmo tamanho dos outros) -->
+            <!-- Checkbox + campo criança -->
             <div class="checkbox-wrapper">
                 <label for="temCrianca">
                     <i class="fas fa-child"></i> Marque se houver criança
@@ -335,7 +349,7 @@
                 </div>
             </div>
 
-            <!-- Data e Hora lado a lado (opcional, mas mantemos em linhas separadas para melhor usabilidade) -->
+            <!-- Data e Hora -->
             <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 8px;">
                 <div style="flex: 1; min-width: 140px;">
                     <div class="campo" style="margin-bottom: 0;">
@@ -345,13 +359,16 @@
                 </div>
                 <div style="flex: 1; min-width: 120px;">
                     <div class="campo" style="margin-bottom: 0;">
-                        <label for="hora"><i class="fas fa-clock"></i> Hora</label>
-                        <input type="time" id="hora" value="14:00">
+                        <label for="hora">
+                            <i class="fas fa-clock"></i> Hora
+                            <span class="saudacao-indicator" id="saudacaoLabel">🌅 Bom dia</span>
+                        </label>
+                        <input type="time" id="hora" value="10:00">
                     </div>
                 </div>
             </div>
 
-            <!-- Conselheiro com dropdown -->
+            <!-- Conselheiro -->
             <div class="campo">
                 <label for="conselheiro"><i class="fas fa-user-tie"></i> Conselheiro(a)</label>
                 <select id="conselheiro">
@@ -363,7 +380,7 @@
                 </select>
             </div>
 
-            <!-- Endereço fixo -->
+            <!-- Endereço -->
             <div class="destaque-endereco">
                 <i class="fas fa-location-dot"></i>
                 <span><strong>Endereço:</strong> Área especial Quadra 21, ao lado da UBS 01 do Paranoá.</span>
@@ -374,7 +391,7 @@
                 Bom dia, como vai? 
                 Somos do Conselho Tutelar do Paranoá. 
                 Solicitamos a presença do(a) senhor(a) <strong>Maria Oliveira</strong>, que é responsável por <strong>Ana Clara</strong> para esclarecimento. 
-                Reiteramos que o(a) senhor(a) deve comparecer no dia <strong>08/08/2026</strong> às <strong>14:00</strong> na Sede do Conselho Tutelar do Paranoá com o(a) Conselheiro(a) <strong>Nadelço</strong>.
+                Reiteramos que o(a) senhor(a) deve comparecer no dia <strong>08/08/2026</strong> às <strong>10:00</strong> na Sede do Conselho Tutelar do Paranoá com o(a) Conselheiro(a) <strong>Nadelço</strong>.
                 ...
             </div>
 
@@ -401,16 +418,41 @@
             const conselheiro = document.getElementById('conselheiro');
             const preview = document.getElementById('previewMensagem');
             const btnWhats = document.getElementById('btnWhatsapp');
+            const saudacaoLabel = document.getElementById('saudacaoLabel');
 
             const ENDERECO = "Área especial Quadra 21, ao lado da UBS 01 do Paranoá.";
+
+            // Função para obter a saudação baseada no horário
+            function obterSaudacao(horaStr) {
+                if (!horaStr) return "Bom dia";
+                
+                const partes = horaStr.split(':');
+                const hora = parseInt(partes[0]);
+                const minuto = parseInt(partes[1] || 0);
+                const horaDecimal = hora + (minuto / 60);
+
+                if (horaDecimal >= 8 && horaDecimal < 12) {
+                    return "Bom dia";
+                } else if (horaDecimal >= 13 && horaDecimal < 18) {
+                    return "Boa tarde";
+                } else if (horaDecimal >= 18 || horaDecimal < 5) {
+                    return "Boa noite";
+                } else {
+                    // Entre 5h e 8h ou entre 12h e 13h - usamos bom dia como padrão
+                    return "Bom dia";
+                }
+            }
 
             // Função para gerar a mensagem completa
             function gerarMensagem() {
                 const nomeResp = responsavel.value.trim() || "[NOME DO RESPONSÁVEL]";
                 const nomeCrianca = criancaInput.value.trim();
                 const dataRaw = dataInput.value || "2026-08-08";
-                const horaRaw = horaInput.value || "14:00";
+                const horaRaw = horaInput.value || "10:00";
                 const conselheiroSel = conselheiro.value || "Nadelço";
+
+                // Obtém a saudação dinâmica
+                const saudacao = obterSaudacao(horaRaw);
 
                 // Formata data
                 let dataFormatada = dataRaw;
@@ -419,8 +461,8 @@
                     dataFormatada = `${partes[2]}/${partes[1]}/${partes[0]}`;
                 }
 
-                // Montagem com condicional: se tiver criança, insere "que é responsável por [criança]"
-                let msg = `Bom dia, como vai? \n`;
+                // Montagem da mensagem
+                let msg = `${saudacao}, como vai? \n`;
                 msg += `Somos do Conselho Tutelar do Paranoá. \n`;
                 msg += `Solicitamos a presença do(a) senhor(a) ${nomeResp}`;
 
@@ -429,7 +471,6 @@
                 } else if (temCrianca.checked && nomeCrianca === '') {
                     msg += ` (responsável por criança/adolescente não informado(a))`;
                 }
-                // Se não tiver marcado, NÃO insere "que é responsável por..."
 
                 msg += ` para esclarecimento. \n`;
                 msg += `Reiteramos que o(a) senhor(a) deve comparecer no dia ${dataFormatada} às ${horaRaw} `;
@@ -442,29 +483,43 @@
                 return msg;
             }
 
-            function atualizarPreview() {
+            // Atualiza o indicador de saudação e o preview
+            function atualizarTudo() {
+                const horaRaw = horaInput.value || "10:00";
+                const saudacao = obterSaudacao(horaRaw);
+                
+                // Ícone da saudação
+                let icone = '🌅';
+                if (saudacao === 'Bom dia') icone = '🌅';
+                else if (saudacao === 'Boa tarde') icone = '☀️';
+                else if (saudacao === 'Boa noite') icone = '🌙';
+                
+                saudacaoLabel.textContent = `${icone} ${saudacao}`;
+                
+                // Atualiza preview
                 const msg = gerarMensagem();
                 preview.innerHTML = msg.replace(/\n/g, '<br>');
             }
 
-            // Mostra/esconde campo criança e mantém o mesmo tamanho dos outros
+            // Mostra/esconde campo criança
             function toggleCampoCrianca() {
                 if (temCrianca.checked) {
                     campoCrianca.classList.remove('hidden');
                 } else {
                     campoCrianca.classList.add('hidden');
-                    criancaInput.value = ''; // limpa para não poluir a mensagem
+                    criancaInput.value = '';
                 }
-                atualizarPreview();
+                atualizarTudo();
             }
 
             // Event listeners
-            responsavel.addEventListener('input', atualizarPreview);
+            responsavel.addEventListener('input', atualizarTudo);
             temCrianca.addEventListener('change', toggleCampoCrianca);
-            criancaInput.addEventListener('input', atualizarPreview);
-            dataInput.addEventListener('change', atualizarPreview);
-            horaInput.addEventListener('change', atualizarPreview);
-            conselheiro.addEventListener('change', atualizarPreview);
+            criancaInput.addEventListener('input', atualizarTudo);
+            dataInput.addEventListener('change', atualizarTudo);
+            horaInput.addEventListener('change', atualizarTudo);
+            horaInput.addEventListener('input', atualizarTudo);
+            conselheiro.addEventListener('change', atualizarTudo);
 
             // Data padrão: hoje
             function setarDataPadrao() {
@@ -476,7 +531,7 @@
             }
             setarDataPadrao();
 
-            // Inicializa estado do campo criança (escondido)
+            // Inicializa estado do campo criança
             toggleCampoCrianca();
 
             // Botão WhatsApp
@@ -489,7 +544,7 @@
             });
 
             // Preview inicial
-            setTimeout(atualizarPreview, 80);
+            setTimeout(atualizarTudo, 80);
         })();
     </script>
 </body>
