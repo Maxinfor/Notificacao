@@ -4,57 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Notificação - Conselho Tutelar do Paranoá</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #0b3d5a, #1b6b87);
+            background: linear-gradient(145deg, #0a2f44, #154c66);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 24px 16px;
         }
 
         .card {
             background: #ffffff;
-            border-radius: 28px;
-            padding: 30px 24px 35px;
-            max-width: 650px;
+            border-radius: 32px;
+            padding: 32px 28px 30px;
+            max-width: 720px;
             width: 100%;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            transition: 0.3s;
+            box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.6);
+            transition: 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .card h1 {
-            font-size: 1.8rem;
-            color: #0b3d5a;
+        .card-header {
             text-align: center;
-            margin-bottom: 8px;
+            margin-bottom: 18px;
+        }
+
+        .card-header h1 {
+            font-size: 2rem;
             font-weight: 700;
+            color: #0b3d5a;
             letter-spacing: -0.5px;
-            border-bottom: 3px solid #f1c40f;
-            padding-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
-        .subtitulo {
-            text-align: center;
-            color: #2c3e50;
-            font-weight: 500;
-            margin-bottom: 25px;
-            font-size: 1rem;
-            background: #ecf9ff;
-            padding: 8px 12px;
+        .card-header h1 i {
+            color: #f1c40f;
+            font-size: 2rem;
+        }
+
+        .sub-badge {
+            background: #eaf3f9;
+            color: #0b3d5a;
+            font-weight: 600;
+            padding: 8px 22px;
             border-radius: 40px;
+            font-size: 0.95rem;
             display: inline-block;
-            width: auto;
-            margin-left: auto;
-            margin-right: auto;
+            margin-top: 2px;
+            border: 1px solid #c9dde9;
+            letter-spacing: 0.3px;
+        }
+
+        .card-body {
+            margin-top: 10px;
         }
 
         .campo {
@@ -65,246 +80,318 @@
 
         .campo label {
             font-weight: 600;
-            color: #1a2a3a;
-            margin-bottom: 5px;
+            color: #1f3a4b;
+            margin-bottom: 6px;
             font-size: 0.95rem;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
 
         .campo label i {
             color: #1b6b87;
+            width: 20px;
+            font-size: 1.1rem;
         }
 
-        .campo input, .campo select {
-            padding: 14px 16px;
+        .campo input,
+        .campo select {
+            padding: 14px 18px;
             border: 2px solid #dce4ec;
-            border-radius: 16px;
+            border-radius: 18px;
             font-size: 1rem;
-            background: #f8fafc;
-            transition: 0.2s;
+            background: #f9fbfd;
+            transition: 0.25s ease;
             width: 100%;
             -webkit-appearance: none;
             appearance: none;
         }
 
-        .campo input:focus, .campo select:focus {
+        .campo input:focus,
+        .campo select:focus {
             border-color: #1b6b87;
             outline: none;
             background: #ffffff;
-            box-shadow: 0 0 0 4px rgba(27, 107, 135, 0.15);
+            box-shadow: 0 0 0 4px rgba(27, 107, 135, 0.12);
         }
 
-        .campo-check {
-            flex-direction: row;
-            align-items: center;
-            gap: 14px;
-            flex-wrap: wrap;
-            background: #f0f6fa;
-            padding: 12px 18px;
+        .campo select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231b6b87' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 18px;
+            cursor: pointer;
+        }
+
+        .checkbox-wrapper {
+            background: #eef5fa;
             border-radius: 20px;
-            margin: 12px 0 10px;
+            padding: 14px 20px;
+            margin: 8px 0 14px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 16px 20px;
+            border: 1px solid #d2e1ec;
         }
 
-        .campo-check label {
-            margin-bottom: 0;
-            font-weight: 500;
-            font-size: 1rem;
+        .checkbox-wrapper label {
+            font-weight: 600;
             color: #0b3d5a;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
         }
 
-        .campo-check input[type="checkbox"] {
+        .checkbox-wrapper input[type="checkbox"] {
             width: 22px;
             height: 22px;
             accent-color: #1b6b87;
             transform: scale(1.1);
             cursor: pointer;
+            flex-shrink: 0;
         }
 
-        .campo-check #campoCrianca {
+        .checkbox-wrapper #campoCrianca {
             flex: 1;
-            min-width: 180px;
+            min-width: 200px;
         }
 
-        .campo-check #campoCrianca input {
+        .checkbox-wrapper #campoCrianca input {
             width: 100%;
+            padding: 12px 16px;
+            border-radius: 16px;
+            border: 2px solid #cbdde9;
+            background: white;
+            font-size: 1rem;
+            transition: 0.2s;
         }
 
-        .destaque {
+        .checkbox-wrapper #campoCrianca input:focus {
+            border-color: #1b6b87;
+            box-shadow: 0 0 0 3px rgba(27, 107, 135, 0.15);
+            outline: none;
+        }
+
+        .destaque-endereco {
             background: #fef9e7;
             border-left: 6px solid #f1c40f;
-            padding: 14px 16px;
-            border-radius: 14px;
-            margin: 12px 0 16px;
+            padding: 14px 18px;
+            border-radius: 16px;
+            margin: 16px 0 18px;
             font-size: 0.95rem;
-            color: #2c3e50;
+            color: #1f3a4b;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
         }
 
-        .destaque strong {
-            color: #a04000;
+        .destaque-endereco i {
+            color: #b7950b;
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+
+        .preview-box {
+            background: #e9f2f8;
+            border-radius: 20px;
+            padding: 18px 20px;
+            margin: 18px 0 14px;
+            border: 1px solid #c9dde9;
+            max-height: 230px;
+            overflow-y: auto;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: #1a2e3f;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .preview-box strong {
+            color: #0b3d5a;
         }
 
         .btn-whatsapp {
             background: #25d366;
             color: white;
             border: none;
-            padding: 18px 20px;
+            padding: 18px 18px;
             border-radius: 60px;
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 700;
             width: 100%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            transition: all 0.2s;
-            box-shadow: 0 6px 0 #1da851;
-            margin-top: 12px;
-            letter-spacing: 0.5px;
+            gap: 14px;
+            transition: all 0.15s ease;
+            box-shadow: 0 8px 0 #1b9e4a;
+            margin-top: 8px;
+            letter-spacing: 0.4px;
         }
 
         .btn-whatsapp:hover {
             transform: scale(1.01);
             background: #20b85e;
-            box-shadow: 0 4px 0 #1a924b;
+            box-shadow: 0 5px 0 #15803d;
         }
 
         .btn-whatsapp:active {
             transform: scale(0.97);
-            box-shadow: 0 2px 0 #1a924b;
+            box-shadow: 0 3px 0 #15803d;
         }
 
-        .btn-whatsapp img, .btn-whatsapp svg {
-            width: 28px;
-            height: 28px;
-            filter: brightness(0) invert(1);
-        }
-
-        .preview-msg {
-            background: #eaf4f9;
-            border-radius: 18px;
-            padding: 16px 18px;
-            margin: 18px 0 10px;
-            font-size: 0.92rem;
-            color: #1e2b39;
-            border: 1px solid #cbdbe6;
-            max-height: 200px;
-            overflow-y: auto;
-            white-space: pre-wrap;
-            line-height: 1.5;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
-        .preview-msg strong {
-            color: #0b3d5a;
+        .btn-whatsapp i {
+            font-size: 1.8rem;
         }
 
         .footer-obs {
             font-size: 0.7rem;
             color: #5d6f7f;
             text-align: center;
-            margin-top: 16px;
+            margin-top: 18px;
             border-top: 1px solid #dde5ed;
             padding-top: 14px;
         }
 
-        @media (max-width: 480px) {
+        .hidden {
+            display: none !important;
+        }
+
+        /* Ajustes Mobile */
+        @media (max-width: 550px) {
             .card {
-                padding: 20px 16px 25px;
+                padding: 22px 16px 24px;
             }
-            .card h1 {
+            .card-header h1 {
+                font-size: 1.6rem;
+                gap: 8px;
+            }
+            .card-header h1 i {
                 font-size: 1.5rem;
             }
-            .campo-check {
+            .checkbox-wrapper {
                 flex-direction: column;
                 align-items: stretch;
-                gap: 8px;
+                gap: 12px;
+                padding: 16px;
+            }
+            .checkbox-wrapper #campoCrianca {
+                min-width: unset;
             }
             .btn-whatsapp {
                 font-size: 1.1rem;
                 padding: 16px;
             }
-            .preview-msg {
+            .preview-box {
                 font-size: 0.85rem;
-                max-height: 160px;
+                max-height: 180px;
+                padding: 14px;
+            }
+            .destaque-endereco {
+                font-size: 0.88rem;
+                padding: 12px 14px;
             }
         }
 
-        /* esconde o campo criança se não estiver marcado */
-        .hidden {
-            display: none !important;
-        }
-
-        .conselheiro-input {
-            background: #f0f5fb;
+        @media (max-width: 400px) {
+            .card-header h1 {
+                font-size: 1.3rem;
+            }
+            .campo input, .campo select {
+                padding: 12px 14px;
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="card" role="main">
-        <h1>🧑‍⚖️ NOTIFICAÇÃO</h1>
-        <div style="text-align: center;"><span class="subtitulo">Conselho Tutelar do Paranoá</span></div>
-
-        <!-- Campos do formulário -->
-        <div class="campo">
-            <label for="responsavel">👤 Nome do Responsável</label>
-            <input type="text" id="responsavel" placeholder="Ex: João Silva" value="">
+    <div class="card">
+        <div class="card-header">
+            <h1>
+                <i class="fas fa-gavel"></i> NOTIFICAÇÃO
+            </h1>
+            <span class="sub-badge"><i class="fas fa-map-pin" style="margin-right: 6px;"></i>Conselho Tutelar do Paranoá</span>
         </div>
 
-        <!-- Checkbox + campo criança condicional -->
-        <div class="campo-check">
-            <label for="temCrianca">🧒 Marque se houver criança:</label>
-            <input type="checkbox" id="temCrianca">
-            <div id="campoCrianca" class="hidden" style="flex:1; min-width:160px;">
-                <input type="text" id="crianca" placeholder="Nome da criança/adolescente" value="">
+        <div class="card-body">
+            <!-- Responsável -->
+            <div class="campo">
+                <label for="responsavel"><i class="fas fa-user"></i> Nome do Responsável</label>
+                <input type="text" id="responsavel" placeholder="Ex: João Silva" value="Maria Oliveira">
             </div>
-        </div>
 
-        <div class="campo">
-            <label for="data">📅 Data</label>
-            <input type="date" id="data" value="2026-08-08">
-        </div>
+            <!-- Checkbox + campo criança (mesmo tamanho dos outros) -->
+            <div class="checkbox-wrapper">
+                <label for="temCrianca">
+                    <i class="fas fa-child"></i> Marque se houver criança
+                    <input type="checkbox" id="temCrianca">
+                </label>
+                <div id="campoCrianca" class="hidden">
+                    <input type="text" id="crianca" placeholder="Nome da criança/adolescente" value="Ana Clara">
+                </div>
+            </div>
 
-        <div class="campo">
-            <label for="hora">⏰ Hora</label>
-            <input type="time" id="hora" value="14:00">
-        </div>
+            <!-- Data e Hora lado a lado (opcional, mas mantemos em linhas separadas para melhor usabilidade) -->
+            <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 8px;">
+                <div style="flex: 1; min-width: 140px;">
+                    <div class="campo" style="margin-bottom: 0;">
+                        <label for="data"><i class="fas fa-calendar-alt"></i> Data</label>
+                        <input type="date" id="data" value="2026-08-08">
+                    </div>
+                </div>
+                <div style="flex: 1; min-width: 120px;">
+                    <div class="campo" style="margin-bottom: 0;">
+                        <label for="hora"><i class="fas fa-clock"></i> Hora</label>
+                        <input type="time" id="hora" value="14:00">
+                    </div>
+                </div>
+            </div>
 
-        <div class="campo">
-            <label for="conselheiro">👨‍⚖️ Conselheiro(a) responsável</label>
-            <input type="text" id="conselheiro" placeholder="Ex: Dra. Ana" value="Dr. Carlos">
-        </div>
+            <!-- Conselheiro com dropdown -->
+            <div class="campo">
+                <label for="conselheiro"><i class="fas fa-user-tie"></i> Conselheiro(a)</label>
+                <select id="conselheiro">
+                    <option value="Cláudia">Cláudia</option>
+                    <option value="Lucinea">Lucinea</option>
+                    <option value="Nadelço" selected>Nadelço</option>
+                    <option value="Samara">Samara</option>
+                    <option value="Sandra">Sandra</option>
+                </select>
+            </div>
 
-        <!-- Endereço fixo (já informado) -->
-        <div class="destaque">
-            <strong>📍 Endereço:</strong> Área especial Quadra 21, ao lado da UBS 01 do Paranoá.
-        </div>
+            <!-- Endereço fixo -->
+            <div class="destaque-endereco">
+                <i class="fas fa-location-dot"></i>
+                <span><strong>Endereço:</strong> Área especial Quadra 21, ao lado da UBS 01 do Paranoá.</span>
+            </div>
 
-        <!-- Pré-visualização da mensagem -->
-        <div class="preview-msg" id="previewMensagem">
-            Bom dia, como vai? 
-            Somos do Conselho Tutelar do Paranoá. 
-            Solicitamos a presença do(a) senhor(a) <strong>João Silva</strong> ... 
-        </div>
+            <!-- Pré-visualização -->
+            <div class="preview-box" id="previewMensagem">
+                Bom dia, como vai? 
+                Somos do Conselho Tutelar do Paranoá. 
+                Solicitamos a presença do(a) senhor(a) <strong>Maria Oliveira</strong>, que é responsável por <strong>Ana Clara</strong> para esclarecimento. 
+                Reiteramos que o(a) senhor(a) deve comparecer no dia <strong>08/08/2026</strong> às <strong>14:00</strong> na Sede do Conselho Tutelar do Paranoá com o(a) Conselheiro(a) <strong>Nadelço</strong>.
+                ...
+            </div>
 
-        <!-- Botão WhatsApp -->
-        <button class="btn-whatsapp" id="btnWhatsapp">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-            Enviar via WhatsApp
-        </button>
+            <!-- Botão WhatsApp -->
+            <button class="btn-whatsapp" id="btnWhatsapp">
+                <i class="fab fa-whatsapp"></i> Enviar via WhatsApp
+            </button>
 
-        <div class="footer-obs">
-            * Ao clicar, a mensagem será gerada e aberta no WhatsApp.
+            <div class="footer-obs">
+                <i class="fas fa-info-circle"></i> Ao clicar, a mensagem será gerada e aberta no WhatsApp.
+            </div>
         </div>
     </div>
 
     <script>
         (function() {
-            // Elementos do DOM
+            // DOM elements
             const responsavel = document.getElementById('responsavel');
             const temCrianca = document.getElementById('temCrianca');
             const campoCrianca = document.getElementById('campoCrianca');
@@ -315,39 +402,38 @@
             const preview = document.getElementById('previewMensagem');
             const btnWhats = document.getElementById('btnWhatsapp');
 
-            // Endereço fixo
             const ENDERECO = "Área especial Quadra 21, ao lado da UBS 01 do Paranoá.";
 
             // Função para gerar a mensagem completa
             function gerarMensagem() {
                 const nomeResp = responsavel.value.trim() || "[NOME DO RESPONSÁVEL]";
                 const nomeCrianca = criancaInput.value.trim();
-                const dataFormatada = dataInput.value || "08/08/2026";
-                const horaFormatada = horaInput.value || "14:00";
-                const nomeCons = conselheiro.value.trim() || "[CONSELHEIRO(A)]";
+                const dataRaw = dataInput.value || "2026-08-08";
+                const horaRaw = horaInput.value || "14:00";
+                const conselheiroSel = conselheiro.value || "Nadelço";
 
-                // formata data para dd/mm/aaaa
-                let dataExibicao = dataFormatada;
-                if (dataFormatada.includes('-')) {
-                    const partes = dataFormatada.split('-');
-                    dataExibicao = `${partes[2]}/${partes[1]}/${partes[0]}`;
+                // Formata data
+                let dataFormatada = dataRaw;
+                if (dataRaw.includes('-')) {
+                    const partes = dataRaw.split('-');
+                    dataFormatada = `${partes[2]}/${partes[1]}/${partes[0]}`;
                 }
 
-                // Montagem da mensagem conforme modelo
+                // Montagem com condicional: se tiver criança, insere "que é responsável por [criança]"
                 let msg = `Bom dia, como vai? \n`;
                 msg += `Somos do Conselho Tutelar do Paranoá. \n`;
                 msg += `Solicitamos a presença do(a) senhor(a) ${nomeResp}`;
 
-                // Se tiver criança, inclui "que é responsável por [criança]"
                 if (temCrianca.checked && nomeCrianca !== '') {
                     msg += `, que é responsável por ${nomeCrianca}`;
                 } else if (temCrianca.checked && nomeCrianca === '') {
                     msg += ` (responsável por criança/adolescente não informado(a))`;
                 }
+                // Se não tiver marcado, NÃO insere "que é responsável por..."
 
                 msg += ` para esclarecimento. \n`;
-                msg += `Reiteramos que o(a) senhor(a) deve comparecer no dia ${dataExibicao} às ${horaFormatada} `;
-                msg += `na Sede do Conselho Tutelar do Paranoá com o(a) Conselheiro(a) ${nomeCons}. \n\n`;
+                msg += `Reiteramos que o(a) senhor(a) deve comparecer no dia ${dataFormatada} às ${horaRaw} `;
+                msg += `na Sede do Conselho Tutelar do Paranoá com o(a) Conselheiro(a) ${conselheiroSel}. \n\n`;
                 msg += `*TRAZER DOCUMENTAÇÃO PESSOAL DO RESPONSÁVEL E DA CRIANÇA, E A CRIANÇA/ADOLESCENTE* \n\n`;
                 msg += `Endereço: ${ENDERECO} \n\n`;
                 msg += `Confirmar recebimento. \n\n`;
@@ -356,33 +442,31 @@
                 return msg;
             }
 
-            // Atualiza a pré-visualização
             function atualizarPreview() {
                 const msg = gerarMensagem();
-                // Substitui quebras de linha por <br> para exibir no preview, mantendo formatação
                 preview.innerHTML = msg.replace(/\n/g, '<br>');
             }
 
-            // Mostra/esconde campo criança conforme checkbox
+            // Mostra/esconde campo criança e mantém o mesmo tamanho dos outros
             function toggleCampoCrianca() {
                 if (temCrianca.checked) {
                     campoCrianca.classList.remove('hidden');
                 } else {
                     campoCrianca.classList.add('hidden');
-                    criancaInput.value = ''; // limpa o campo se desmarcar
+                    criancaInput.value = ''; // limpa para não poluir a mensagem
                 }
                 atualizarPreview();
             }
 
-            // Eventos para atualizar preview
+            // Event listeners
             responsavel.addEventListener('input', atualizarPreview);
             temCrianca.addEventListener('change', toggleCampoCrianca);
             criancaInput.addEventListener('input', atualizarPreview);
             dataInput.addEventListener('change', atualizarPreview);
             horaInput.addEventListener('change', atualizarPreview);
-            conselheiro.addEventListener('input', atualizarPreview);
+            conselheiro.addEventListener('change', atualizarPreview);
 
-            // Data inicial padrão (hoje)
+            // Data padrão: hoje
             function setarDataPadrao() {
                 const hoje = new Date();
                 const ano = hoje.getFullYear();
@@ -392,32 +476,21 @@
             }
             setarDataPadrao();
 
-            // Inicializa o campo criança (escondido)
+            // Inicializa estado do campo criança (escondido)
             toggleCampoCrianca();
 
-            // Evento do botão WhatsApp
+            // Botão WhatsApp
             btnWhats.addEventListener('click', function(e) {
                 e.preventDefault();
-
-                // Gera a mensagem completa
                 const mensagem = gerarMensagem();
-
-                // Codifica para URL
                 const textoCodificado = encodeURIComponent(mensagem);
-
-                // Número (sem número fixo, só abre o WhatsApp com a mensagem)
-                // Para usar com número específico, coloque "https://wa.me/5561999999999?text="
-                // Deixamos sem número para o usuário escolher o contato
                 const url = `https://wa.me/?text=${textoCodificado}`;
-
-                // Abre em nova aba (ou no app se for mobile)
                 window.open(url, '_blank');
             });
 
-            // Atualiza preview inicial
-            setTimeout(atualizarPreview, 100);
+            // Preview inicial
+            setTimeout(atualizarPreview, 80);
         })();
     </script>
-
 </body>
 </html>
