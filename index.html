@@ -14,7 +14,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0000FF 0%, #0000CC 50%, #000099 100%);
+            background: linear-gradient(135deg, #0c1445 0%, #1a2a6c 30%, #1e3a8a 60%, #2563eb 100%);
             min-height: 100vh;
             padding: 20px 16px;
             position: relative;
@@ -23,11 +23,11 @@
         body::before {
             content: '';
             position: fixed;
-            top: -50%;
-            right: -20%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            top: -30%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,215,0,0.08) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
@@ -35,11 +35,11 @@
         body::after {
             content: '';
             position: fixed;
-            bottom: -30%;
+            bottom: -20%;
             left: -10%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
@@ -49,6 +49,38 @@
             margin: 0 auto;
             position: relative;
             z-index: 1;
+        }
+
+        /* Decoração superior */
+        .header-decoration {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header-decoration .logo-icon {
+            display: inline-block;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            padding: 16px;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
+            margin-bottom: 8px;
+        }
+
+        .header-decoration .logo-icon i {
+            font-size: 2rem;
+            color: #0c1445;
+        }
+
+        .header-decoration h2 {
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         /* Navegação */
@@ -61,12 +93,12 @@
         }
 
         .nav-tab {
-            padding: 14px 32px;
-            background: rgba(255, 255, 255, 0.15);
-            color: rgba(255, 255, 255, 0.8);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 60px;
-            font-size: 1rem;
+            padding: 12px 28px;
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -77,37 +109,37 @@
         }
 
         .nav-tab:hover {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.15);
             color: #fff;
             transform: translateY(-2px);
-            border-color: rgba(255, 255, 255, 0.4);
+            border-color: rgba(255, 215, 0, 0.3);
         }
 
         .nav-tab.active {
-            background: #ffffff;
-            color: #0000CC;
-            border-color: #ffffff;
-            box-shadow: 0 8px 25px rgba(0, 0, 255, 0.3);
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #0c1445;
+            border-color: #fbbf24;
+            box-shadow: 0 8px 25px rgba(251, 191, 36, 0.3);
         }
 
         .nav-tab i {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
         .nav-tab .badge-contador {
-            background: #e74c3c;
+            background: #ef4444;
             color: white;
             border-radius: 50%;
             padding: 0 8px;
-            font-size: 0.7rem;
-            line-height: 20px;
-            min-width: 20px;
+            font-size: 0.65rem;
+            line-height: 18px;
+            min-width: 18px;
             text-align: center;
         }
 
         .pagina {
             display: none;
-            animation: fadeIn 0.4s ease;
+            animation: fadeIn 0.5s ease;
         }
 
         .pagina.ativa {
@@ -115,37 +147,51 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         /* Cards */
         .card {
-            background: #ffffff;
-            border-radius: 32px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 28px;
             padding: 32px 30px 28px;
             width: 100%;
-            box-shadow: 0 20px 50px rgba(0, 0, 255, 0.25);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
             transition: 0.3s;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 25px 60px rgba(0, 0, 255, 0.35);
+            transform: translateY(-3px);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
         }
 
         .card-header {
             text-align: center;
             margin-bottom: 24px;
             padding-bottom: 16px;
-            border-bottom: 3px solid #0000FF;
+            border-bottom: 2px solid rgba(37, 99, 235, 0.15);
+            position: relative;
+        }
+
+        .card-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #fbbf24, #f59e0b);
+            border-radius: 10px;
         }
 
         .card-header h1 {
             font-size: 1.8rem;
             font-weight: 800;
-            color: #0000CC;
+            color: #0c1445;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -154,9 +200,9 @@
         }
 
         .card-header h1 i {
-            color: #0000FF;
-            font-size: 2rem;
-            background: #e6e6ff;
+            color: #2563eb;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
             padding: 10px;
             border-radius: 50%;
             width: 50px;
@@ -167,20 +213,20 @@
         }
 
         .sub-badge {
-            background: #e6e6ff;
-            color: #0000CC;
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            color: #1e3a8a;
             font-weight: 600;
-            padding: 6px 24px;
+            padding: 5px 22px;
             border-radius: 40px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             display: inline-block;
             margin-top: 4px;
-            border: 1px solid #9999FF;
+            border: 1px solid rgba(37, 99, 235, 0.2);
         }
 
         .sub-badge i {
             margin-right: 6px;
-            color: #0000FF;
+            color: #2563eb;
         }
 
         /* Grid de campos */
@@ -203,29 +249,30 @@
 
         .campo label {
             font-weight: 600;
-            color: #0000AA;
+            color: #1e3a8a;
             margin-bottom: 5px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             display: flex;
             align-items: center;
             gap: 8px;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .campo label i {
-            color: #0000FF;
+            color: #2563eb;
             width: 18px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             text-align: center;
         }
 
         .campo input,
         .campo select {
             padding: 12px 16px;
-            border: 2px solid #9999FF;
+            border: 2px solid #e2e8f0;
             border-radius: 14px;
             font-size: 0.95rem;
-            background: #f8f8ff;
+            background: #f8fafc;
             transition: all 0.25s ease;
             width: 100%;
             -webkit-appearance: none;
@@ -236,20 +283,20 @@
 
         .campo input:focus,
         .campo select:focus {
-            border-color: #0000FF;
+            border-color: #2563eb;
             outline: none;
             background: #ffffff;
-            box-shadow: 0 0 0 3px rgba(0, 0, 255, 0.12);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
         }
 
         .campo input::placeholder {
-            color: #9999CC;
+            color: #94a3b8;
             text-transform: none;
             font-size: 0.9rem;
         }
 
         .campo select {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230000FF' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 14px center;
             background-size: 16px;
@@ -257,13 +304,14 @@
         }
 
         .campo small {
-            color: #6666AA;
-            font-size: 0.7rem;
+            color: #64748b;
+            font-size: 0.65rem;
             margin-top: 4px;
         }
 
         .campo small i {
             margin-right: 4px;
+            color: #2563eb;
         }
 
         /* Checkboxes estilizados */
@@ -279,8 +327,8 @@
             min-width: 160px;
             padding: 12px 18px;
             border-radius: 14px;
-            border: 2px solid #9999FF;
-            background: #f8f8ff;
+            border: 2px solid #e2e8f0;
+            background: #f8fafc;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -289,26 +337,26 @@
         }
 
         .checkbox-item:hover {
-            border-color: #0000FF;
-            background: #e6e6ff;
+            border-color: #2563eb;
+            background: #eff6ff;
         }
 
         .checkbox-item.active {
-            border-color: #0000FF;
-            background: #ccccff;
+            border-color: #2563eb;
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
         }
 
         .checkbox-item input[type="checkbox"] {
             width: 20px;
             height: 20px;
-            accent-color: #0000FF;
+            accent-color: #2563eb;
             cursor: pointer;
             flex-shrink: 0;
         }
 
         .checkbox-item label {
             font-weight: 600;
-            color: #0000AA;
+            color: #1e3a8a;
             font-size: 0.9rem;
             cursor: pointer;
             display: flex;
@@ -318,19 +366,19 @@
         }
 
         .checkbox-item label i {
-            color: #0000FF;
+            color: #2563eb;
             font-size: 1.1rem;
             width: 20px;
         }
 
         .checkbox-item .status-label {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 700;
             margin-left: auto;
             padding: 2px 12px;
             border-radius: 20px;
-            background: #ccccff;
-            color: #0000AA;
+            background: #bfdbfe;
+            color: #1e3a8a;
             white-space: nowrap;
         }
 
@@ -361,7 +409,7 @@
         .campo-crianca-wrapper input {
             width: 100%;
             padding: 10px 14px;
-            border: 2px solid #9999FF;
+            border: 2px solid #e2e8f0;
             border-radius: 12px;
             font-size: 0.9rem;
             background: #ffffff;
@@ -370,18 +418,18 @@
         }
 
         .campo-crianca-wrapper input:focus {
-            border-color: #0000FF;
+            border-color: #2563eb;
             outline: none;
-            box-shadow: 0 0 0 3px rgba(0, 0, 255, 0.12);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
 
         /* Tipo de atendimento - indicador visual */
         .tipo-atendimento {
-            background: #e6e6ff;
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
             border-radius: 14px;
             padding: 12px 18px;
             margin: 6px 0 8px;
-            border: 1px solid #9999FF;
+            border: 1px solid #bfdbfe;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -395,36 +443,37 @@
 
         .tipo-atendimento .tipo-texto {
             font-size: 0.9rem;
-            color: #0000AA;
+            color: #1e3a8a;
         }
 
         .tipo-atendimento .tipo-texto strong {
-            color: #0000CC;
+            color: #0c1445;
         }
 
         .tipo-atendimento .tipo-badge {
             margin-left: auto;
             padding: 4px 16px;
             border-radius: 30px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
-            background: #0000FF;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
             color: white;
+            box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
         }
 
         .tipo-atendimento .tipo-badge.apenas-responsavel {
-            background: #FFA500;
-            color: #fff;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            box-shadow: 0 2px 10px rgba(245, 158, 11, 0.3);
         }
 
         /* Botões */
         .btn-whatsapp {
-            background: #25D366;
+            background: linear-gradient(135deg, #25d366, #1da851);
             color: white;
             border: none;
             padding: 16px 20px;
             border-radius: 60px;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 700;
             width: 100%;
             cursor: pointer;
@@ -433,41 +482,38 @@
             justify-content: center;
             gap: 14px;
             transition: all 0.2s ease;
-            box-shadow: 0 6px 0 #1a8a4a, 0 4px 15px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 6px 0 #15803d, 0 4px 20px rgba(37, 211, 102, 0.3);
             margin-top: 6px;
             letter-spacing: 0.3px;
-            color: #ffffff;
         }
 
         .btn-whatsapp:hover {
-            transform: translateY(-2px);
-            background: #2ad86b;
-            box-shadow: 0 8px 0 #1a8a4a, 0 6px 20px rgba(37, 211, 102, 0.4);
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #2ad86b, #1fb854);
+            box-shadow: 0 8px 0 #15803d, 0 6px 25px rgba(37, 211, 102, 0.4);
         }
 
         .btn-whatsapp:active {
             transform: translateY(4px) scale(0.98);
-            box-shadow: 0 3px 0 #1a8a4a;
+            box-shadow: 0 2px 0 #15803d;
         }
 
         .btn-whatsapp i {
-            font-size: 1.8rem;
-            color: #ffffff;
+            font-size: 1.6rem;
         }
 
         .btn-whatsapp .telefone-destino {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 400;
             opacity: 0.9;
             background: rgba(255,255,255,0.15);
             padding: 3px 12px;
             border-radius: 30px;
             margin-left: 4px;
-            color: #ffffff;
         }
 
         .btn-salvar {
-            background: #0000FF;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
             color: white;
             border: none;
             padding: 14px 18px;
@@ -481,25 +527,23 @@
             justify-content: center;
             gap: 12px;
             transition: all 0.2s ease;
-            box-shadow: 0 5px 0 #0000AA, 0 4px 15px rgba(0, 0, 255, 0.3);
+            box-shadow: 0 5px 0 #1a3a8a, 0 4px 20px rgba(37, 99, 235, 0.3);
             margin-top: 6px;
-            color: #ffffff;
         }
 
         .btn-salvar:hover {
-            transform: translateY(-2px);
-            background: #1a1aff;
-            box-shadow: 0 7px 0 #0000AA, 0 6px 20px rgba(0, 0, 255, 0.4);
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            box-shadow: 0 7px 0 #1a3a8a, 0 6px 25px rgba(37, 99, 235, 0.4);
         }
 
         .btn-salvar:active {
             transform: translateY(4px) scale(0.98);
-            box-shadow: 0 2px 0 #0000AA;
+            box-shadow: 0 2px 0 #1a3a8a;
         }
 
         .btn-salvar i {
             font-size: 1.2rem;
-            color: #ffffff;
         }
 
         .botoes-row {
@@ -510,11 +554,11 @@
         }
 
         .footer-obs {
-            font-size: 0.7rem;
-            color: #6666AA;
+            font-size: 0.65rem;
+            color: #64748b;
             text-align: center;
             margin-top: 16px;
-            border-top: 1px solid #ccccff;
+            border-top: 1px solid #e2e8f0;
             padding-top: 14px;
             display: flex;
             align-items: center;
@@ -523,7 +567,7 @@
         }
 
         .footer-obs i {
-            color: #0000FF;
+            color: #2563eb;
         }
 
         /* ====== PÁGINA 2 - HISTÓRICO ====== */
@@ -544,46 +588,41 @@
         }
 
         .btn-pesquisar {
-            background: #0000FF;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
             color: white;
             border: none;
             padding: 12px 24px;
             border-radius: 60px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 10px;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 0 #0000AA;
+            box-shadow: 0 4px 0 #1a3a8a;
             white-space: nowrap;
             height: 48px;
-            color: #ffffff;
         }
 
         .btn-pesquisar:hover {
             transform: translateY(-2px);
-            background: #1a1aff;
-            box-shadow: 0 6px 0 #0000AA;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            box-shadow: 0 6px 0 #1a3a8a;
         }
 
         .btn-pesquisar:active {
             transform: translateY(3px);
-            box-shadow: 0 2px 0 #0000AA;
-        }
-
-        .btn-pesquisar i {
-            color: #ffffff;
+            box-shadow: 0 2px 0 #1a3a8a;
         }
 
         .btn-limpar {
-            background: #e6e6ff;
-            color: #0000AA;
-            border: 2px solid #9999FF;
+            background: #f1f5f9;
+            color: #1e3a8a;
+            border: 2px solid #e2e8f0;
             padding: 12px 24px;
             border-radius: 60px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
             display: flex;
@@ -595,31 +634,32 @@
         }
 
         .btn-limpar:hover {
-            background: #ccccff;
-            border-color: #0000FF;
+            background: #e2e8f0;
+            border-color: #2563eb;
         }
 
         .contador {
-            background: #e6e6ff;
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
             padding: 6px 16px;
             border-radius: 30px;
-            font-size: 0.85rem;
-            color: #0000AA;
+            font-size: 0.8rem;
+            color: #1e3a8a;
             font-weight: 600;
             display: inline-block;
             margin-bottom: 14px;
+            border: 1px solid #bfdbfe;
         }
 
         .contador i {
-            color: #0000FF;
+            color: #2563eb;
             margin-right: 6px;
         }
 
         .tabela-container {
             overflow-x: auto;
             border-radius: 16px;
-            border: 1px solid #9999FF;
-            background: #f8f8ff;
+            border: 1px solid #e2e8f0;
+            background: #f8fafc;
         }
 
         .tabela-notificacoes {
@@ -630,7 +670,7 @@
         }
 
         .tabela-notificacoes thead {
-            background: #0000FF;
+            background: linear-gradient(135deg, #0c1445, #1e3a8a);
             color: white;
         }
 
@@ -638,21 +678,20 @@
             padding: 12px 14px;
             text-align: left;
             font-weight: 600;
-            font-size: 0.75rem;
-            letter-spacing: 0.5px;
+            font-size: 0.7rem;
+            letter-spacing: 0.8px;
             text-transform: uppercase;
-            color: #ffffff;
         }
 
         .tabela-notificacoes tbody td {
             padding: 10px 14px;
-            border-bottom: 1px solid #ccccff;
-            color: #1a2e3f;
+            border-bottom: 1px solid #e2e8f0;
+            color: #1e293b;
             vertical-align: middle;
         }
 
         .tabela-notificacoes tbody tr:hover {
-            background: #e6e6ff;
+            background: #eff6ff;
         }
 
         .tabela-notificacoes tbody tr:last-child td {
@@ -663,47 +702,47 @@
             display: inline-block;
             padding: 3px 12px;
             border-radius: 30px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 600;
         }
 
         .badge-enviado {
-            background: #d4edda;
-            color: #155724;
+            background: #d1fae5;
+            color: #065f46;
         }
 
         .badge-pendente {
-            background: #fff3cd;
-            color: #856404;
+            background: #fef3c7;
+            color: #92400e;
         }
 
         .badge-tipo {
             display: inline-block;
             padding: 2px 10px;
             border-radius: 30px;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 700;
         }
 
         .badge-tipo.responsavel {
-            background: #fef9e7;
-            color: #7a5d00;
+            background: #fef3c7;
+            color: #92400e;
         }
 
         .badge-tipo.responsavel-crianca {
-            background: #ccccff;
-            color: #0000AA;
+            background: #bfdbfe;
+            color: #1e3a8a;
         }
 
         .sem-resultados {
             text-align: center;
             padding: 40px 20px;
-            color: #6666AA;
+            color: #94a3b8;
         }
 
         .sem-resultados i {
             font-size: 3rem;
-            color: #9999FF;
+            color: #cbd5e1;
             margin-bottom: 12px;
             display: block;
         }
@@ -726,7 +765,7 @@
             }
 
             .card {
-                padding: 24px 18px 20px;
+                padding: 22px 16px 20px;
                 border-radius: 24px;
             }
 
@@ -735,7 +774,7 @@
             }
 
             .card-header h1 i {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
                 width: 42px;
                 height: 42px;
                 padding: 8px;
@@ -752,7 +791,7 @@
             }
 
             .btn-whatsapp i {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
 
             .btn-salvar {
@@ -761,8 +800,8 @@
             }
 
             .nav-tab {
-                padding: 10px 18px;
-                font-size: 0.85rem;
+                padding: 10px 16px;
+                font-size: 0.8rem;
             }
 
             .barra-pesquisa {
@@ -780,7 +819,7 @@
             }
 
             .tabela-notificacoes {
-                font-size: 0.8rem;
+                font-size: 0.75rem;
                 min-width: 600px;
             }
 
@@ -812,17 +851,17 @@
             }
 
             .card {
-                padding: 18px 14px 16px;
+                padding: 16px 12px 14px;
                 border-radius: 20px;
             }
 
             .card-header h1 {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
 
             .campo input, .campo select {
-                padding: 10px 14px;
-                font-size: 0.9rem;
+                padding: 10px 12px;
+                font-size: 0.85rem;
             }
 
             .btn-whatsapp .telefone-destino {
@@ -830,19 +869,37 @@
             }
 
             .tabela-notificacoes {
-                font-size: 0.7rem;
-                min-width: 450px;
+                font-size: 0.65rem;
+                min-width: 400px;
             }
 
             .sub-badge {
-                font-size: 0.8rem;
-                padding: 4px 16px;
+                font-size: 0.75rem;
+                padding: 4px 14px;
+            }
+
+            .header-decoration .logo-icon {
+                width: 55px;
+                height: 55px;
+                padding: 12px;
+            }
+
+            .header-decoration .logo-icon i {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Decoração superior -->
+        <div class="header-decoration">
+            <div class="logo-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h2>Conselho Tutelar do Paranoá</h2>
+        </div>
+
         <!-- Navegação -->
         <div class="nav-tabs">
             <button class="nav-tab active" data-pagina="pagina1">
@@ -902,7 +959,7 @@
                         <div class="campo">
                             <label for="hora">
                                 <i class="fas fa-clock"></i> Hora
-                                <span class="saudacao-indicator" id="saudacaoLabel" style="font-size:0.7rem; background:#ccccff; padding:2px 10px; border-radius:20px; margin-left:4px; font-weight:600; color:#0000AA;">🌅 BOM DIA</span>
+                                <span class="saudacao-indicator" id="saudacaoLabel" style="font-size:0.65rem; background:linear-gradient(135deg, #dbeafe, #bfdbfe); padding:2px 10px; border-radius:20px; margin-left:4px; font-weight:700; color:#1e3a8a;">🌅 BOM DIA</span>
                             </label>
                             <input type="time" id="hora" value="10:00">
                         </div>
@@ -919,8 +976,8 @@
                     </div>
 
                     <!-- Indicador do tipo de atendimento -->
-                    <div class="tipo-atendimento" id="tipoAtendimento" style="border-left: 4px solid #0000FF;">
-                        <i class="fas fa-info-circle" style="color:#0000FF;"></i>
+                    <div class="tipo-atendimento" id="tipoAtendimento" style="border-left: 4px solid #2563eb;">
+                        <i class="fas fa-info-circle" style="color:#2563eb;"></i>
                         <span class="tipo-texto">
                             <strong>Atendimento:</strong> 
                             <span id="tipoDescricao">RESPONSÁVEL + CRIANÇA</span>
@@ -993,7 +1050,7 @@
                                     <td colspan="8" class="sem-resultados">
                                         <i class="fas fa-inbox"></i>
                                         Nenhuma notificação salva ainda.<br>
-                                        <small style="color: #6666AA;">Salve uma notificação na página "Nova Notificação"</small>
+                                        <small style="color: #94a3b8;">Salve uma notificação na página "Nova Notificação"</small>
                                     </td>
                                 </tr>
                             </tbody>
@@ -1260,8 +1317,8 @@
                     tipoDescricao.textContent = 'APENAS RESPONSÁVEL';
                     tipoBadge.textContent = 'SEM CRIANÇA';
                     tipoBadge.className = 'tipo-badge apenas-responsavel';
-                    tipoAtendimento.style.borderLeft = '4px solid #FFA500';
-                    document.querySelector('.tipo-atendimento i').style.color = '#FFA500';
+                    tipoAtendimento.style.borderLeft = '4px solid #f59e0b';
+                    document.querySelector('.tipo-atendimento i').style.color = '#f59e0b';
                 } else {
                     if (nomeCrianca !== '') {
                         tipoDescricao.textContent = `RESPONSÁVEL + CRIANÇA (${nomeCrianca.toUpperCase()})`;
@@ -1270,8 +1327,8 @@
                     }
                     tipoBadge.textContent = 'COM CRIANÇA';
                     tipoBadge.className = 'tipo-badge';
-                    tipoAtendimento.style.borderLeft = '4px solid #0000FF';
-                    document.querySelector('.tipo-atendimento i').style.color = '#0000FF';
+                    tipoAtendimento.style.borderLeft = '4px solid #2563eb';
+                    document.querySelector('.tipo-atendimento i').style.color = '#2563eb';
                 }
 
                 // Telefone destino
@@ -1289,7 +1346,7 @@
                             <td colspan="8" class="sem-resultados">
                                 <i class="fas fa-inbox"></i>
                                 ${filtro ? 'Nenhum resultado encontrado para esta pesquisa.' : 'Nenhuma notificação salva ainda.'}<br>
-                                <small style="color: #6666AA;">${filtro ? 'Tente outros termos' : 'Salve uma notificação na página "Nova Notificação"'}</small>
+                                <small style="color: #94a3b8;">${filtro ? 'Tente outros termos' : 'Salve uma notificação na página "Nova Notificação"'}</small>
                             </td>
                         </tr>
                     `;
@@ -1358,12 +1415,12 @@
 
                 const btnSalvarOriginal = btnSalvar.innerHTML;
                 btnSalvar.innerHTML = '<i class="fas fa-check"></i> SALVO!';
-                btnSalvar.style.background = '#28a745';
-                btnSalvar.style.boxShadow = '0 5px 0 #1a7a2e';
+                btnSalvar.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+                btnSalvar.style.boxShadow = '0 5px 0 #15803d';
                 setTimeout(() => {
                     btnSalvar.innerHTML = btnSalvarOriginal;
-                    btnSalvar.style.background = '#0000FF';
-                    btnSalvar.style.boxShadow = '0 5px 0 #0000AA';
+                    btnSalvar.style.background = '';
+                    btnSalvar.style.boxShadow = '';
                 }, 2000);
 
                 contadorHistorico.textContent = historico.length;
