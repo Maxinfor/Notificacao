@@ -44,7 +44,6 @@
             pointer-events: none;
         }
 
-        /* Navegação entre páginas */
         .nav-tabs {
             display: flex;
             gap: 8px;
@@ -102,7 +101,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Cards */
         .card {
             background: #ffffff;
             border-radius: 40px;
@@ -121,7 +119,6 @@
             box-shadow: 0 35px 70px rgba(0, 0, 0, 0.55);
         }
 
-        /* Cabeçalho */
         .card-header {
             text-align: center;
             margin-bottom: 22px;
@@ -173,7 +170,6 @@
             color: #1a6a8a;
         }
 
-        /* Campos */
         .campo {
             margin-bottom: 18px;
             display: flex;
@@ -298,6 +294,59 @@
             outline: none;
         }
 
+        /* Botão Trazer Criança - novo estilo */
+        .checkbox-trazer {
+            background: linear-gradient(135deg, #fef9e7, #fdf2d0);
+            border: 2px solid #f1c40f;
+            border-radius: 22px;
+            padding: 16px 22px;
+            margin: 8px 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: 0.3s;
+        }
+
+        .checkbox-trazer:hover {
+            border-color: #d4a800;
+            background: linear-gradient(135deg, #fdf6e0, #fcefc8);
+        }
+
+        .checkbox-trazer label {
+            font-weight: 700;
+            color: #7a5d00;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .checkbox-trazer label i {
+            color: #f1c40f;
+            font-size: 1.3rem;
+        }
+
+        .checkbox-trazer input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            accent-color: #f1c40f;
+            transform: scale(1.1);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .checkbox-trazer .trazer-info {
+            font-size: 0.8rem;
+            color: #8a7a40;
+            font-weight: 400;
+            margin-left: auto;
+            background: rgba(241, 196, 15, 0.15);
+            padding: 4px 14px;
+            border-radius: 30px;
+        }
+
         .linha-dupla {
             display: flex;
             flex-wrap: wrap;
@@ -366,6 +415,13 @@
 
         .preview-box strong {
             color: #0a2f44;
+        }
+
+        .preview-box .destaque-trazer {
+            background: #fef9e7;
+            padding: 2px 8px;
+            border-radius: 6px;
+            border-left: 3px solid #f1c40f;
         }
 
         .preview-box::-webkit-scrollbar {
@@ -683,6 +739,15 @@
             .checkbox-wrapper #campoCrianca {
                 min-width: unset;
             }
+            .checkbox-trazer {
+                flex-wrap: wrap;
+                padding: 14px 16px;
+            }
+            .checkbox-trazer .trazer-info {
+                margin-left: 0;
+                width: 100%;
+                text-align: center;
+            }
             .btn-whatsapp {
                 font-size: 1.1rem;
                 padding: 16px;
@@ -787,14 +852,28 @@
                     <input type="text" id="responsavel" placeholder="Ex: João Silva" value="MARIA OLIVEIRA">
                 </div>
 
+                <!-- Campo Criança (nome) -->
                 <div class="checkbox-wrapper">
                     <label for="temCrianca">
-                        <i class="fas fa-child"></i> Marque se houver criança
+                        <i class="fas fa-child"></i> Há criança/adolescente envolvido?
                         <input type="checkbox" id="temCrianca" checked>
                     </label>
                     <div id="campoCrianca">
                         <input type="text" id="crianca" placeholder="Nome da criança/adolescente" value="ANA CLARA">
                     </div>
+                </div>
+
+                <!-- NOVO: Botão Trazer Criança -->
+                <div class="checkbox-trazer">
+                    <label for="trazerCrianca">
+                        <i class="fas fa-people-arrows"></i>
+                        TRAZER CRIANÇA/ADOLESCENTE
+                        <input type="checkbox" id="trazerCrianca">
+                        <span class="trazer-info">
+                            <i class="fas fa-info-circle"></i> 
+                            <span id="trazerStatus">NÃO TRAZER</span>
+                        </span>
+                    </label>
                 </div>
 
                 <div class="linha-dupla">
@@ -895,6 +974,7 @@
                                 <th>#</th>
                                 <th>Responsável</th>
                                 <th>Criança</th>
+                                <th>Trazer</th>
                                 <th>Data</th>
                                 <th>Hora</th>
                                 <th>Conselheiro</th>
@@ -904,7 +984,7 @@
                         </thead>
                         <tbody id="tabelaCorpo">
                             <tr>
-                                <td colspan="8" class="sem-resultados">
+                                <td colspan="9" class="sem-resultados">
                                     <i class="fas fa-inbox"></i>
                                     Nenhuma notificação salva ainda.<br>
                                     <small style="color: #a0b8c8;">Salve uma notificação na página "Nova Notificação"</small>
@@ -926,6 +1006,8 @@
             const temCrianca = document.getElementById('temCrianca');
             const campoCrianca = document.getElementById('campoCrianca');
             const criancaInput = document.getElementById('crianca');
+            const trazerCrianca = document.getElementById('trazerCrianca');
+            const trazerStatus = document.getElementById('trazerStatus');
             const dataInput = document.getElementById('data');
             const horaInput = document.getElementById('hora');
             const conselheiro = document.getElementById('conselheiro');
@@ -1016,7 +1098,7 @@
             }
 
             // ========================================
-            // GERAR MENSAGEM
+            // GERAR MENSAGEM - LÓGICA ATUALIZADA
             // ========================================
             function gerarMensagem() {
                 const nomeResp = responsavel.value.trim() || "[NOME DO RESPONSÁVEL]";
@@ -1024,6 +1106,7 @@
                 const dataRaw = dataInput.value || "2026-08-08";
                 const horaRaw = horaInput.value || "10:00";
                 const conselheiroSel = conselheiro.value || "NADELÇO";
+                const trazer = trazerCrianca.checked;
 
                 const saudacao = obterSaudacao(horaRaw);
 
@@ -1037,6 +1120,7 @@
                 msg += `SOMOS DO CONSELHO TUTELAR DO PARANOÁ. \n`;
                 msg += `SOLICITAMOS A PRESENÇA DO(A) SENHOR(A) ${nomeResp.toUpperCase()}`;
 
+                // Se tem criança, menciona que é responsável
                 if (temCrianca.checked && nomeCrianca !== '') {
                     msg += `, QUE É RESPONSÁVEL POR ${nomeCrianca.toUpperCase()}`;
                 } else if (temCrianca.checked && nomeCrianca === '') {
@@ -1044,6 +1128,14 @@
                 }
 
                 msg += ` PARA ESCLARECIMENTO. \n`;
+
+                // Se o botão "Trazer criança" estiver marcado, solicita trazer a criança
+                if (temCrianca.checked && nomeCrianca !== '' && trazer) {
+                    msg += `SOLICITAMOS QUE O(A) SENHOR(A) TRAGA A CRIANÇA/ADOLESCENTE ${nomeCrianca.toUpperCase()}. \n`;
+                } else if (temCrianca.checked && nomeCrianca !== '' && !trazer) {
+                    msg += `NÃO É NECESSÁRIO TRAZER A CRIANÇA/ADOLESCENTE NESTE MOMENTO. \n`;
+                }
+
                 msg += `REITERAMOS QUE O(A) SENHOR(A) DEVE COMPARECER NO DIA ${dataFormatada} ÀS ${horaRaw} `;
                 msg += `NA SEDE DO CONSELHO TUTELAR DO PARANOÁ COM O(A) CONSELHEIRO(A) ${conselheiroSel.toUpperCase()}. \n\n`;
                 msg += `*TRAZER DOCUMENTAÇÃO PESSOAL DO RESPONSÁVEL E DA CRIANÇA, E A CRIANÇA/ADOLESCENTE* \n\n`;
@@ -1080,6 +1172,15 @@
                 else if (saudacao === 'Boa noite') icone = '🌙';
                 
                 saudacaoLabel.textContent = `${icone} ${saudacao.toUpperCase()}`;
+
+                // Atualiza o status do botão Trazer Criança
+                if (trazerCrianca.checked) {
+                    trazerStatus.textContent = 'TRAZER CRIANÇA';
+                    trazerStatus.style.color = '#7a5d00';
+                } else {
+                    trazerStatus.textContent = 'NÃO TRAZER';
+                    trazerStatus.style.color = '#8a7a40';
+                }
                 
                 const msg = gerarMensagem();
                 preview.innerHTML = msg.replace(/\n/g, '<br>');
@@ -1098,6 +1199,24 @@
                 } else {
                     campoCrianca.classList.add('hidden');
                     criancaInput.value = '';
+                    trazerCrianca.checked = false;
+                    trazerCrianca.disabled = true;
+                }
+                // Se não tem criança, desabilita o botão trazer
+                if (!temCrianca.checked) {
+                    trazerCrianca.disabled = true;
+                    trazerStatus.textContent = 'SEM CRIANÇA';
+                    trazerStatus.style.color = '#999';
+                } else {
+                    trazerCrianca.disabled = false;
+                    // Atualiza o status
+                    if (trazerCrianca.checked) {
+                        trazerStatus.textContent = 'TRAZER CRIANÇA';
+                        trazerStatus.style.color = '#7a5d00';
+                    } else {
+                        trazerStatus.textContent = 'NÃO TRAZER';
+                        trazerStatus.style.color = '#8a7a40';
+                    }
                 }
                 atualizarTudo();
             }
@@ -1158,7 +1277,7 @@
                 if (resultados.length === 0) {
                     tabelaCorpo.innerHTML = `
                         <tr>
-                            <td colspan="8" class="sem-resultados">
+                            <td colspan="9" class="sem-resultados">
                                 <i class="fas fa-inbox"></i>
                                 ${filtro ? 'Nenhum resultado encontrado para esta pesquisa.' : 'Nenhuma notificação salva ainda.'}<br>
                                 <small style="color: #a0b8c8;">${filtro ? 'Tente outros termos' : 'Salve uma notificação na página "Nova Notificação"'}</small>
@@ -1169,11 +1288,13 @@
                     let html = '';
                     resultados.forEach((item, index) => {
                         const statusClass = item.status === 'Enviado' ? 'badge-enviado' : 'badge-pendente';
+                        const trazerTexto = item.trazer ? 'SIM' : 'NÃO';
                         html += `
                             <tr>
                                 <td>${index + 1}</td>
                                 <td><strong>${item.responsavel || '-'}</strong></td>
                                 <td>${item.crianca || '-'}</td>
+                                <td style="text-align:center; font-weight:600; ${item.trazer ? 'color:#1a6a8a;' : 'color:#999;'}">${trazerTexto}</td>
                                 <td>${item.data || '-'}</td>
                                 <td>${item.hora || '-'}</td>
                                 <td>${item.conselheiro || '-'}</td>
@@ -1200,6 +1321,7 @@
                 const conselheiroSel = conselheiro.value || 'NADELÇO';
                 const telefoneVal = telefone.value.trim() || 'NÃO INFORMADO';
                 const mensagem = gerarMensagem();
+                const trazer = trazerCrianca.checked;
 
                 let dataFormatada = dataRaw;
                 if (dataRaw.includes('-')) {
@@ -1211,6 +1333,7 @@
                     id: idCounter++,
                     responsavel: nomeResp.toUpperCase(),
                     crianca: nomeCrianca ? nomeCrianca.toUpperCase() : '',
+                    trazer: trazer,
                     data: dataFormatada,
                     hora: horaRaw,
                     conselheiro: conselheiroSel.toUpperCase(),
@@ -1224,7 +1347,6 @@
                 salvarHistoricoStorage();
                 atualizarTabela(pesquisarInput.value);
 
-                // Feedback visual
                 const btnSalvarOriginal = btnSalvar.innerHTML;
                 btnSalvar.innerHTML = '<i class="fas fa-check"></i> SALVO!';
                 btnSalvar.style.background = 'linear-gradient(135deg, #28a745, #1e7e34)';
@@ -1233,7 +1355,6 @@
                     btnSalvar.style.background = '';
                 }, 2000);
 
-                // Atualiza contador
                 contadorHistorico.textContent = historico.length;
             }
 
@@ -1244,6 +1365,7 @@
             responsavel.addEventListener('input', atualizarTudo);
             temCrianca.addEventListener('change', toggleCampoCrianca);
             criancaInput.addEventListener('input', atualizarTudo);
+            trazerCrianca.addEventListener('change', atualizarTudo);
             dataInput.addEventListener('change', atualizarTudo);
             horaInput.addEventListener('change', atualizarTudo);
             horaInput.addEventListener('input', atualizarTudo);
@@ -1287,7 +1409,6 @@
                 }
                 window.open(url, '_blank');
 
-                // Marca como enviado se existir no histórico (último item)
                 if (historico.length > 0 && historico[0].status === 'Pendente') {
                     historico[0].status = 'Enviado';
                     salvarHistoricoStorage();
