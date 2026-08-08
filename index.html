@@ -14,7 +14,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #d4e8f5 0%, #b8d8ea 50%, #9cc8df 100%);
+            background: linear-gradient(135deg, #0000FF 0%, #0000CC 50%, #000099 100%);
             min-height: 100vh;
             padding: 20px 16px;
             position: relative;
@@ -27,7 +27,7 @@
             right: -20%;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
@@ -39,7 +39,7 @@
             left: -10%;
             width: 400px;
             height: 400px;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
@@ -62,9 +62,9 @@
 
         .nav-tab {
             padding: 14px 32px;
-            background: rgba(255, 255, 255, 0.5);
-            color: #1a4a6a;
-            border: 2px solid rgba(26, 106, 138, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.2);
             border-radius: 60px;
             font-size: 1rem;
             font-weight: 600;
@@ -77,16 +77,17 @@
         }
 
         .nav-tab:hover {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
             transform: translateY(-2px);
-            border-color: #1a6a8a;
+            border-color: rgba(255, 255, 255, 0.4);
         }
 
         .nav-tab.active {
             background: #ffffff;
-            color: #0a2f44;
-            border-color: #1a6a8a;
-            box-shadow: 0 8px 25px rgba(26, 106, 138, 0.15);
+            color: #0000CC;
+            border-color: #ffffff;
+            box-shadow: 0 8px 25px rgba(0, 0, 255, 0.3);
         }
 
         .nav-tab i {
@@ -124,27 +125,27 @@
             border-radius: 32px;
             padding: 32px 30px 28px;
             width: 100%;
-            box-shadow: 0 20px 50px rgba(26, 106, 138, 0.15);
+            box-shadow: 0 20px 50px rgba(0, 0, 255, 0.25);
             transition: 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 25px 60px rgba(26, 106, 138, 0.2);
+            box-shadow: 0 25px 60px rgba(0, 0, 255, 0.35);
         }
 
         .card-header {
             text-align: center;
             margin-bottom: 24px;
             padding-bottom: 16px;
-            border-bottom: 3px solid #d4e8f5;
+            border-bottom: 3px solid #0000FF;
         }
 
         .card-header h1 {
             font-size: 1.8rem;
             font-weight: 800;
-            color: #0a2f44;
+            color: #0000CC;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -153,9 +154,9 @@
         }
 
         .card-header h1 i {
-            color: #1a6a8a;
+            color: #0000FF;
             font-size: 2rem;
-            background: #d4e8f5;
+            background: #e6e6ff;
             padding: 10px;
             border-radius: 50%;
             width: 50px;
@@ -166,20 +167,20 @@
         }
 
         .sub-badge {
-            background: #d4e8f5;
-            color: #0a2f44;
+            background: #e6e6ff;
+            color: #0000CC;
             font-weight: 600;
             padding: 6px 24px;
             border-radius: 40px;
             font-size: 0.9rem;
             display: inline-block;
             margin-top: 4px;
-            border: 1px solid #b8d8ea;
+            border: 1px solid #9999FF;
         }
 
         .sub-badge i {
             margin-right: 6px;
-            color: #1a6a8a;
+            color: #0000FF;
         }
 
         /* Grid de campos */
@@ -202,7 +203,7 @@
 
         .campo label {
             font-weight: 600;
-            color: #1a3a4e;
+            color: #0000AA;
             margin-bottom: 5px;
             font-size: 0.85rem;
             display: flex;
@@ -212,7 +213,7 @@
         }
 
         .campo label i {
-            color: #1a6a8a;
+            color: #0000FF;
             width: 18px;
             font-size: 0.95rem;
             text-align: center;
@@ -221,10 +222,10 @@
         .campo input,
         .campo select {
             padding: 12px 16px;
-            border: 2px solid #c8dce8;
+            border: 2px solid #9999FF;
             border-radius: 14px;
             font-size: 0.95rem;
-            background: #f8fbfd;
+            background: #f8f8ff;
             transition: all 0.25s ease;
             width: 100%;
             -webkit-appearance: none;
@@ -235,20 +236,20 @@
 
         .campo input:focus,
         .campo select:focus {
-            border-color: #1a6a8a;
+            border-color: #0000FF;
             outline: none;
             background: #ffffff;
-            box-shadow: 0 0 0 3px rgba(26, 106, 138, 0.12);
+            box-shadow: 0 0 0 3px rgba(0, 0, 255, 0.12);
         }
 
         .campo input::placeholder {
-            color: #a0b8c8;
+            color: #9999CC;
             text-transform: none;
             font-size: 0.9rem;
         }
 
         .campo select {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231a6a8a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230000FF' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 14px center;
             background-size: 16px;
@@ -256,7 +257,7 @@
         }
 
         .campo small {
-            color: #7a8f9f;
+            color: #6666AA;
             font-size: 0.7rem;
             margin-top: 4px;
         }
@@ -278,8 +279,8 @@
             min-width: 160px;
             padding: 12px 18px;
             border-radius: 14px;
-            border: 2px solid #c8dce8;
-            background: #f8fbfd;
+            border: 2px solid #9999FF;
+            background: #f8f8ff;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -288,26 +289,26 @@
         }
 
         .checkbox-item:hover {
-            border-color: #1a6a8a;
-            background: #e6f2f9;
+            border-color: #0000FF;
+            background: #e6e6ff;
         }
 
         .checkbox-item.active {
-            border-color: #1a6a8a;
-            background: #d4e8f5;
+            border-color: #0000FF;
+            background: #ccccff;
         }
 
         .checkbox-item input[type="checkbox"] {
             width: 20px;
             height: 20px;
-            accent-color: #1a6a8a;
+            accent-color: #0000FF;
             cursor: pointer;
             flex-shrink: 0;
         }
 
         .checkbox-item label {
             font-weight: 600;
-            color: #1a3a4e;
+            color: #0000AA;
             font-size: 0.9rem;
             cursor: pointer;
             display: flex;
@@ -317,7 +318,7 @@
         }
 
         .checkbox-item label i {
-            color: #1a6a8a;
+            color: #0000FF;
             font-size: 1.1rem;
             width: 20px;
         }
@@ -328,8 +329,8 @@
             margin-left: auto;
             padding: 2px 12px;
             border-radius: 20px;
-            background: #d4e8f5;
-            color: #0a2f44;
+            background: #ccccff;
+            color: #0000AA;
             white-space: nowrap;
         }
 
@@ -360,7 +361,7 @@
         .campo-crianca-wrapper input {
             width: 100%;
             padding: 10px 14px;
-            border: 2px solid #c8dce8;
+            border: 2px solid #9999FF;
             border-radius: 12px;
             font-size: 0.9rem;
             background: #ffffff;
@@ -369,18 +370,18 @@
         }
 
         .campo-crianca-wrapper input:focus {
-            border-color: #1a6a8a;
+            border-color: #0000FF;
             outline: none;
-            box-shadow: 0 0 0 3px rgba(26, 106, 138, 0.12);
+            box-shadow: 0 0 0 3px rgba(0, 0, 255, 0.12);
         }
 
         /* Tipo de atendimento - indicador visual */
         .tipo-atendimento {
-            background: #d4e8f5;
+            background: #e6e6ff;
             border-radius: 14px;
             padding: 12px 18px;
             margin: 6px 0 8px;
-            border: 1px solid #b8d8ea;
+            border: 1px solid #9999FF;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -394,11 +395,11 @@
 
         .tipo-atendimento .tipo-texto {
             font-size: 0.9rem;
-            color: #1a3a4e;
+            color: #0000AA;
         }
 
         .tipo-atendimento .tipo-texto strong {
-            color: #0a2f44;
+            color: #0000CC;
         }
 
         .tipo-atendimento .tipo-badge {
@@ -407,18 +408,18 @@
             border-radius: 30px;
             font-size: 0.75rem;
             font-weight: 700;
-            background: #1a6a8a;
+            background: #0000FF;
             color: white;
         }
 
         .tipo-atendimento .tipo-badge.apenas-responsavel {
-            background: #f1c40f;
-            color: #7a5d00;
+            background: #FFA500;
+            color: #fff;
         }
 
         /* Botões */
         .btn-whatsapp {
-            background: linear-gradient(135deg, #25d366, #1da851);
+            background: #25D366;
             color: white;
             border: none;
             padding: 16px 20px;
@@ -432,24 +433,26 @@
             justify-content: center;
             gap: 14px;
             transition: all 0.2s ease;
-            box-shadow: 0 6px 0 #15803d, 0 4px 15px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 6px 0 #1a8a4a, 0 4px 15px rgba(37, 211, 102, 0.3);
             margin-top: 6px;
             letter-spacing: 0.3px;
+            color: #ffffff;
         }
 
         .btn-whatsapp:hover {
             transform: translateY(-2px);
-            background: linear-gradient(135deg, #2ad86b, #1fb854);
-            box-shadow: 0 8px 0 #15803d, 0 6px 20px rgba(37, 211, 102, 0.4);
+            background: #2ad86b;
+            box-shadow: 0 8px 0 #1a8a4a, 0 6px 20px rgba(37, 211, 102, 0.4);
         }
 
         .btn-whatsapp:active {
             transform: translateY(4px) scale(0.98);
-            box-shadow: 0 3px 0 #15803d;
+            box-shadow: 0 3px 0 #1a8a4a;
         }
 
         .btn-whatsapp i {
             font-size: 1.8rem;
+            color: #ffffff;
         }
 
         .btn-whatsapp .telefone-destino {
@@ -460,10 +463,11 @@
             padding: 3px 12px;
             border-radius: 30px;
             margin-left: 4px;
+            color: #ffffff;
         }
 
         .btn-salvar {
-            background: linear-gradient(135deg, #1a6a8a, #0d4b66);
+            background: #0000FF;
             color: white;
             border: none;
             padding: 14px 18px;
@@ -477,23 +481,25 @@
             justify-content: center;
             gap: 12px;
             transition: all 0.2s ease;
-            box-shadow: 0 5px 0 #08344a, 0 4px 15px rgba(26, 106, 138, 0.3);
+            box-shadow: 0 5px 0 #0000AA, 0 4px 15px rgba(0, 0, 255, 0.3);
             margin-top: 6px;
+            color: #ffffff;
         }
 
         .btn-salvar:hover {
             transform: translateY(-2px);
-            background: linear-gradient(135deg, #1f7a9e, #0f5575);
-            box-shadow: 0 7px 0 #08344a, 0 6px 20px rgba(26, 106, 138, 0.4);
+            background: #1a1aff;
+            box-shadow: 0 7px 0 #0000AA, 0 6px 20px rgba(0, 0, 255, 0.4);
         }
 
         .btn-salvar:active {
             transform: translateY(4px) scale(0.98);
-            box-shadow: 0 2px 0 #08344a;
+            box-shadow: 0 2px 0 #0000AA;
         }
 
         .btn-salvar i {
             font-size: 1.2rem;
+            color: #ffffff;
         }
 
         .botoes-row {
@@ -505,10 +511,10 @@
 
         .footer-obs {
             font-size: 0.7rem;
-            color: #5a7a8a;
+            color: #6666AA;
             text-align: center;
             margin-top: 16px;
-            border-top: 1px solid #d4e8f5;
+            border-top: 1px solid #ccccff;
             padding-top: 14px;
             display: flex;
             align-items: center;
@@ -517,7 +523,7 @@
         }
 
         .footer-obs i {
-            color: #1a6a8a;
+            color: #0000FF;
         }
 
         /* ====== PÁGINA 2 - HISTÓRICO ====== */
@@ -538,7 +544,7 @@
         }
 
         .btn-pesquisar {
-            background: linear-gradient(135deg, #1a6a8a, #0d4b66);
+            background: #0000FF;
             color: white;
             border: none;
             padding: 12px 24px;
@@ -550,26 +556,31 @@
             align-items: center;
             gap: 10px;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 0 #08344a;
+            box-shadow: 0 4px 0 #0000AA;
             white-space: nowrap;
             height: 48px;
+            color: #ffffff;
         }
 
         .btn-pesquisar:hover {
             transform: translateY(-2px);
-            background: linear-gradient(135deg, #1f7a9e, #0f5575);
-            box-shadow: 0 6px 0 #08344a;
+            background: #1a1aff;
+            box-shadow: 0 6px 0 #0000AA;
         }
 
         .btn-pesquisar:active {
             transform: translateY(3px);
-            box-shadow: 0 2px 0 #08344a;
+            box-shadow: 0 2px 0 #0000AA;
+        }
+
+        .btn-pesquisar i {
+            color: #ffffff;
         }
 
         .btn-limpar {
-            background: #d4e8f5;
-            color: #0a2f44;
-            border: 2px solid #b8d8ea;
+            background: #e6e6ff;
+            color: #0000AA;
+            border: 2px solid #9999FF;
             padding: 12px 24px;
             border-radius: 60px;
             font-size: 0.95rem;
@@ -584,31 +595,31 @@
         }
 
         .btn-limpar:hover {
-            background: #b8d8ea;
-            border-color: #1a6a8a;
+            background: #ccccff;
+            border-color: #0000FF;
         }
 
         .contador {
-            background: #d4e8f5;
+            background: #e6e6ff;
             padding: 6px 16px;
             border-radius: 30px;
             font-size: 0.85rem;
-            color: #0a2f44;
+            color: #0000AA;
             font-weight: 600;
             display: inline-block;
             margin-bottom: 14px;
         }
 
         .contador i {
-            color: #1a6a8a;
+            color: #0000FF;
             margin-right: 6px;
         }
 
         .tabela-container {
             overflow-x: auto;
             border-radius: 16px;
-            border: 1px solid #c8dce8;
-            background: #f8fbfd;
+            border: 1px solid #9999FF;
+            background: #f8f8ff;
         }
 
         .tabela-notificacoes {
@@ -619,7 +630,7 @@
         }
 
         .tabela-notificacoes thead {
-            background: linear-gradient(135deg, #1a6a8a, #0d4b66);
+            background: #0000FF;
             color: white;
         }
 
@@ -630,17 +641,18 @@
             font-size: 0.75rem;
             letter-spacing: 0.5px;
             text-transform: uppercase;
+            color: #ffffff;
         }
 
         .tabela-notificacoes tbody td {
             padding: 10px 14px;
-            border-bottom: 1px solid #d4e8f5;
+            border-bottom: 1px solid #ccccff;
             color: #1a2e3f;
             vertical-align: middle;
         }
 
         .tabela-notificacoes tbody tr:hover {
-            background: #d4e8f5;
+            background: #e6e6ff;
         }
 
         .tabela-notificacoes tbody tr:last-child td {
@@ -679,19 +691,19 @@
         }
 
         .badge-tipo.responsavel-crianca {
-            background: #d4e8f5;
-            color: #0a2f44;
+            background: #ccccff;
+            color: #0000AA;
         }
 
         .sem-resultados {
             text-align: center;
             padding: 40px 20px;
-            color: #7a8f9f;
+            color: #6666AA;
         }
 
         .sem-resultados i {
             font-size: 3rem;
-            color: #c8dce8;
+            color: #9999FF;
             margin-bottom: 12px;
             display: block;
         }
@@ -890,7 +902,7 @@
                         <div class="campo">
                             <label for="hora">
                                 <i class="fas fa-clock"></i> Hora
-                                <span class="saudacao-indicator" id="saudacaoLabel" style="font-size:0.7rem; background:#d4e8f5; padding:2px 10px; border-radius:20px; margin-left:4px; font-weight:600;">🌅 BOM DIA</span>
+                                <span class="saudacao-indicator" id="saudacaoLabel" style="font-size:0.7rem; background:#ccccff; padding:2px 10px; border-radius:20px; margin-left:4px; font-weight:600; color:#0000AA;">🌅 BOM DIA</span>
                             </label>
                             <input type="time" id="hora" value="10:00">
                         </div>
@@ -907,8 +919,8 @@
                     </div>
 
                     <!-- Indicador do tipo de atendimento -->
-                    <div class="tipo-atendimento" id="tipoAtendimento" style="border-left: 4px solid #1a6a8a;">
-                        <i class="fas fa-info-circle" style="color:#1a6a8a;"></i>
+                    <div class="tipo-atendimento" id="tipoAtendimento" style="border-left: 4px solid #0000FF;">
+                        <i class="fas fa-info-circle" style="color:#0000FF;"></i>
                         <span class="tipo-texto">
                             <strong>Atendimento:</strong> 
                             <span id="tipoDescricao">RESPONSÁVEL + CRIANÇA</span>
@@ -981,7 +993,7 @@
                                     <td colspan="8" class="sem-resultados">
                                         <i class="fas fa-inbox"></i>
                                         Nenhuma notificação salva ainda.<br>
-                                        <small style="color: #a0b8c8;">Salve uma notificação na página "Nova Notificação"</small>
+                                        <small style="color: #6666AA;">Salve uma notificação na página "Nova Notificação"</small>
                                     </td>
                                 </tr>
                             </tbody>
@@ -1089,7 +1101,7 @@
             }
 
             // ========================================
-            // GERAR MENSAGEM - NOVO FORMATO
+            // GERAR MENSAGEM - NOMES EM NEGRITO
             // ========================================
             function gerarMensagem() {
                 const nomeResp = responsavel.value.trim() || "RESPONSÁVEL";
@@ -1116,8 +1128,9 @@
                     horaFormatada = horaRaw.replace(':', 'h');
                 }
 
-                // Determina tratamento (Sr./Sra.)
-                const tratamento = 'Sra.';
+                // Nomes em negrito
+                const nomeRespNegrito = `*${nomeResp}*`;
+                const nomeCriancaNegrito = nomeCrianca ? `*${nomeCrianca}*` : 'criança/adolescente';
 
                 // Monta a mensagem no novo formato
                 let msg = `${saudacao}! Como vai?\n\n`;
@@ -1126,16 +1139,16 @@
                 // ===== LÓGICA PRINCIPAL =====
                 if (!temCriancaChecked) {
                     // Apenas responsável
-                    msg += `Solicitamos o comparecimento da ${tratamento} ${nomeResp}, para atendimento e esclarecimentos relacionados à criança/adolescente.\n\n`;
+                    msg += `Solicitamos o comparecimento da Sra. ${nomeRespNegrito}, para atendimento e esclarecimentos relacionados à criança/adolescente.\n\n`;
                     msg += `Ressaltamos que este é um atendimento com a responsável, não sendo necessário trazer a criança/adolescente neste momento.\n\n`;
                 } else {
                     // Com criança
                     if (nomeCrianca === '') {
-                        msg += `Solicitamos o comparecimento da ${tratamento} ${nomeResp}, responsável por criança/adolescente não informado(a), para atendimento e esclarecimentos relacionados à criança/adolescente.\n\n`;
+                        msg += `Solicitamos o comparecimento da Sra. ${nomeRespNegrito}, responsável por criança/adolescente não informado(a), para atendimento e esclarecimentos relacionados à criança/adolescente.\n\n`;
                     } else {
-                        msg += `Solicitamos o comparecimento da ${tratamento} ${nomeResp}, responsável por ${nomeCrianca}, para atendimento e esclarecimentos relacionados à criança/adolescente.\n\n`;
+                        msg += `Solicitamos o comparecimento da Sra. ${nomeRespNegrito}, responsável por ${nomeCriancaNegrito}, para atendimento e esclarecimentos relacionados à criança/adolescente.\n\n`;
                     }
-                    msg += `Solicitamos que a responsável compareça acompanhada de ${nomeCrianca || 'criança/adolescente'} e apresente, se disponíveis:\n\n`;
+                    msg += `Solicitamos que a responsável compareça acompanhada de ${nomeCriancaNegrito} e apresente, se disponíveis:\n\n`;
                     msg += `• Documento de identificação da responsável;\n`;
                     msg += `• Documento de identificação da criança/adolescente ou certidão de nascimento;\n`;
                     msg += `• Comprovante de residência;\n`;
@@ -1247,8 +1260,8 @@
                     tipoDescricao.textContent = 'APENAS RESPONSÁVEL';
                     tipoBadge.textContent = 'SEM CRIANÇA';
                     tipoBadge.className = 'tipo-badge apenas-responsavel';
-                    tipoAtendimento.style.borderLeft = '4px solid #f1c40f';
-                    document.querySelector('.tipo-atendimento i').style.color = '#f1c40f';
+                    tipoAtendimento.style.borderLeft = '4px solid #FFA500';
+                    document.querySelector('.tipo-atendimento i').style.color = '#FFA500';
                 } else {
                     if (nomeCrianca !== '') {
                         tipoDescricao.textContent = `RESPONSÁVEL + CRIANÇA (${nomeCrianca.toUpperCase()})`;
@@ -1257,8 +1270,8 @@
                     }
                     tipoBadge.textContent = 'COM CRIANÇA';
                     tipoBadge.className = 'tipo-badge';
-                    tipoAtendimento.style.borderLeft = '4px solid #1a6a8a';
-                    document.querySelector('.tipo-atendimento i').style.color = '#1a6a8a';
+                    tipoAtendimento.style.borderLeft = '4px solid #0000FF';
+                    document.querySelector('.tipo-atendimento i').style.color = '#0000FF';
                 }
 
                 // Telefone destino
@@ -1276,7 +1289,7 @@
                             <td colspan="8" class="sem-resultados">
                                 <i class="fas fa-inbox"></i>
                                 ${filtro ? 'Nenhum resultado encontrado para esta pesquisa.' : 'Nenhuma notificação salva ainda.'}<br>
-                                <small style="color: #a0b8c8;">${filtro ? 'Tente outros termos' : 'Salve uma notificação na página "Nova Notificação"'}</small>
+                                <small style="color: #6666AA;">${filtro ? 'Tente outros termos' : 'Salve uma notificação na página "Nova Notificação"'}</small>
                             </td>
                         </tr>
                     `;
@@ -1345,10 +1358,12 @@
 
                 const btnSalvarOriginal = btnSalvar.innerHTML;
                 btnSalvar.innerHTML = '<i class="fas fa-check"></i> SALVO!';
-                btnSalvar.style.background = 'linear-gradient(135deg, #28a745, #1e7e34)';
+                btnSalvar.style.background = '#28a745';
+                btnSalvar.style.boxShadow = '0 5px 0 #1a7a2e';
                 setTimeout(() => {
                     btnSalvar.innerHTML = btnSalvarOriginal;
-                    btnSalvar.style.background = '';
+                    btnSalvar.style.background = '#0000FF';
+                    btnSalvar.style.boxShadow = '0 5px 0 #0000AA';
                 }, 2000);
 
                 contadorHistorico.textContent = historico.length;
