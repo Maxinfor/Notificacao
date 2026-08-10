@@ -11,29 +11,36 @@
             font-family: 'Segoe UI', Arial, sans-serif; 
             background-color: #f0f2f5; 
             margin: 0; 
-            padding: 20px; 
-            color: #333;
+            padding: 15px; 
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         .main-container { 
-            max-width: 1400px; 
-            margin: auto; 
+            width: 100%; 
+            flex: 1;
             background: #fff; 
-            padding: 30px; 
-            border-radius: 12px; 
+            padding: 20px 30px; 
+            border-radius: 8px; 
             box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
+            display: flex;
+            flex-direction: column;
         }
         header {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             border-bottom: 2px solid #eee;
-            padding-bottom: 15px;
+            padding-bottom: 10px;
         }
-        header h1 { margin: 0; color: #0056b3; font-size: 24px; letter-spacing: 1px; }
+        header h1 { margin: 0; color: #0056b3; font-size: 22px; letter-spacing: 1px; }
         
         .grid-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 25px;
+            flex: 1;
+            overflow: hidden;
         }
         
         .panel {
@@ -41,50 +48,54 @@
             border: 1px solid #e1e4e8;
             border-radius: 8px;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
-        h3 { margin-top: 0; color: #444; border-bottom: 2px solid #007bff; padding-bottom: 8px; font-size: 16px; }
+        h3 { margin-top: 0; color: #444; border-bottom: 2px solid #007bff; padding-bottom: 8px; font-size: 15px; }
         
-        label { font-size: 12px; font-weight: bold; color: #555; display: block; margin-bottom: 5px; }
+        label { font-size: 11px; font-weight: bold; color: #555; display: block; margin-bottom: 3px; }
         input { 
             text-transform: uppercase; 
             width: 100%; 
-            padding: 10px; 
+            padding: 8px 10px; 
             border: 1px solid #ccc; 
             border-radius: 6px; 
-            margin-bottom: 15px; 
-            font-size: 14px;
+            margin-bottom: 10px; 
+            font-size: 13px;
         }
         input:focus { border-color: #007bff; outline: none; box-shadow: 0 0 5px rgba(0,123,255,0.3); }
 
         .btn-acao { 
             width: 100%; 
-            padding: 12px; 
+            padding: 10px; 
             border: none; 
             border-radius: 6px; 
             font-weight: bold; 
             cursor: pointer; 
             color: white; 
-            margin-bottom: 10px; 
-            font-size: 14px;
+            margin-bottom: 8px; 
+            font-size: 13px;
             transition: opacity 0.2s;
         }
         .btn-acao:hover { opacity: 0.9; }
         
         .lista-container {
-            max-height: 450px;
+            flex: 1;
             overflow-y: auto;
             border: 1px solid #ddd;
             border-radius: 6px;
             background: #fff;
             padding: 10px;
+            margin-bottom: 10px;
         }
         .item-lista { 
-            padding: 12px; 
+            padding: 10px; 
             border-bottom: 1px solid #eee; 
-            font-size: 13px; 
+            font-size: 12px; 
             background: #fafafa; 
-            margin-bottom: 8px; 
+            margin-bottom: 6px; 
             border-radius: 4px; 
             border-left: 4px solid #007bff;
         }
@@ -92,7 +103,7 @@
         
         .btn-limpar {
             background: #dc3545;
-            margin-top: 15px;
+            margin-top: auto;
         }
     </style>
 </head>
@@ -100,7 +111,7 @@
 
 <div class="main-container">
     <header>
-        <h1><i class="fas id-card"></i> SISTEMA INTEGRADO - CONSELHO TUTELAR</h1>
+        <h1><i class="fas fa-id-card"></i> SISTEMA INTEGRADO - CONSELHO TUTELAR</h1>
     </header>
 
     <div class="grid-layout">
@@ -131,9 +142,11 @@
             <label>TELEFONE (WhatsApp):</label>
             <input type="tel" id="telefone" placeholder="DDD + Número (Apenas números)">
             
-            <button class="btn-acao" style="background: #25D366;" onclick="enviarNotificacao()"><i class="fab fa-whatsapp"></i> ENVIAR NOTIFICAÇÃO (RESPONSÁVEL)</button>
-            <button class="btn-acao" style="background: #17a2b8;" onclick="enviarConfirmacao()"><i class="fab fa-whatsapp"></i> AVISAR CONSELHEIRO(A)</button>
-            <button class="btn-acao" style="background: #007bff;" onclick="salvarDados()"><i class="fas fa-save"></i> SALVAR NO SISTEMA</button>
+            <div style="margin-top: auto;">
+                <button class="btn-acao" style="background: #25D366;" onclick="enviarNotificacao()"><i class="fab fa-whatsapp"></i> ENVIAR NOTIFICAÇÃO (RESPONSÁVEL)</button>
+                <button class="btn-acao" style="background: #17a2b8;" onclick="enviarConfirmacao()"><i class="fab fa-whatsapp"></i> AVISAR CONSELHEIRO(A)</button>
+                <button class="btn-acao" style="background: #007bff;" onclick="salvarDados()"><i class="fas fa-save"></i> SALVAR NO SISTEMA</button>
+            </div>
         </div>
 
         <!-- COLUNA DA DIREITA: PESQUISA E REGISTROS -->
@@ -155,7 +168,6 @@
 <script>
     let bancoDados = JSON.parse(localStorage.getItem('atendimentos')) || [];
 
-    // Carrega a lista automaticamente ao abrir a tela
     window.onload = function() {
         filtrarLista();
     };
@@ -182,11 +194,10 @@
             tel: document.getElementById('telefone').value
         };
         
-        bancoDados.unshift(novo); // Adiciona no topo da lista
+        bancoDados.unshift(novo);
         localStorage.setItem('atendimentos', JSON.stringify(bancoDados));
         alert("SALVO COM SUCESSO!");
         
-        // Limpar campos
         document.querySelectorAll('input').forEach(i => {
             if(i.id !== 'inputBusca') i.value = '';
         });
@@ -226,11 +237,11 @@
         const filtrados = bancoDados.filter(item => item.resp.toUpperCase().includes(busca));
 
         if (filtrados.length === 0) {
-            lista.innerHTML = '<p style="text-align:center; color: #888; font-size: 13px;">Nenhum atendimento encontrado.</p>';
+            lista.innerHTML = '<p style="text-align:center; color: #888; font-size: 13px; margin-top:20px;">Nenhum atendimento encontrado.</p>';
             return;
         }
 
-        filtrados.forEach((item, index) => {
+        filtrados.forEach((item) => {
             lista.innerHTML += `<div class="item-lista">
                 <strong>RESP: ${item.resp}</strong><br>
                 <span>CRIANÇA: ${item.crianca || 'N/A'}</span><br>
