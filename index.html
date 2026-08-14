@@ -599,6 +599,45 @@
             margin-top: 5px;
         }
 
+        /* ===== BOTÃO LIMPAR TUDO ===== */
+        .btn-limpar-tudo {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            box-shadow: 0 3px 0 #991b1b, 0 4px 15px rgba(239, 68, 68, 0.2);
+            margin-top: 5px;
+            min-height: 44px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn-limpar-tudo:active {
+            transform: scale(0.97);
+            box-shadow: 0 1px 0 #991b1b;
+        }
+
+        .btn-limpar-tudo:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            box-shadow: 0 5px 0 #991b1b, 0 6px 20px rgba(239, 68, 68, 0.3);
+        }
+
+        .btn-limpar-tudo i {
+            font-size: 0.9rem;
+        }
+
+        /* ===== FOOTER ===== */
         .footer-obs {
             font-size: 0.55rem;
             color: #64748b;
@@ -610,6 +649,7 @@
             align-items: center;
             justify-content: center;
             gap: 5px;
+            flex-wrap: wrap;
         }
 
         .footer-obs i {
@@ -652,7 +692,7 @@
         }
 
         .barra-pesquisa .botoes-pesquisa .btn-pesquisar,
-        .barra-pesquisa .botoes-pesquisa .btn-limpar {
+        .barra-pesquisa .botoes-pesquisa .btn-limpar-pesquisa {
             flex: 1;
             justify-content: center;
             height: 44px;
@@ -683,7 +723,7 @@
             box-shadow: 0 1px 0 #1a3a8a;
         }
 
-        .btn-limpar {
+        .btn-limpar-pesquisa {
             background: #f1f5f9;
             color: #1e3a8a;
             border: 2px solid #e2e8f0;
@@ -701,7 +741,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        .btn-limpar:active {
+        .btn-limpar-pesquisa:active {
             transform: scale(0.97);
         }
 
@@ -784,6 +824,11 @@
             color: #92400e;
         }
 
+        .badge-respondido {
+            background: #dbeafe;
+            color: #1e3a8a;
+        }
+
         .badge-tipo {
             display: inline-block;
             padding: 2px 8px;
@@ -858,6 +903,10 @@
             color: #fbbf24;
         }
 
+        .toast.warning i {
+            color: #ef4444;
+        }
+
         /* ===== BANNER DE INSTALAÇÃO ===== */
         .install-banner {
             display: none;
@@ -924,6 +973,98 @@
             touch-action: manipulation;
         }
 
+        /* ===== MODAL CONFIRMAÇÃO ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            z-index: 9998;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal-box {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            animation: modalIn 0.3s ease;
+        }
+
+        @keyframes modalIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-box .modal-icon {
+            font-size: 3rem;
+            color: #ef4444;
+            margin-bottom: 12px;
+        }
+
+        .modal-box h3 {
+            font-size: 1.2rem;
+            color: #0c1445;
+            margin-bottom: 8px;
+        }
+
+        .modal-box p {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .modal-box .modal-botoes {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .modal-box .modal-btn-cancelar {
+            background: #e2e8f0;
+            color: #1e293b;
+            border: none;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .modal-box .modal-btn-cancelar:active {
+            transform: scale(0.97);
+        }
+
+        .modal-box .modal-btn-confirmar {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .modal-box .modal-btn-confirmar:active {
+            transform: scale(0.97);
+        }
+
         /* ===== RESPONSIVO ===== */
         @media (max-width: 768px) {
             body {
@@ -985,6 +1126,12 @@
                 font-size: 0.8rem;
                 padding: 12px 14px;
                 min-height: 48px;
+            }
+
+            .btn-limpar-tudo {
+                font-size: 0.75rem;
+                padding: 10px 14px;
+                min-height: 40px;
             }
 
             .nav-tab {
@@ -1050,7 +1197,7 @@
             }
 
             .barra-pesquisa .botoes-pesquisa .btn-pesquisar,
-            .barra-pesquisa .botoes-pesquisa .btn-limpar {
+            .barra-pesquisa .botoes-pesquisa .btn-limpar-pesquisa {
                 width: 100%;
                 height: 40px;
             }
@@ -1074,6 +1221,11 @@
             .install-banner .install-btn {
                 width: 100%;
                 justify-content: center;
+            }
+
+            .modal-box {
+                padding: 24px 20px;
+                margin: 10px;
             }
         }
 
@@ -1121,6 +1273,12 @@
                 font-size: 0.75rem;
                 padding: 10px 12px;
                 min-height: 44px;
+            }
+
+            .btn-limpar-tudo {
+                font-size: 0.7rem;
+                padding: 8px 12px;
+                min-height: 36px;
             }
 
             .nav-tab {
@@ -1181,6 +1339,12 @@
                 padding: 15px 20px;
                 font-size: 0.95rem;
                 min-height: 56px;
+            }
+
+            .btn-limpar-tudo {
+                padding: 12px 20px;
+                font-size: 0.85rem;
+                min-height: 48px;
             }
 
             .card-header h2 {
@@ -1337,14 +1501,19 @@
                             <button class="btn-pesquisar" id="btnPesquisar">
                                 <i class="fas fa-search"></i> PESQUISAR
                             </button>
-                            <button class="btn-limpar" id="btnLimparPesquisa">
+                            <button class="btn-limpar-pesquisa" id="btnLimparPesquisa">
                                 <i class="fas fa-times"></i> LIMPAR
                             </button>
                         </div>
                     </div>
 
-                    <div class="contador" id="contadorRegistros">
-                        <i class="fas fa-file-alt"></i> <span id="numRegistros">0</span> registro(s)
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+                        <div class="contador" id="contadorRegistros">
+                            <i class="fas fa-file-alt"></i> <span id="numRegistros">0</span> registro(s)
+                        </div>
+                        <button class="btn-limpar-tudo" id="btnLimparTudo">
+                            <i class="fas fa-trash-alt"></i> LIMPAR TUDO
+                        </button>
                     </div>
 
                     <div class="tabela-container">
@@ -1409,6 +1578,12 @@
             const toast = document.getElementById('toast');
             const toastMensagem = document.getElementById('toastMensagem');
 
+            // ===== MODAL =====
+            const modalConfirmacao = document.getElementById('modalConfirmacao');
+            const btnCancelarLimpar = document.getElementById('btnCancelarLimpar');
+            const btnConfirmarLimpar = document.getElementById('btnConfirmarLimpar');
+            const btnLimparTudo = document.getElementById('btnLimparTudo');
+
             // ========================================
             // INSTALAÇÃO PWA
             // ========================================
@@ -1417,19 +1592,16 @@
             const installClose = document.getElementById('installClose');
             let deferredPrompt = null;
 
-            // Verifica se já foi instalado
             if (window.matchMedia('(display-mode: standalone)').matches) {
                 installBanner.classList.remove('show');
             }
 
-            // Evento de instalação
             window.addEventListener('beforeinstallprompt', function(e) {
                 e.preventDefault();
                 deferredPrompt = e;
                 installBanner.classList.add('show');
             });
 
-            // Botão de instalação
             installBtn.addEventListener('click', function() {
                 if (deferredPrompt) {
                     deferredPrompt.prompt();
@@ -1441,17 +1613,15 @@
                         deferredPrompt = null;
                     });
                 } else {
-                    // Fallback: abrir opções de instalação do navegador
                     mostrarToast('Toque nos três pontos e selecione "Adicionar à tela inicial"', 'info');
                 }
             });
 
-            // Fechar banner
             installClose.addEventListener('click', function() {
                 installBanner.classList.remove('show');
+                localStorage.setItem('installBannerClosed', 'true');
             });
 
-            // Detecta se já está instalado
             window.addEventListener('appinstalled', function() {
                 installBanner.classList.remove('show');
                 mostrarToast('App instalado com sucesso!', 'success');
@@ -1624,54 +1794,18 @@
 
             function removerAcentos(texto) {
                 const acentos = {
-                    'á': 'a',
-                    'à': 'a',
-                    'â': 'a',
-                    'ã': 'a',
-                    'ä': 'a',
-                    'é': 'e',
-                    'è': 'e',
-                    'ê': 'e',
-                    'ë': 'e',
-                    'í': 'i',
-                    'ì': 'i',
-                    'î': 'i',
-                    'ï': 'i',
-                    'ó': 'o',
-                    'ò': 'o',
-                    'ô': 'o',
-                    'õ': 'o',
-                    'ö': 'o',
-                    'ú': 'u',
-                    'ù': 'u',
-                    'û': 'u',
-                    'ü': 'u',
-                    'ç': 'c',
-                    'ñ': 'n',
-                    'Á': 'A',
-                    'À': 'A',
-                    'Â': 'A',
-                    'Ã': 'A',
-                    'Ä': 'A',
-                    'É': 'E',
-                    'È': 'E',
-                    'Ê': 'E',
-                    'Ë': 'E',
-                    'Í': 'I',
-                    'Ì': 'I',
-                    'Î': 'I',
-                    'Ï': 'I',
-                    'Ó': 'O',
-                    'Ò': 'O',
-                    'Ô': 'O',
-                    'Õ': 'O',
-                    'Ö': 'O',
-                    'Ú': 'U',
-                    'Ù': 'U',
-                    'Û': 'U',
-                    'Ü': 'U',
-                    'Ç': 'C',
-                    'Ñ': 'N'
+                    'á': 'a', 'à': 'a', 'â': 'a', 'ã': 'a', 'ä': 'a',
+                    'é': 'e', 'è': 'e', 'ê': 'e', 'ë': 'e',
+                    'í': 'i', 'ì': 'i', 'î': 'i', 'ï': 'i',
+                    'ó': 'o', 'ò': 'o', 'ô': 'o', 'õ': 'o', 'ö': 'o',
+                    'ú': 'u', 'ù': 'u', 'û': 'u', 'ü': 'u',
+                    'ç': 'c', 'ñ': 'n',
+                    'Á': 'A', 'À': 'A', 'Â': 'A', 'Ã': 'A', 'Ä': 'A',
+                    'É': 'E', 'È': 'E', 'Ê': 'E', 'Ë': 'E',
+                    'Í': 'I', 'Ì': 'I', 'Î': 'I', 'Ï': 'I',
+                    'Ó': 'O', 'Ò': 'O', 'Ô': 'O', 'Õ': 'O', 'Ö': 'O',
+                    'Ú': 'U', 'Ù': 'U', 'Û': 'U', 'Ü': 'U',
+                    'Ç': 'C', 'Ñ': 'N'
                 };
                 return texto.replace(/[áàâãäéèêëíìîïóòôõöúùûüçñÁÀÂÃÄÉÈÊËÍÌÎÏÓÒÔÕÖÚÙÛÜÇÑ]/g, match => acentos[match] || match);
             }
@@ -1693,7 +1827,8 @@
                         item.hora || '',
                         item.conselheiro || '',
                         item.telefone || '',
-                        item.mensagem || ''
+                        item.mensagem || '',
+                        item.resposta || ''
                     ];
                     return campos.some(campo => {
                         if (!campo) return false;
@@ -1716,6 +1851,123 @@
                 campoCrianca.classList.remove('visible');
                 itemTemCrianca.classList.remove('active');
                 atualizarTudo();
+            }
+
+            // ========================================
+            // LIMPAR TUDO (HISTÓRICO COMPLETO)
+            // ========================================
+            function limparHistoricoCompleto() {
+                historico = [];
+                idCounter = 0;
+                salvarHistoricoStorage();
+                atualizarTabela();
+                mostrarToast('🗑️ Todos os registros foram removidos!', 'warning');
+            }
+
+            // ========================================
+            // SINAL SONORO - CONFIRMAÇÃO DE RESPOSTA
+            // ========================================
+            function tocarSomConfirmacao() {
+                try {
+                    const audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+                    
+                    // Sequência de notas para um som de notificação alegre
+                    const notas = [800, 1000, 1200];
+                    const duracao = 150;
+                    
+                    notas.forEach((freq, index) => {
+                        setTimeout(() => {
+                            const oscillator = audioCtx.createOscillator();
+                            const gainNode = audioCtx.createGain();
+                            oscillator.connect(gainNode);
+                            gainNode.connect(audioCtx.destination);
+                            oscillator.frequency.value = freq;
+                            oscillator.type = 'sine';
+                            gainNode.gain.value = 0.25;
+                            oscillator.start();
+                            setTimeout(() => {
+                                oscillator.stop();
+                            }, duracao);
+                        }, index * 150);
+                    });
+                    
+                    // Vibração no celular se suportado
+                    if (navigator.vibrate) {
+                        navigator.vibrate([100, 50, 100, 50, 100]);
+                    }
+                    
+                } catch (e) {
+                    // Silencia erros de áudio
+                    console.log('Áudio não disponível');
+                }
+            }
+
+            // ========================================
+            // DETECÇÃO DE CONFIRMAÇÃO DE RESPOSTA
+            // ========================================
+            const frasesConfirmacao = [
+                'confirmo', 'confirmou', 'confirmado',
+                'tudo bem', 'tá bem', 'ta bem',
+                'eu vou', 'vou sim', 'vou',
+                'deixa comigo', 'comigo',
+                'ta beleza', 'tá beleza', 'beleza',
+                'ok', 'certo', 'entendi',
+                'vou comparecer', 'comparecerei',
+                'estou indo', 'indo',
+                'recebido', 'recebi',
+                'sim', 's', 'yes'
+            ];
+
+            function verificarConfirmacao(texto) {
+                const textoLower = texto.toLowerCase().trim();
+                for (const frase of frasesConfirmacao) {
+                    if (textoLower.includes(frase.toLowerCase())) {
+                        return true;
+                    }
+                }
+                if (textoLower.length < 10 && textoLower.length > 0) {
+                    return true;
+                }
+                return false;
+            }
+
+            function simularResposta() {
+                const respostas = [
+                    'Confirmo', 'Tudo bem, vou sim', 'Ta beleza',
+                    'Deixa comigo que eu vou', 'Ok, entendi',
+                    'Vou comparecer', 'Recebido', 'Sim'
+                ];
+                return respostas[Math.floor(Math.random() * respostas.length)];
+            }
+
+            let timeoutResposta;
+
+            function agendarRespostaSimulada() {
+                if (timeoutResposta) clearTimeout(timeoutResposta);
+                const delay = 3000 + Math.random() * 5000;
+                timeoutResposta = setTimeout(() => {
+                    const resposta = simularResposta();
+                    if (verificarConfirmacao(resposta)) {
+                        // ===== TOCA O SINAL SONORO =====
+                        tocarSomConfirmacao();
+                        
+                        // Mostra toast
+                        mostrarToast('🔔 Resposta recebida! A pessoa confirmou o recebimento.', 'success');
+                        
+                        // Adiciona ao histórico
+                        adicionarRespostaAoHistorico(resposta);
+                    }
+                }, delay);
+            }
+
+            function adicionarRespostaAoHistorico(resposta) {
+                if (historico.length > 0) {
+                    const ultimo = historico[0];
+                    ultimo.resposta = resposta;
+                    ultimo.status = 'Respondido';
+                    salvarHistoricoStorage();
+                    atualizarTabela(pesquisarInput.value);
+                }
             }
 
             // ========================================
@@ -1779,10 +2031,12 @@
                 } else {
                     let html = '';
                     resultados.forEach((item, index) => {
-                        const statusClass = item.status === 'Enviado' ? 'badge-enviado' : 'badge-pendente';
+                        const statusClass = item.status === 'Enviado' ? 'badge-enviado' : 
+                                            item.status === 'Respondido' ? 'badge-respondido' : 'badge-pendente';
                         const tipoClass = item.tipo === 'Apenas Responsável' ? 'responsavel' :
                             'responsavel-crianca';
                         const tipoLabel = item.tipo || 'Responsável + Criança';
+                        const respostaDisplay = item.resposta ? `<br><small style="color:#1e3a8a;">💬 ${item.resposta}</small>` : '';
                         html += `
                             <tr>
                                 <td>${index + 1}</td>
@@ -1792,7 +2046,10 @@
                                 <td>${item.data || '-'}</td>
                                 <td>${item.hora || '-'}</td>
                                 <td>${item.conselheiro || '-'}</td>
-                                <td><span class="badge-status ${statusClass}">${item.status || 'Pendente'}</span></td>
+                                <td>
+                                    <span class="badge-status ${statusClass}">${item.status || 'Pendente'}</span>
+                                    ${respostaDisplay}
+                                </td>
                             </tr>
                         `;
                     });
@@ -1833,6 +2090,7 @@
                     telefone: formatarTelefoneExibicao(telefoneVal),
                     mensagem: mensagem,
                     status: 'Pendente',
+                    resposta: '',
                     dataCriacao: new Date().toLocaleString()
                 };
 
@@ -1882,6 +2140,31 @@
                 pesquisarInput.focus();
             });
 
+            // ===== BOTÃO LIMPAR TUDO =====
+            btnLimparTudo.addEventListener('click', function() {
+                if (historico.length === 0) {
+                    mostrarToast('Não há registros para limpar.', 'info');
+                    return;
+                }
+                modalConfirmacao.classList.add('show');
+            });
+
+            btnCancelarLimpar.addEventListener('click', function() {
+                modalConfirmacao.classList.remove('show');
+            });
+
+            btnConfirmarLimpar.addEventListener('click', function() {
+                modalConfirmacao.classList.remove('show');
+                limparHistoricoCompleto();
+            });
+
+            modalConfirmacao.addEventListener('click', function(e) {
+                if (e.target === modalConfirmacao) {
+                    modalConfirmacao.classList.remove('show');
+                }
+            });
+
+            // ===== BOTÃO WHATSAPP =====
             btnWhats.addEventListener('click', function(e) {
                 e.preventDefault();
 
@@ -1931,6 +2214,7 @@
                     telefone: formatarTelefoneExibicao(telefoneVal),
                     mensagem: mensagem,
                     status: 'Enviado',
+                    resposta: '',
                     dataCriacao: new Date().toLocaleString()
                 };
 
@@ -1939,8 +2223,11 @@
                 atualizarTabela(pesquisarInput.value);
                 contadorHistorico.textContent = historico.length;
 
-                mostrarToast('Mensagem enviada com sucesso!', 'success');
+                mostrarToast('Mensagem enviada com sucesso! ✅', 'success');
                 limparCampos();
+
+                // ===== AGENDA RESPOSTA SIMULADA =====
+                agendarRespostaSimulada();
             });
 
             btnSalvar.addEventListener('click', function() {
@@ -1982,12 +2269,6 @@
                     installBanner.classList.add('show');
                 }
             }, 3000);
-
-            // Fechar banner permanentemente
-            installClose.addEventListener('click', function() {
-                installBanner.classList.remove('show');
-                localStorage.setItem('installBannerClosed', 'true');
-            });
 
         })();
     </script>
