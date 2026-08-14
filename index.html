@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Notificação - Conselho Tutelar do Paranoá</title>
     
-    <!-- ===== PWA CONFIG ===== -->
-    <link rel="manifest" href="manifest.json">
+    <!-- ============================================ -->
+    <!-- CONFIGURAÇÕES PWA - PARA INSTALAR NO CELULAR -->
+    <!-- ============================================ -->
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIk5vdGlmaWNhw6fDo28gLSBDb25zZWxobyBUdXRlbGFyIiwKICAic2hvcnRfbmFtZSI6ICJDb25zZWxobyBUdXRlbGFyIiwKICAic3RhcnRfdXJsIjogIi4iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMwYzE0NDUiLAogICJ0aGVtZV9jb2xvciI6ICIjMjU2M2ViIiwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxOTInIGhlaWdodD0nMTkyJyUzRSUzQ3JlY3Qgd2lkdGg9JzE5MicgaGVpZ2h0PScxOTInIHJ4PSczMCcgZmlsbD0nJTIzMjU2M2ViJy8lM0UlM0N0ZXh0IHg9Jzk2JyB5PScxMDAnIGZvbnQtc2l6ZT0nNzAnIGZvbnQtZmFtaWx5PSdBcmlhbCcgb3BhY2l0eT0nMC4yJyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBmaWxsPSd3aGl0ZSclM0VDVCUzQy90ZXh0JTNFJTNDL3N2ZyUzRSIsCiAgICAgICJzaXplcyI6ICIxOTJ4MTkyIiwKICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1MTInIGhlaWdodD0nNTEyJyUzRSUzQ3JlY3Qgd2lkdGg9JzUxMicgaGVpZ2h0PSc1MTInIHJ4PSc1MCcgZmlsbD0nJTIzMjU2M2ViJy8lM0UlM0N0ZXh0IHg9JzI1NicgeT0nMjgwJyBmb250LXNpemU9JzE4MCcgZm9udC1mYW1pbHk9J0FyaWFsJyBvcGFjaXR5PScwLjInIHRleHQtYW5jaG9yPSdtaWRkbGUnIGZpbGw9J3doaXRlJyUzRUNUJTNDL3RleHQlM0UlM0Mvc3ZnJTNFIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIgogICAgfQogIF0KfQ==">
+    
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Conselho Tutelar">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#2563eb">
+    <meta name="description" content="Sistema de notificações do Conselho Tutelar do Paranoá">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -64,6 +68,7 @@
             z-index: 1;
         }
 
+        /* ===== TÍTULO SUPERIOR ===== */
         .header-title {
             text-align: center;
             margin-bottom: 16px;
@@ -110,6 +115,7 @@
             margin: 0 4px;
         }
 
+        /* ===== NAVEGAÇÃO ===== */
         .nav-tabs {
             display: flex;
             gap: 8px;
@@ -182,6 +188,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* ===== CARDS ===== */
         .card {
             background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(20px);
@@ -259,6 +266,7 @@
             color: #2563eb;
         }
 
+        /* ===== GRIDS ===== */
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -271,6 +279,7 @@
             gap: 14px;
         }
 
+        /* ===== CAMPOS ===== */
         .campo {
             display: flex;
             flex-direction: column;
@@ -346,6 +355,7 @@
             color: #2563eb;
         }
 
+        /* ===== CHECKBOXES ===== */
         .checkbox-group {
             display: flex;
             flex-wrap: wrap;
@@ -433,6 +443,7 @@
             cursor: not-allowed;
         }
 
+        /* ===== CAMPO CRIANÇA ===== */
         .campo-crianca-wrapper {
             flex: 1;
             min-width: 100%;
@@ -462,6 +473,7 @@
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
         }
 
+        /* ===== TIPO ATENDIMENTO ===== */
         .tipo-atendimento {
             background: linear-gradient(135deg, #eff6ff, #dbeafe);
             border-radius: 10px;
@@ -506,6 +518,7 @@
             box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
         }
 
+        /* ===== BOTÕES ===== */
         .btn-whatsapp {
             background: linear-gradient(135deg, #25d366, #1da851);
             color: white;
@@ -603,6 +616,7 @@
             color: #2563eb;
         }
 
+        /* ===== SAUDAÇÃO INDICATOR ===== */
         .saudacao-indicator {
             font-size: 0.55rem;
             background: linear-gradient(135deg, #dbeafe, #bfdbfe);
@@ -614,6 +628,7 @@
             white-space: nowrap;
         }
 
+        /* ===== PÁGINA 2 - HISTÓRICO ===== */
         .barra-pesquisa {
             display: flex;
             flex-direction: column;
@@ -800,6 +815,7 @@
             display: block;
         }
 
+        /* ===== TOAST ===== */
         .toast {
             position: fixed;
             bottom: 25px;
@@ -842,6 +858,73 @@
             color: #fbbf24;
         }
 
+        /* ===== BANNER DE INSTALAÇÃO ===== */
+        .install-banner {
+            display: none;
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .install-banner.show {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .install-banner .install-text {
+            color: white;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .install-banner .install-text i {
+            font-size: 1.4rem;
+            color: #fbbf24;
+        }
+
+        .install-banner .install-btn {
+            background: #fbbf24;
+            color: #0c1445;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            touch-action: manipulation;
+            white-space: nowrap;
+        }
+
+        .install-banner .install-btn:hover {
+            background: #f59e0b;
+            transform: scale(1.02);
+        }
+
+        .install-banner .install-btn:active {
+            transform: scale(0.97);
+        }
+
+        .install-banner .install-close {
+            background: rgba(255,255,255,0.15);
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 50%;
+            font-size: 0.9rem;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        /* ===== RESPONSIVO ===== */
         @media (max-width: 768px) {
             body {
                 padding: 12px 8px;
@@ -981,6 +1064,17 @@
                 padding: 12px 16px;
                 width: 95%;
             }
+
+            .install-banner.show {
+                flex-direction: column;
+                text-align: center;
+                padding: 12px 16px;
+            }
+
+            .install-banner .install-btn {
+                width: 100%;
+                justify-content: center;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1096,12 +1190,26 @@
     </style>
 </head>
 <body>
+    <!-- ===== TOAST ===== -->
     <div class="toast" id="toast">
         <i class="fas fa-check-circle"></i>
         <span id="toastMensagem">Mensagem enviada com sucesso!</span>
     </div>
 
     <div class="container">
+        <!-- ===== BANNER DE INSTALAÇÃO ===== -->
+        <div class="install-banner" id="installBanner">
+            <div class="install-text">
+                <i class="fas fa-download"></i>
+                <span><strong>Instale o App!</strong> Acesse rapidamente pela tela inicial</span>
+            </div>
+            <button class="install-btn" id="installBtn">
+                <i class="fas fa-plus-circle"></i> INSTALAR
+            </button>
+            <button class="install-close" id="installClose">✕</button>
+        </div>
+
+        <!-- ===== TÍTULO SUPERIOR ===== -->
         <div class="header-title">
             <div class="titulo-principal">
                 <i class="fas fa-gavel"></i>
@@ -1112,6 +1220,7 @@
             </div>
         </div>
 
+        <!-- ===== NAVEGAÇÃO ===== -->
         <div class="nav-tabs">
             <button class="nav-tab active" data-pagina="pagina1">
                 <i class="fas fa-pen"></i> Nova
@@ -1122,6 +1231,7 @@
             </button>
         </div>
 
+        <!-- ===================== PÁGINA 1 ===================== -->
         <div id="pagina1" class="pagina ativa">
             <div class="card">
                 <div class="card-header">
@@ -1207,6 +1317,7 @@
             </div>
         </div>
 
+        <!-- ===================== PÁGINA 2 ===================== -->
         <div id="pagina2" class="pagina">
             <div class="card">
                 <div class="card-header">
@@ -1299,10 +1410,52 @@
             const toastMensagem = document.getElementById('toastMensagem');
 
             // ========================================
-            // URL DO WEB APP - GOOGLE SHEETS
+            // INSTALAÇÃO PWA
             // ========================================
-            // ⚠️ SUBSTITUA PELA URL DO SEU WEB APP ⚠️
-            const URL_GOOGLE_SHEETS = 'https://script.google.com/macros/s/SEU_ID_AQUI/exec';
+            const installBanner = document.getElementById('installBanner');
+            const installBtn = document.getElementById('installBtn');
+            const installClose = document.getElementById('installClose');
+            let deferredPrompt = null;
+
+            // Verifica se já foi instalado
+            if (window.matchMedia('(display-mode: standalone)').matches) {
+                installBanner.classList.remove('show');
+            }
+
+            // Evento de instalação
+            window.addEventListener('beforeinstallprompt', function(e) {
+                e.preventDefault();
+                deferredPrompt = e;
+                installBanner.classList.add('show');
+            });
+
+            // Botão de instalação
+            installBtn.addEventListener('click', function() {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    deferredPrompt.userChoice.then(function(choiceResult) {
+                        if (choiceResult.outcome === 'accepted') {
+                            installBanner.classList.remove('show');
+                            mostrarToast('App instalado com sucesso!', 'success');
+                        }
+                        deferredPrompt = null;
+                    });
+                } else {
+                    // Fallback: abrir opções de instalação do navegador
+                    mostrarToast('Toque nos três pontos e selecione "Adicionar à tela inicial"', 'info');
+                }
+            });
+
+            // Fechar banner
+            installClose.addEventListener('click', function() {
+                installBanner.classList.remove('show');
+            });
+
+            // Detecta se já está instalado
+            window.addEventListener('appinstalled', function() {
+                installBanner.classList.remove('show');
+                mostrarToast('App instalado com sucesso!', 'success');
+            });
 
             // ========================================
             // NAVEGAÇÃO
@@ -1364,26 +1517,6 @@
 
             function salvarHistoricoStorage() {
                 localStorage.setItem('notificacoes_historico', JSON.stringify(historico));
-            }
-
-            // ========================================
-            // FUNÇÃO PARA ENVIAR PARA O GOOGLE SHEETS
-            // ========================================
-            function enviarParaGoogleSheets(dados) {
-                fetch(URL_GOOGLE_SHEETS, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(dados)
-                })
-                .then(() => {
-                    console.log('✅ Dados enviados para o Google Sheets!');
-                })
-                .catch(erro => {
-                    console.error('❌ Erro ao enviar para o Google Sheets:', erro);
-                });
             }
 
             // ========================================
@@ -1707,18 +1840,6 @@
                 salvarHistoricoStorage();
                 atualizarTabela(pesquisarInput.value);
 
-                // ===== ENVIA PARA O GOOGLE SHEETS =====
-                const dadosSheet = {
-                    responsavel: nomeResp.toUpperCase(),
-                    telefone: formatarTelefoneExibicao(telefoneVal),
-                    crianca: nomeCrianca ? nomeCrianca.toUpperCase() : '',
-                    data: dataFormatada,
-                    hora: horaRaw,
-                    conselheiro: conselheiroSel.toUpperCase(),
-                    status: 'Pendente'
-                };
-                enviarParaGoogleSheets(dadosSheet);
-
                 const btnSalvarOriginal = btnSalvar.innerHTML;
                 btnSalvar.innerHTML = '<i class="fas fa-check"></i> SALVO!';
                 btnSalvar.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
@@ -1818,18 +1939,6 @@
                 atualizarTabela(pesquisarInput.value);
                 contadorHistorico.textContent = historico.length;
 
-                // ===== ENVIA PARA O GOOGLE SHEETS =====
-                const dadosSheet = {
-                    responsavel: nomeResp.toUpperCase(),
-                    telefone: formatarTelefoneExibicao(telefoneVal),
-                    crianca: nomeCrianca ? nomeCrianca.toUpperCase() : '',
-                    data: dataFormatada,
-                    hora: horaRaw,
-                    conselheiro: conselheiroSel.toUpperCase(),
-                    status: 'Enviado'
-                };
-                enviarParaGoogleSheets(dadosSheet);
-
                 mostrarToast('Mensagem enviada com sucesso!', 'success');
                 limparCampos();
             });
@@ -1865,6 +1974,20 @@
             carregarHistorico();
             atualizarTudo();
             contadorHistorico.textContent = historico.length;
+
+            // Mostra banner de instalação se não estiver instalado
+            setTimeout(() => {
+                if (!window.matchMedia('(display-mode: standalone)').matches && !localStorage.getItem(
+                        'installBannerClosed')) {
+                    installBanner.classList.add('show');
+                }
+            }, 3000);
+
+            // Fechar banner permanentemente
+            installClose.addEventListener('click', function() {
+                installBanner.classList.remove('show');
+                localStorage.setItem('installBannerClosed', 'true');
+            });
 
         })();
     </script>
