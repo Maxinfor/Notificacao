@@ -1,215 +1,1863 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>SISTEMA CONSELHO TUTELAR</title>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Notificação - Conselho Tutelar do Paranoá</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-        body { font-family: Arial, sans-serif; background-color: #f4f6f9; padding: 15px; margin: 0; }
+        body {
+            background: linear-gradient(135deg, #0c1445 0%, #1a2a6c 30%, #1e3a8a 60%, #2563eb 100%);
+            min-height: 100vh;
+            padding: 16px 12px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
 
-        .container { background-color: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-width: 450px; margin: auto; }
+        body::before {
+            content: '';
+            position: fixed;
+            top: -30%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,215,0,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
 
-        .tab-btn { width: 48%; padding: 10px; cursor: pointer; border: none; border-radius: 6px; background: #e0e0e0; font-weight: bold; }
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
 
-        .active-tab { background: #007bff; color: white; }
+        .container {
+            max-width: 820px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
 
-        input { text-transform: uppercase; width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; margin-bottom: 10px; }
+        .header-title {
+            text-align: center;
+            margin-bottom: 16px;
+            padding: 6px 0;
+        }
 
-        .view { display: none; margin-top: 20px; }
+        .header-title .titulo-principal {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.2);
+        }
 
-        .active-view { display: block; }
+        .header-title .titulo-principal i {
+            color: #fbbf24;
+            font-size: 1.6rem;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 10px;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,215,0,0.15);
+        }
 
-        .item-lista { padding: 12px; border-bottom: 1px solid #eee; font-size: 14px; background: #fafafa; margin-bottom: 5px; border-radius: 4px; }
+        .header-title .subtitulo {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.75rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-top: 4px;
+            text-transform: uppercase;
+        }
 
-        .btn-acao { width: 100%; padding: 12px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 5px; color: white; margin-bottom: 5px; }
+        .header-title .subtitulo i {
+            color: #fbbf24;
+            margin: 0 4px;
+        }
 
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-tab {
+            padding: 10px 24px;
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .nav-tab:active {
+            transform: scale(0.97);
+        }
+
+        .nav-tab:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #0c1445;
+            border-color: #fbbf24;
+            box-shadow: 0 4px 20px rgba(251, 191, 36, 0.25);
+        }
+
+        .nav-tab i {
+            font-size: 0.95rem;
+        }
+
+        .nav-tab .badge-contador {
+            background: #ef4444;
+            color: white;
+            border-radius: 50%;
+            padding: 0 6px;
+            font-size: 0.55rem;
+            line-height: 18px;
+            min-width: 18px;
+            text-align: center;
+        }
+
+        .pagina {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .pagina.ativa {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 22px 20px 20px;
+            width: 100%;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 55px rgba(0, 0, 0, 0.25);
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(37, 99, 235, 0.08);
+            position: relative;
+        }
+
+        .card-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, #fbbf24, #f59e0b);
+            border-radius: 10px;
+        }
+
+        .card-header h2 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #0c1445;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .card-header h2 i {
+            color: #2563eb;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            padding: 6px;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sub-badge {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            color: #1e3a8a;
+            font-weight: 600;
+            padding: 3px 16px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            display: inline-block;
+            margin-top: 3px;
+            border: 1px solid rgba(37, 99, 235, 0.1);
+        }
+
+        .sub-badge i {
+            margin-right: 5px;
+            color: #2563eb;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 14px;
+        }
+
+        .campo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .campo label {
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+        }
+
+        .campo label i {
+            color: #2563eb;
+            width: 16px;
+            font-size: 0.75rem;
+            text-align: center;
+        }
+
+        .campo input,
+        .campo select {
+            padding: 11px 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            background: #f8fafc;
+            transition: all 0.25s ease;
+            width: 100%;
+            -webkit-appearance: none;
+            appearance: none;
+            color: #1a2e3f;
+            text-transform: uppercase;
+            min-height: 44px;
+            touch-action: manipulation;
+        }
+
+        .campo input:focus,
+        .campo select:focus {
+            border-color: #2563eb;
+            outline: none;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+        }
+
+        .campo input::placeholder {
+            color: #94a3b8;
+            text-transform: none;
+            font-size: 0.85rem;
+        }
+
+        .campo select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 12px;
+            cursor: pointer;
+            padding-right: 34px;
+        }
+
+        .campo small {
+            color: #64748b;
+            font-size: 0.55rem;
+            margin-top: 3px;
+        }
+
+        .campo small i {
+            margin-right: 3px;
+            color: #2563eb;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 3px 0 6px;
+        }
+
+        .checkbox-item {
+            flex: 1;
+            min-width: 140px;
+            padding: 11px 16px;
+            border-radius: 10px;
+            border: 2px solid #e2e8f0;
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            touch-action: manipulation;
+            min-height: 48px;
+        }
+
+        .checkbox-item:active {
+            transform: scale(0.98);
+        }
+
+        .checkbox-item:hover {
+            border-color: #2563eb;
+            background: #eff6ff;
+        }
+
+        .checkbox-item.active {
+            border-color: #2563eb;
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 19px;
+            height: 19px;
+            accent-color: #2563eb;
+            cursor: pointer;
+            flex-shrink: 0;
+            min-width: 19px;
+        }
+
+        .checkbox-item label {
+            font-weight: 600;
+            color: #1e3a8a;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            width: 100%;
+        }
+
+        .checkbox-item label i {
+            color: #2563eb;
+            font-size: 0.95rem;
+            width: 18px;
+        }
+
+        .checkbox-item .status-label {
+            font-size: 0.55rem;
+            font-weight: 700;
+            margin-left: auto;
+            padding: 2px 10px;
+            border-radius: 20px;
+            background: #bfdbfe;
+            color: #1e3a8a;
+            white-space: nowrap;
+        }
+
+        .checkbox-item.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .checkbox-item.disabled label {
+            cursor: not-allowed;
+        }
+
+        .checkbox-item.disabled input[type="checkbox"] {
+            cursor: not-allowed;
+        }
+
+        .campo-crianca-wrapper {
+            flex: 1;
+            min-width: 100%;
+            display: none;
+            margin-bottom: 3px;
+        }
+
+        .campo-crianca-wrapper.visible {
+            display: block;
+        }
+
+        .campo-crianca-wrapper input {
+            width: 100%;
+            padding: 11px 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            background: #ffffff;
+            text-transform: uppercase;
+            transition: 0.2s;
+            min-height: 44px;
+        }
+
+        .campo-crianca-wrapper input:focus {
+            border-color: #2563eb;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+        }
+
+        .tipo-atendimento {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border-radius: 10px;
+            padding: 10px 16px;
+            margin: 5px 0 8px;
+            border: 1px solid #bfdbfe;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tipo-atendimento i {
+            font-size: 1rem;
+            width: 22px;
+            text-align: center;
+        }
+
+        .tipo-atendimento .tipo-texto {
+            font-size: 0.8rem;
+            color: #1e3a8a;
+            flex: 1;
+        }
+
+        .tipo-atendimento .tipo-texto strong {
+            color: #0c1445;
+        }
+
+        .tipo-atendimento .tipo-badge {
+            padding: 3px 14px;
+            border-radius: 30px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+            white-space: nowrap;
+        }
+
+        .tipo-atendimento .tipo-badge.apenas-responsavel {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #1da851);
+            color: white;
+            border: none;
+            padding: 13px 18px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            width: 100%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 0 #15803d, 0 4px 15px rgba(37, 211, 102, 0.2);
+            margin-top: 5px;
+            letter-spacing: 0.3px;
+            min-height: 52px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn-whatsapp:active {
+            transform: scale(0.97);
+            box-shadow: 0 2px 0 #15803d;
+        }
+
+        .btn-whatsapp i {
+            font-size: 1.3rem;
+        }
+
+        .btn-whatsapp .telefone-destino {
+            font-size: 0.6rem;
+            font-weight: 400;
+            opacity: 0.9;
+            background: rgba(255,255,255,0.12);
+            padding: 2px 10px;
+            border-radius: 30px;
+            margin-left: 5px;
+        }
+
+        .btn-salvar {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            border: none;
+            padding: 13px 18px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            width: 100%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 0 #1a3a8a, 0 4px 15px rgba(37, 99, 235, 0.2);
+            margin-top: 5px;
+            min-height: 52px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn-salvar:active {
+            transform: scale(0.97);
+            box-shadow: 0 2px 0 #1a3a8a;
+        }
+
+        .btn-salvar i {
+            font-size: 1rem;
+        }
+
+        .botoes-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .footer-obs {
+            font-size: 0.55rem;
+            color: #64748b;
+            text-align: center;
+            margin-top: 12px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .footer-obs i {
+            color: #2563eb;
+        }
+
+        .saudacao-indicator {
+            font-size: 0.55rem;
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-left: 5px;
+            font-weight: 700;
+            color: #1e3a8a;
+            white-space: nowrap;
+        }
+
+        .barra-pesquisa {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .barra-pesquisa .campo {
+            min-width: unset;
+        }
+
+        .barra-pesquisa .campo input {
+            text-transform: none;
+            min-height: 44px;
+            font-size: 0.9rem;
+        }
+
+        .barra-pesquisa .botoes-pesquisa {
+            display: flex;
+            gap: 8px;
+        }
+
+        .barra-pesquisa .botoes-pesquisa .btn-pesquisar,
+        .barra-pesquisa .botoes-pesquisa .btn-limpar {
+            flex: 1;
+            justify-content: center;
+            height: 44px;
+            font-size: 0.8rem;
+        }
+
+        .btn-pesquisar {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+            box-shadow: 0 3px 0 #1a3a8a;
+            white-space: nowrap;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn-pesquisar:active {
+            transform: scale(0.97);
+            box-shadow: 0 1px 0 #1a3a8a;
+        }
+
+        .btn-limpar {
+            background: #f1f5f9;
+            color: #1e3a8a;
+            border: 2px solid #e2e8f0;
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn-limpar:active {
+            transform: scale(0.97);
+        }
+
+        .contador {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            color: #1e3a8a;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 10px;
+            border: 1px solid #bfdbfe;
+        }
+
+        .contador i {
+            color: #2563eb;
+            margin-right: 5px;
+        }
+
+        .tabela-container {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            background: #f8fafc;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tabela-notificacoes {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.75rem;
+            min-width: 600px;
+        }
+
+        .tabela-notificacoes thead {
+            background: linear-gradient(135deg, #0c1445, #1e3a8a);
+            color: white;
+        }
+
+        .tabela-notificacoes thead th {
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.6rem;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+
+        .tabela-notificacoes tbody td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #1e293b;
+            vertical-align: middle;
+        }
+
+        .tabela-notificacoes tbody tr:hover {
+            background: #eff6ff;
+        }
+
+        .tabela-notificacoes tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .badge-status {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 30px;
+            font-size: 0.55rem;
+            font-weight: 600;
+        }
+
+        .badge-enviado {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge-pendente {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-tipo {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 30px;
+            font-size: 0.5rem;
+            font-weight: 700;
+        }
+
+        .badge-tipo.responsavel {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-tipo.responsavel-crianca {
+            background: #bfdbfe;
+            color: #1e3a8a;
+        }
+
+        .sem-resultados {
+            text-align: center;
+            padding: 25px 12px;
+            color: #94a3b8;
+        }
+
+        .sem-resultados i {
+            font-size: 2rem;
+            color: #cbd5e1;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(0, 0, 0, 0.88);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            z-index: 999;
+            opacity: 0;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            pointer-events: none;
+            width: 90%;
+            max-width: 400px;
+            justify-content: center;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .toast i {
+            font-size: 1.2rem;
+        }
+
+        .toast.success i {
+            color: #22c55e;
+        }
+
+        .toast.info i {
+            color: #fbbf24;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 12px 8px;
+            }
+
+            .container {
+                max-width: 100%;
+            }
+
+            .card {
+                padding: 16px 14px 14px;
+                border-radius: 16px;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .botoes-row {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+
+            .card-header h2 {
+                font-size: 1.1rem;
+            }
+
+            .card-header h2 i {
+                font-size: 1rem;
+                width: 34px;
+                height: 34px;
+                padding: 5px;
+            }
+
+            .checkbox-item {
+                min-height: 44px;
+                padding: 10px 14px;
+                min-width: 100%;
+            }
+
+            .btn-whatsapp {
+                font-size: 0.85rem;
+                padding: 12px 14px;
+                min-height: 48px;
+            }
+
+            .btn-whatsapp i {
+                font-size: 1.1rem;
+            }
+
+            .btn-salvar {
+                font-size: 0.8rem;
+                padding: 12px 14px;
+                min-height: 48px;
+            }
+
+            .nav-tab {
+                padding: 8px 16px;
+                font-size: 0.7rem;
+            }
+
+            .header-title .titulo-principal {
+                font-size: 1.3rem;
+            }
+
+            .header-title .titulo-principal i {
+                font-size: 1.3rem;
+                width: 42px;
+                height: 42px;
+                padding: 8px;
+            }
+
+            .header-title .subtitulo {
+                font-size: 0.65rem;
+            }
+
+            .campo input,
+            .campo select {
+                padding: 10px 12px;
+                font-size: 0.85rem;
+                min-height: 40px;
+            }
+
+            .campo label {
+                font-size: 0.65rem;
+            }
+
+            .sub-badge {
+                font-size: 0.6rem;
+                padding: 2px 14px;
+            }
+
+            .tipo-atendimento .tipo-texto {
+                font-size: 0.75rem;
+            }
+
+            .tipo-atendimento {
+                padding: 10px 14px;
+            }
+
+            .tabela-notificacoes {
+                font-size: 0.7rem;
+                min-width: 480px;
+            }
+
+            .tabela-notificacoes thead th,
+            .tabela-notificacoes tbody td {
+                padding: 6px 8px;
+            }
+
+            .btn-whatsapp .telefone-destino {
+                display: none;
+            }
+
+            .barra-pesquisa .botoes-pesquisa {
+                flex-direction: column;
+            }
+
+            .barra-pesquisa .botoes-pesquisa .btn-pesquisar,
+            .barra-pesquisa .botoes-pesquisa .btn-limpar {
+                width: 100%;
+                height: 40px;
+            }
+
+            .barra-pesquisa .campo input {
+                min-height: 40px;
+            }
+
+            .toast {
+                font-size: 0.8rem;
+                padding: 12px 16px;
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 8px 4px;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 12px 10px 10px;
+                border-radius: 14px;
+            }
+
+            .card-header h2 {
+                font-size: 0.95rem;
+            }
+
+            .campo input,
+            .campo select {
+                padding: 8px 10px;
+                font-size: 0.8rem;
+                min-height: 36px;
+            }
+
+            .checkbox-item {
+                min-height: 40px;
+                padding: 8px 12px;
+            }
+
+            .checkbox-item label {
+                font-size: 0.75rem;
+            }
+
+            .btn-whatsapp {
+                font-size: 0.75rem;
+                padding: 10px 12px;
+                min-height: 44px;
+            }
+
+            .btn-salvar {
+                font-size: 0.75rem;
+                padding: 10px 12px;
+                min-height: 44px;
+            }
+
+            .nav-tab {
+                padding: 6px 12px;
+                font-size: 0.6rem;
+            }
+
+            .header-title .titulo-principal {
+                font-size: 1.1rem;
+            }
+
+            .header-title .titulo-principal i {
+                font-size: 1.1rem;
+                width: 36px;
+                height: 36px;
+                padding: 6px;
+            }
+
+            .tabela-notificacoes {
+                font-size: 0.6rem;
+                min-width: 350px;
+            }
+
+            .tipo-atendimento .tipo-texto {
+                font-size: 0.65rem;
+            }
+
+            .toast {
+                font-size: 0.7rem;
+                padding: 10px 14px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 780px;
+            }
+
+            .card {
+                padding: 28px 26px 24px;
+                border-radius: 24px;
+            }
+
+            .campo input,
+            .campo select {
+                padding: 13px 16px;
+                font-size: 0.95rem;
+                min-height: 48px;
+            }
+
+            .btn-whatsapp {
+                padding: 15px 20px;
+                font-size: 1rem;
+                min-height: 56px;
+            }
+
+            .btn-salvar {
+                padding: 15px 20px;
+                font-size: 0.95rem;
+                min-height: 56px;
+            }
+
+            .card-header h2 {
+                font-size: 1.4rem;
+            }
+        }
     </style>
-
 </head>
-
 <body>
-
-
-
-<div class="container">
-
-    <button class="tab-btn active-tab" onclick="mostrar('cadastro')">CADASTRO</button>
-
-    <button class="tab-btn" onclick="mostrar('pesquisa')">PESQUISAR</button>
-
-
-
-    <div id="cadastro" class="view active-view">
-
-        <h3 style="text-align:center;">NOVA NOTIFICAÇÃO</h3>
-
-        <input type="text" id="resp" placeholder="RESPONSÁVEL">
-
-        <input type="text" id="crianca" placeholder="CRIANÇA (SE HOUVER)">
-
-        <input type="date" id="data">
-
-        <input type="time" id="horario">
-
-        <input type="text" id="conselheiro" placeholder="CONSELHEIRO(A)">
-
-        <input type="tel" id="telefone" placeholder="TELEFONE (DDD+NUMERO)">
-
-        
-
-        <button class="btn-acao" style="background: #25D366;" onclick="enviarNotificacao()">ENVIAR NOTIFICAÇÃO (WHATSAPP)</button>
-
-        <button class="btn-acao" style="background: #007bff;" onclick="enviarConfirmacao()">CONFIRMAR AO CONSELHEIRO (AZUL)</button>
-
-        <button class="btn-acao" style="background: #6c757d;" onclick="salvarDados()">SALVAR NO SISTEMA</button>
-
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMensagem">Mensagem enviada com sucesso!</span>
     </div>
 
+    <div class="container">
+        <div class="header-title">
+            <div class="titulo-principal">
+                <i class="fas fa-gavel"></i>
+                NOTIFICAÇÃO
+            </div>
+            <div class="subtitulo">
+                <i class="fas fa-map-pin"></i> Conselho Tutelar do Paranoá
+            </div>
+        </div>
 
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-pagina="pagina1">
+                <i class="fas fa-pen"></i> Nova
+            </button>
+            <button class="nav-tab" data-pagina="pagina2">
+                <i class="fas fa-history"></i> Histórico
+                <span class="badge-contador" id="contadorHistorico">0</span>
+            </button>
+        </div>
 
-    <div id="pesquisa" class="view">
+        <div id="pagina1" class="pagina ativa">
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        <i class="fas fa-file-signature"></i> NOVA NOTIFICAÇÃO
+                    </h2>
+                    <span class="sub-badge"><i class="fas fa-phone"></i> (61) 9.9241-2057</span>
+                </div>
 
-        <h3 style="text-align:center;">BUSCAR ATENDIMENTOS</h3>
+                <div class="card-body">
+                    <div class="grid-2">
+                        <div class="campo">
+                            <label for="responsavel"><i class="fas fa-user"></i> Responsável</label>
+                            <input type="text" id="responsavel" placeholder="Nome do responsável" value="">
+                        </div>
+                        <div class="campo">
+                            <label for="telefone"><i class="fas fa-phone"></i> Telefone</label>
+                            <input type="tel" id="telefone" placeholder="DDD + Número" value="">
+                            <small><i class="fas fa-info-circle"></i> Apenas números com DDD</small>
+                        </div>
+                    </div>
 
-        <input type="text" id="inputBusca" placeholder="DIGITE O NOME DO RESPONSÁVEL..." onkeyup="filtrarLista()">
+                    <div class="checkbox-group">
+                        <div class="checkbox-item" id="itemTemCrianca">
+                            <input type="checkbox" id="temCrianca">
+                            <label for="temCrianca">
+                                <i class="fas fa-child"></i> Criança/Adolescente envolvido?
+                            </label>
+                        </div>
+                    </div>
 
-        <div id="listaResultados"></div>
+                    <div class="campo-crianca-wrapper" id="campoCrianca">
+                        <input type="text" id="crianca" placeholder="Nome da criança/adolescente" value="">
+                    </div>
 
+                    <div class="grid-3">
+                        <div class="campo">
+                            <label for="data"><i class="fas fa-calendar-alt"></i> Data</label>
+                            <input type="date" id="data" value="">
+                        </div>
+                        <div class="campo">
+                            <label for="hora">
+                                <i class="fas fa-clock"></i> Hora
+                                <span class="saudacao-indicator" id="saudacaoLabel">🌅 BOM DIA</span>
+                            </label>
+                            <input type="time" id="hora" value="">
+                        </div>
+                        <div class="campo">
+                            <label for="conselheiro"><i class="fas fa-user-tie"></i> Conselheiro(a)</label>
+                            <select id="conselheiro">
+                                <option value="Cláudia">Cláudia</option>
+                                <option value="Lucinea">Lucinea</option>
+                                <option value="Nadelço" selected>Nadelço</option>
+                                <option value="Samara">Samara</option>
+                                <option value="Sandra">Sandra</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="tipo-atendimento" id="tipoAtendimento" style="border-left: 4px solid #2563eb;">
+                        <i class="fas fa-info-circle" style="color:#2563eb;"></i>
+                        <span class="tipo-texto">
+                            <strong>Atendimento:</strong>
+                            <span id="tipoDescricao">APENAS RESPONSÁVEL</span>
+                        </span>
+                        <span class="tipo-badge apenas-responsavel" id="tipoBadge">SEM CRIANÇA</span>
+                    </div>
+
+                    <div class="botoes-row">
+                        <button class="btn-whatsapp" id="btnWhatsapp">
+                            <i class="fab fa-whatsapp"></i> ENVIAR
+                            <span class="telefone-destino" id="telefoneDestino">→ NÚMERO NÃO INFORMADO</span>
+                        </button>
+                        <button class="btn-salvar" id="btnSalvarHistorico">
+                            <i class="fas fa-save"></i> SALVAR
+                        </button>
+                    </div>
+
+                    <div class="footer-obs">
+                        <i class="fas fa-info-circle"></i> Envie via WhatsApp ou salve no histórico
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pagina2" class="pagina">
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        <i class="fas fa-history"></i> HISTÓRICO
+                    </h2>
+                    <span class="sub-badge"><i class="fas fa-clock"></i> Notificações salvas</span>
+                </div>
+
+                <div class="card-body">
+                    <div class="barra-pesquisa">
+                        <div class="campo">
+                            <label for="pesquisar"><i class="fas fa-search"></i> Pesquisar</label>
+                            <input type="text" id="pesquisar" placeholder="Busque por qualquer termo...">
+                        </div>
+                        <div class="botoes-pesquisa">
+                            <button class="btn-pesquisar" id="btnPesquisar">
+                                <i class="fas fa-search"></i> PESQUISAR
+                            </button>
+                            <button class="btn-limpar" id="btnLimparPesquisa">
+                                <i class="fas fa-times"></i> LIMPAR
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="contador" id="contadorRegistros">
+                        <i class="fas fa-file-alt"></i> <span id="numRegistros">0</span> registro(s)
+                    </div>
+
+                    <div class="tabela-container">
+                        <table class="tabela-notificacoes">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Responsável</th>
+                                    <th>Criança</th>
+                                    <th>Tipo</th>
+                                    <th>Data</th>
+                                    <th>Hora</th>
+                                    <th>Conselheiro</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabelaCorpo">
+                                <tr>
+                                    <td colspan="8" class="sem-resultados">
+                                        <i class="fas fa-inbox"></i>
+                                        Nenhuma notificação salva ainda.<br>
+                                        <small style="color: #94a3b8;">Salve uma notificação na página "Nova"</small>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-</div>
-
-
-
-<script>
-
-    let bancoDados = JSON.parse(localStorage.getItem('atendimentos')) || [];
-
-
-
-    function mostrar(id) {
-
-        document.querySelectorAll('.view').forEach(v => v.classList.remove('active-view'));
-
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active-tab'));
-
-        document.getElementById(id).classList.add('active-view');
-
-        event.target.classList.add('active-tab');
-
-    }
-
-
-
-    function formatarDataBR(data) {
-
-        if (!data) return "";
-
-        const [ano, mes, dia] = data.split('-');
-
-        return `${dia}/${mes}/${ano}`;
-
-    }
-
-
-
-    function salvarDados() {
-
-        const novo = {
-
-            resp: document.getElementById('resp').value,
-
-            crianca: document.getElementById('crianca').value,
-
-            data: document.getElementById('data').value,
-
-            hora: document.getElementById('horario').value,
-
-            conselheiro: document.getElementById('conselheiro').value,
-
-            tel: document.getElementById('telefone').value
-
-        };
-
-        bancoDados.push(novo);
-
-        localStorage.setItem('atendimentos', JSON.stringify(bancoDados));
-
-        alert("SALVO COM SUCESSO!");
-
-        document.querySelectorAll('input').forEach(i => i.value = '');
-
-    }
-
-
-
-    function enviarNotificacao() {
-
-        const resp = document.getElementById('resp').value;
-
-        const tel = document.getElementById('telefone').value.replace(/\D/g, '');
-
-        const dataFormatada = formatarDataBR(document.getElementById('data').value);
-
-        const msg = `BOM DIA, AQUI É O CONSELHO TUTELAR. VOCÊ ESTÁ SENDO NOTIFICADO(A) A COMPARECER NO DIA ${dataFormatada} ÀS ${document.getElementById('horario').value}.`;
-
-        window.open(`https://api.whatsapp.com/send?phone=55${tel}&text=${encodeURIComponent(msg)}`, '_blank');
-
-    }
-
-
-
-    function enviarConfirmacao() {
-
-        const resp = document.getElementById('resp').value;
-
-        const conselheiro = document.getElementById('conselheiro').value;
-
-        const dataFormatada = formatarDataBR(document.getElementById('data').value);
-
-        const msg = `OLÁ ${conselheiro}, A PRESENÇA DO RESPONSÁVEL ${resp} PARA O ATENDIMENTO DO DIA ${dataFormatada} ÀS ${document.getElementById('horario').value} FOI CONFIRMADA.`;
-
-        window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
-
-    }
-
-
-
-    function filtrarLista() {
-
-        const busca = document.getElementById('inputBusca').value.toUpperCase();
-
-        const lista = document.getElementById('listaResultados');
-
-        lista.innerHTML = '';
-
-        
-
-        bancoDados.filter(item => item.resp.toUpperCase().includes(busca)).forEach(item => {
-
-            lista.innerHTML += `<div class="item-lista">
-
-                <strong>RESP: ${item.resp}</strong><br>
-
-                CRIANÇA: ${item.crianca || 'N/A'}<br>
-
-                DATA: ${formatarDataBR(item.data)} | HORA: ${item.hora}<br>
-
-                CONSELHEIRO: ${item.conselheiro}
-
-            </div>`;
-
-        });
-
-    }
-
-</script>
+    <script>
+        (function() {
+            // ========================================
+            // ELEMENTOS
+            // ========================================
+            const responsavel = document.getElementById('responsavel');
+            const temCrianca = document.getElementById('temCrianca');
+            const itemTemCrianca = document.getElementById('itemTemCrianca');
+            const campoCrianca = document.getElementById('campoCrianca');
+            const criancaInput = document.getElementById('crianca');
+            const dataInput = document.getElementById('data');
+            const horaInput = document.getElementById('hora');
+            const conselheiro = document.getElementById('conselheiro');
+            const telefone = document.getElementById('telefone');
+            const btnWhats = document.getElementById('btnWhatsapp');
+            const btnSalvar = document.getElementById('btnSalvarHistorico');
+            const saudacaoLabel = document.getElementById('saudacaoLabel');
+            const telefoneDestino = document.getElementById('telefoneDestino');
+            const tipoDescricao = document.getElementById('tipoDescricao');
+            const tipoBadge = document.getElementById('tipoBadge');
+            const tipoAtendimento = document.getElementById('tipoAtendimento');
+
+            const pesquisarInput = document.getElementById('pesquisar');
+            const btnPesquisar = document.getElementById('btnPesquisar');
+            const btnLimparPesquisa = document.getElementById('btnLimparPesquisa');
+            const tabelaCorpo = document.getElementById('tabelaCorpo');
+            const numRegistros = document.getElementById('numRegistros');
+            const contadorHistorico = document.getElementById('contadorHistorico');
+
+            const toast = document.getElementById('toast');
+            const toastMensagem = document.getElementById('toastMensagem');
+
+            // ========================================
+            // URL DO WEB APP - GOOGLE SHEETS
+            // ========================================
+            // ⚠️ SUBSTITUA PELA URL DO SEU WEB APP ⚠️
+            const URL_GOOGLE_SHEETS = 'https://script.google.com/macros/s/SEU_ID_AQUI/exec';
+
+            // ========================================
+            // NAVEGAÇÃO
+            // ========================================
+            const tabs = document.querySelectorAll('.nav-tab');
+            const paginas = {
+                pagina1: document.getElementById('pagina1'),
+                pagina2: document.getElementById('pagina2')
+            };
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    const paginaId = this.dataset.pagina;
+                    Object.keys(paginas).forEach(key => {
+                        paginas[key].classList.toggle('ativa', key === paginaId);
+                    });
+                });
+            });
+
+            // ========================================
+            // TOAST
+            // ========================================
+            function mostrarToast(mensagem, tipo = 'success') {
+                toastMensagem.textContent = mensagem;
+                toast.className = 'toast ' + tipo;
+                setTimeout(() => {
+                    toast.classList.add('show');
+                }, 100);
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+
+            // ========================================
+            // CONSTANTES
+            // ========================================
+            let historico = [];
+            let idCounter = 0;
+
+            // ========================================
+            // LOCALSTORAGE
+            // ========================================
+            function carregarHistorico() {
+                const saved = localStorage.getItem('notificacoes_historico');
+                if (saved) {
+                    try {
+                        historico = JSON.parse(saved);
+                        if (historico.length > 0) {
+                            idCounter = Math.max(...historico.map(item => item.id || 0)) + 1;
+                        }
+                    } catch (e) {
+                        historico = [];
+                    }
+                }
+                atualizarTabela();
+            }
+
+            function salvarHistoricoStorage() {
+                localStorage.setItem('notificacoes_historico', JSON.stringify(historico));
+            }
+
+            // ========================================
+            // FUNÇÃO PARA ENVIAR PARA O GOOGLE SHEETS
+            // ========================================
+            function enviarParaGoogleSheets(dados) {
+                fetch(URL_GOOGLE_SHEETS, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(dados)
+                })
+                .then(() => {
+                    console.log('✅ Dados enviados para o Google Sheets!');
+                })
+                .catch(erro => {
+                    console.error('❌ Erro ao enviar para o Google Sheets:', erro);
+                });
+            }
+
+            // ========================================
+            // FUNÇÕES
+            // ========================================
+            function obterSaudacao(horaStr) {
+                if (!horaStr) return "Bom dia";
+                const partes = horaStr.split(':');
+                const hora = parseInt(partes[0]);
+                const minuto = parseInt(partes[1] || 0);
+                const horaDecimal = hora + (minuto / 60);
+
+                if (horaDecimal >= 5 && horaDecimal < 12) {
+                    return "Bom dia";
+                } else if (horaDecimal >= 12 && horaDecimal < 18) {
+                    return "Boa tarde";
+                } else {
+                    return "Boa noite";
+                }
+            }
+
+            function getTratamentoConselheiro(nome) {
+                if (nome === 'Nadelço') {
+                    return 'Conselheiro';
+                } else {
+                    return 'Conselheira';
+                }
+            }
+
+            function gerarMensagem() {
+                const nomeResp = responsavel.value.trim() || "RESPONSÁVEL";
+                const nomeCrianca = criancaInput.value.trim();
+                const dataRaw = dataInput.value || new Date().toISOString().split('T')[0];
+                const horaRaw = horaInput.value || "10:00";
+                const conselheiroSel = conselheiro.value || "Conselheiro(a)";
+                const temCriancaChecked = temCrianca.checked;
+
+                const saudacao = obterSaudacao(horaRaw);
+
+                let dataFormatada = dataRaw;
+                if (dataRaw.includes('-')) {
+                    const partes = dataRaw.split('-');
+                    dataFormatada = `${partes[2]}/${partes[1]}/${partes[0]}`;
+                }
+
+                let horaFormatada = horaRaw;
+                if (horaRaw.endsWith(':00')) {
+                    horaFormatada = horaRaw.replace(':00', 'h');
+                } else {
+                    horaFormatada = horaRaw.replace(':', 'h');
+                }
+
+                const nomeRespNegrito = `*${nomeResp}*`;
+                const nomeCriancaNegrito = nomeCrianca ? `*${nomeCrianca}*` : 'criança/adolescente';
+
+                const tratamentoConselheiro = getTratamentoConselheiro(conselheiroSel);
+
+                let msg = `${saudacao}! Como vai?\n\n`;
+                msg += `Somos do Conselho Tutelar do Paranoá.\n\n`;
+
+                if (!temCriancaChecked) {
+                    msg +=
+                        `Solicitamos o comparecimento do(a) Senhor(a) ${nomeRespNegrito}, para atendimento e esclarecimentos relacionados à criança/adolescente.\n\n`;
+                    msg +=
+                        `Ressaltamos que este é um atendimento com o(a) responsável, não sendo necessário trazer a criança/adolescente neste momento.\n\n`;
+                } else {
+                    if (nomeCrianca === '') {
+                        msg +=
+                            `Solicitamos o comparecimento do(a) Senhor(a) ${nomeRespNegrito}, responsável por criança/adolescente não informado(a), para atendimento e esclarecimentos relacionados à criança/adolescente.\n\n`;
+                    } else {
+                        msg +=
+                            `Solicitamos o comparecimento do(a) Senhor(a) ${nomeRespNegrito}, responsável por ${nomeCriancaNegrito}, para atendimento e esclarecimentos relacionados à criança/adolescente.\n\n`;
+                    }
+                    msg +=
+                        `Solicitamos que o(a) responsável compareça acompanhado(a) de ${nomeCriancaNegrito} e apresente, se disponíveis:\n\n`;
+                    msg += `• Documento de identificação do(a) responsável;\n`;
+                    msg += `• Documento de identificação da criança/adolescente ou certidão de nascimento;\n`;
+                    msg += `• Comprovante de residência;\n`;
+                    msg += `• Cartão de vacinação;\n`;
+                    msg += `• Laudos ou relatórios, quando houver e forem pertinentes ao atendimento.\n\n`;
+                }
+
+                msg += `📅 Data: ${dataFormatada}\n`;
+                msg += `⏰ Horário: ${horaFormatada}\n`;
+                msg += `👤 Atendimento: ${tratamentoConselheiro} ${conselheiroSel}\n`;
+                msg += `📍 Local: Conselho Tutelar do Paranoá – Área Especial, Quadra 21, ao lado da UBS 01.\n\n`;
+
+                msg += `*Favor confirmar o recebimento desta mensagem.*\n\n`;
+
+                msg +=
+                    `⚠️ O não comparecimento injustificado poderá acarretar as medidas previstas no Estatuto da Criança e do Adolescente (ECA).`;
+
+                return msg;
+            }
+
+            function formatarTelefoneExibicao(numero) {
+                const limpo = numero.replace(/\D/g, '');
+                if (limpo.length === 11) {
+                    return `(${limpo.substring(0,2)}) ${limpo.substring(2,7)}-${limpo.substring(7,11)}`;
+                } else if (limpo.length === 10) {
+                    return `(${limpo.substring(0,2)}) ${limpo.substring(2,6)}-${limpo.substring(6,10)}`;
+                }
+                return numero;
+            }
+
+            function removerAcentos(texto) {
+                const acentos = {
+                    'á': 'a',
+                    'à': 'a',
+                    'â': 'a',
+                    'ã': 'a',
+                    'ä': 'a',
+                    'é': 'e',
+                    'è': 'e',
+                    'ê': 'e',
+                    'ë': 'e',
+                    'í': 'i',
+                    'ì': 'i',
+                    'î': 'i',
+                    'ï': 'i',
+                    'ó': 'o',
+                    'ò': 'o',
+                    'ô': 'o',
+                    'õ': 'o',
+                    'ö': 'o',
+                    'ú': 'u',
+                    'ù': 'u',
+                    'û': 'u',
+                    'ü': 'u',
+                    'ç': 'c',
+                    'ñ': 'n',
+                    'Á': 'A',
+                    'À': 'A',
+                    'Â': 'A',
+                    'Ã': 'A',
+                    'Ä': 'A',
+                    'É': 'E',
+                    'È': 'E',
+                    'Ê': 'E',
+                    'Ë': 'E',
+                    'Í': 'I',
+                    'Ì': 'I',
+                    'Î': 'I',
+                    'Ï': 'I',
+                    'Ó': 'O',
+                    'Ò': 'O',
+                    'Ô': 'O',
+                    'Õ': 'O',
+                    'Ö': 'O',
+                    'Ú': 'U',
+                    'Ù': 'U',
+                    'Û': 'U',
+                    'Ü': 'U',
+                    'Ç': 'C',
+                    'Ñ': 'N'
+                };
+                return texto.replace(/[áàâãäéèêëíìîïóòôõöúùûüçñÁÀÂÃÄÉÈÊËÍÌÎÏÓÒÔÕÖÚÙÛÜÇÑ]/g, match => acentos[match] || match);
+            }
+
+            function normalizarPesquisa(texto) {
+                return removerAcentos(texto.toLowerCase().trim());
+            }
+
+            function filtrarHistorico(termo) {
+                if (!termo || termo.trim() === '') {
+                    return historico;
+                }
+                const termoNormalizado = normalizarPesquisa(termo);
+                return historico.filter(item => {
+                    const campos = [
+                        item.responsavel || '',
+                        item.crianca || '',
+                        item.data || '',
+                        item.hora || '',
+                        item.conselheiro || '',
+                        item.telefone || '',
+                        item.mensagem || ''
+                    ];
+                    return campos.some(campo => {
+                        if (!campo) return false;
+                        return normalizarPesquisa(campo).includes(termoNormalizado);
+                    });
+                });
+            }
+
+            // ========================================
+            // LIMPAR CAMPOS
+            // ========================================
+            function limparCampos() {
+                responsavel.value = '';
+                telefone.value = '';
+                temCrianca.checked = false;
+                criancaInput.value = '';
+                dataInput.value = '';
+                horaInput.value = '';
+                conselheiro.selectedIndex = 2;
+                campoCrianca.classList.remove('visible');
+                itemTemCrianca.classList.remove('active');
+                atualizarTudo();
+            }
+
+            // ========================================
+            // ATUALIZAR UI
+            // ========================================
+            function atualizarTudo() {
+                const horaRaw = horaInput.value || "10:00";
+                const saudacao = obterSaudacao(horaRaw);
+                const temCriancaChecked = temCrianca.checked;
+                const nomeCrianca = criancaInput.value.trim();
+
+                let icone = '🌅';
+                if (saudacao === 'Bom dia') icone = '🌅';
+                else if (saudacao === 'Boa tarde') icone = '☀️';
+                else if (saudacao === 'Boa noite') icone = '🌙';
+                saudacaoLabel.textContent = `${icone} ${saudacao.toUpperCase()}`;
+
+                if (temCriancaChecked) {
+                    campoCrianca.classList.add('visible');
+                    itemTemCrianca.classList.add('active');
+                } else {
+                    campoCrianca.classList.remove('visible');
+                    itemTemCrianca.classList.remove('active');
+                }
+
+                if (!temCriancaChecked) {
+                    tipoDescricao.textContent = 'APENAS RESPONSÁVEL';
+                    tipoBadge.textContent = 'SEM CRIANÇA';
+                    tipoBadge.className = 'tipo-badge apenas-responsavel';
+                    tipoAtendimento.style.borderLeft = '4px solid #f59e0b';
+                    document.querySelector('.tipo-atendimento i').style.color = '#f59e0b';
+                } else {
+                    if (nomeCrianca !== '') {
+                        tipoDescricao.textContent = `RESPONSÁVEL + CRIANÇA (${nomeCrianca.toUpperCase()})`;
+                    } else {
+                        tipoDescricao.textContent = 'RESPONSÁVEL + CRIANÇA (NÃO INFORMADA)';
+                    }
+                    tipoBadge.textContent = 'COM CRIANÇA';
+                    tipoBadge.className = 'tipo-badge';
+                    tipoAtendimento.style.borderLeft = '4px solid #2563eb';
+                    document.querySelector('.tipo-atendimento i').style.color = '#2563eb';
+                }
+
+                const tel = telefone.value.trim() || 'Número não informado';
+                const telFormatado = formatarTelefoneExibicao(tel);
+                telefoneDestino.textContent = tel !== '' ? `→ ${telFormatado}` : '→ NÚMERO NÃO INFORMADO';
+            }
+
+            function atualizarTabela(filtro = '') {
+                const resultados = filtrarHistorico(filtro);
+
+                if (resultados.length === 0) {
+                    tabelaCorpo.innerHTML = `
+                        <tr>
+                            <td colspan="8" class="sem-resultados">
+                                <i class="fas fa-inbox"></i>
+                                ${filtro ? 'Nenhum resultado encontrado.' : 'Nenhuma notificação salva.'}
+                            </td>
+                        </tr>
+                    `;
+                } else {
+                    let html = '';
+                    resultados.forEach((item, index) => {
+                        const statusClass = item.status === 'Enviado' ? 'badge-enviado' : 'badge-pendente';
+                        const tipoClass = item.tipo === 'Apenas Responsável' ? 'responsavel' :
+                            'responsavel-crianca';
+                        const tipoLabel = item.tipo || 'Responsável + Criança';
+                        html += `
+                            <tr>
+                                <td>${index + 1}</td>
+                                <td><strong>${item.responsavel || '-'}</strong></td>
+                                <td>${item.crianca || '-'}</td>
+                                <td><span class="badge-tipo ${tipoClass}">${tipoLabel}</span></td>
+                                <td>${item.data || '-'}</td>
+                                <td>${item.hora || '-'}</td>
+                                <td>${item.conselheiro || '-'}</td>
+                                <td><span class="badge-status ${statusClass}">${item.status || 'Pendente'}</span></td>
+                            </tr>
+                        `;
+                    });
+                    tabelaCorpo.innerHTML = html;
+                }
+
+                numRegistros.textContent = resultados.length;
+                contadorHistorico.textContent = historico.length;
+            }
+
+            // ========================================
+            // SALVAR NOTIFICAÇÃO
+            // ========================================
+            function salvarNotificacao() {
+                const nomeResp = responsavel.value.trim() || 'NÃO INFORMADO';
+                const nomeCrianca = temCrianca.checked ? criancaInput.value.trim() : '';
+                const dataRaw = dataInput.value || new Date().toISOString().split('T')[0];
+                const horaRaw = horaInput.value || '10:00';
+                const conselheiroSel = conselheiro.value || 'NADELÇO';
+                const telefoneVal = telefone.value.trim() || 'NÃO INFORMADO';
+                const mensagem = gerarMensagem();
+                const temCriancaChecked = temCrianca.checked;
+
+                let dataFormatada = dataRaw;
+                if (dataRaw.includes('-')) {
+                    const partes = dataRaw.split('-');
+                    dataFormatada = `${partes[2]}/${partes[1]}/${partes[0]}`;
+                }
+
+                const registro = {
+                    id: idCounter++,
+                    responsavel: nomeResp.toUpperCase(),
+                    crianca: nomeCrianca ? nomeCrianca.toUpperCase() : '',
+                    tipo: temCriancaChecked ? 'Responsável + Criança' : 'Apenas Responsável',
+                    data: dataFormatada,
+                    hora: horaRaw,
+                    conselheiro: conselheiroSel.toUpperCase(),
+                    telefone: formatarTelefoneExibicao(telefoneVal),
+                    mensagem: mensagem,
+                    status: 'Pendente',
+                    dataCriacao: new Date().toLocaleString()
+                };
+
+                historico.unshift(registro);
+                salvarHistoricoStorage();
+                atualizarTabela(pesquisarInput.value);
+
+                // ===== ENVIA PARA O GOOGLE SHEETS =====
+                const dadosSheet = {
+                    responsavel: nomeResp.toUpperCase(),
+                    telefone: formatarTelefoneExibicao(telefoneVal),
+                    crianca: nomeCrianca ? nomeCrianca.toUpperCase() : '',
+                    data: dataFormatada,
+                    hora: horaRaw,
+                    conselheiro: conselheiroSel.toUpperCase(),
+                    status: 'Pendente'
+                };
+                enviarParaGoogleSheets(dadosSheet);
+
+                const btnSalvarOriginal = btnSalvar.innerHTML;
+                btnSalvar.innerHTML = '<i class="fas fa-check"></i> SALVO!';
+                btnSalvar.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+                btnSalvar.style.boxShadow = '0 4px 0 #15803d';
+                setTimeout(() => {
+                    btnSalvar.innerHTML = btnSalvarOriginal;
+                    btnSalvar.style.background = '';
+                    btnSalvar.style.boxShadow = '';
+                }, 2000);
+
+                contadorHistorico.textContent = historico.length;
+                mostrarToast('Notificação salva com sucesso!', 'success');
+            }
+
+            // ========================================
+            // EVENT LISTENERS
+            // ========================================
+            responsavel.addEventListener('input', atualizarTudo);
+            temCrianca.addEventListener('change', atualizarTudo);
+            criancaInput.addEventListener('input', atualizarTudo);
+            dataInput.addEventListener('change', atualizarTudo);
+            horaInput.addEventListener('change', atualizarTudo);
+            horaInput.addEventListener('input', atualizarTudo);
+            conselheiro.addEventListener('change', atualizarTudo);
+            telefone.addEventListener('input', atualizarTudo);
+
+            function executarPesquisa() {
+                const termo = pesquisarInput.value;
+                atualizarTabela(termo);
+            }
+
+            btnPesquisar.addEventListener('click', executarPesquisa);
+            pesquisarInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') executarPesquisa();
+            });
+
+            btnLimparPesquisa.addEventListener('click', function() {
+                pesquisarInput.value = '';
+                atualizarTabela('');
+                pesquisarInput.focus();
+            });
+
+            btnWhats.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const telefoneVal = telefone.value.trim();
+                if (!telefoneVal || telefoneVal.length < 10) {
+                    mostrarToast('Informe um telefone válido com DDD.', 'info');
+                    telefone.focus();
+                    return;
+                }
+
+                const mensagem = gerarMensagem();
+                const textoCodificado = encodeURIComponent(mensagem);
+
+                let telefoneLimpo = telefoneVal.replace(/\D/g, '');
+                let url;
+                if (telefoneLimpo && telefoneLimpo.length >= 10) {
+                    if (!telefoneLimpo.startsWith('55') && telefoneLimpo.length >= 10) {
+                        telefoneLimpo = '55' + telefoneLimpo;
+                    }
+                    url = `https://wa.me/${telefoneLimpo}?text=${textoCodificado}`;
+                } else {
+                    url = `https://wa.me/?text=${textoCodificado}`;
+                }
+                window.open(url, '_blank');
+
+                const nomeResp = responsavel.value.trim() || 'NÃO INFORMADO';
+                const nomeCrianca = temCrianca.checked ? criancaInput.value.trim() : '';
+                const dataRaw = dataInput.value || new Date().toISOString().split('T')[0];
+                const horaRaw = horaInput.value || '10:00';
+                const conselheiroSel = conselheiro.value || 'NADELÇO';
+                const temCriancaChecked = temCrianca.checked;
+
+                let dataFormatada = dataRaw;
+                if (dataRaw.includes('-')) {
+                    const partes = dataRaw.split('-');
+                    dataFormatada = `${partes[2]}/${partes[1]}/${partes[0]}`;
+                }
+
+                const registro = {
+                    id: idCounter++,
+                    responsavel: nomeResp.toUpperCase(),
+                    crianca: nomeCrianca ? nomeCrianca.toUpperCase() : '',
+                    tipo: temCriancaChecked ? 'Responsável + Criança' : 'Apenas Responsável',
+                    data: dataFormatada,
+                    hora: horaRaw,
+                    conselheiro: conselheiroSel.toUpperCase(),
+                    telefone: formatarTelefoneExibicao(telefoneVal),
+                    mensagem: mensagem,
+                    status: 'Enviado',
+                    dataCriacao: new Date().toLocaleString()
+                };
+
+                historico.unshift(registro);
+                salvarHistoricoStorage();
+                atualizarTabela(pesquisarInput.value);
+                contadorHistorico.textContent = historico.length;
+
+                // ===== ENVIA PARA O GOOGLE SHEETS =====
+                const dadosSheet = {
+                    responsavel: nomeResp.toUpperCase(),
+                    telefone: formatarTelefoneExibicao(telefoneVal),
+                    crianca: nomeCrianca ? nomeCrianca.toUpperCase() : '',
+                    data: dataFormatada,
+                    hora: horaRaw,
+                    conselheiro: conselheiroSel.toUpperCase(),
+                    status: 'Enviado'
+                };
+                enviarParaGoogleSheets(dadosSheet);
+
+                mostrarToast('Mensagem enviada com sucesso!', 'success');
+                limparCampos();
+            });
+
+            btnSalvar.addEventListener('click', function() {
+                if (!responsavel.value.trim()) {
+                    mostrarToast('Informe o nome do responsável.', 'info');
+                    responsavel.focus();
+                    return;
+                }
+                salvarNotificacao();
+            });
+
+            // Data padrão
+            function setarDataPadrao() {
+                const hoje = new Date();
+                const ano = hoje.getFullYear();
+                const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+                const dia = String(hoje.getDate()).padStart(2, '0');
+                dataInput.value = `${ano}-${mes}-${dia}`;
+            }
+            setarDataPadrao();
+
+            // Hora padrão
+            function setarHoraPadrao() {
+                const agora = new Date();
+                const hora = String(agora.getHours()).padStart(2, '0');
+                const minuto = String(agora.getMinutes()).padStart(2, '0');
+                horaInput.value = `${hora}:${minuto}`;
+            }
+            setarHoraPadrao();
+
+            carregarHistorico();
+            atualizarTudo();
+            contadorHistorico.textContent = historico.length;
+
+        })();
+    </script>
+</body>
+</html>
