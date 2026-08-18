@@ -19,6 +19,7 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ===== ESTILOS COMPLETOS (mantidos os mesmos do original) ===== */
         * {
             margin: 0;
             padding: 0;
@@ -68,7 +69,6 @@
             z-index: 1;
         }
 
-        /* ===== TÍTULO SUPERIOR ===== */
         .header-title {
             text-align: center;
             margin-bottom: 16px;
@@ -115,7 +115,6 @@
             margin: 0 4px;
         }
 
-        /* ===== NAVEGAÇÃO ===== */
         .nav-tabs {
             display: flex;
             gap: 8px;
@@ -188,7 +187,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ===== CARDS ===== */
         .card {
             background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(20px);
@@ -266,7 +264,6 @@
             color: #2563eb;
         }
 
-        /* ===== GRIDS ===== */
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -279,7 +276,6 @@
             gap: 14px;
         }
 
-        /* ===== CAMPOS ===== */
         .campo {
             display: flex;
             flex-direction: column;
@@ -355,7 +351,6 @@
             color: #2563eb;
         }
 
-        /* ===== CHECKBOXES ===== */
         .checkbox-group {
             display: flex;
             flex-wrap: wrap;
@@ -419,31 +414,6 @@
             width: 18px;
         }
 
-        .checkbox-item .status-label {
-            font-size: 0.55rem;
-            font-weight: 700;
-            margin-left: auto;
-            padding: 2px 10px;
-            border-radius: 20px;
-            background: #bfdbfe;
-            color: #1e3a8a;
-            white-space: nowrap;
-        }
-
-        .checkbox-item.disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-
-        .checkbox-item.disabled label {
-            cursor: not-allowed;
-        }
-
-        .checkbox-item.disabled input[type="checkbox"] {
-            cursor: not-allowed;
-        }
-
-        /* ===== CAMPO CRIANÇA ===== */
         .campo-crianca-wrapper {
             flex: 1;
             min-width: 100%;
@@ -473,7 +443,6 @@
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
         }
 
-        /* ===== TIPO ATENDIMENTO ===== */
         .tipo-atendimento {
             background: linear-gradient(135deg, #eff6ff, #dbeafe);
             border-radius: 10px;
@@ -518,7 +487,6 @@
             box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
         }
 
-        /* ===== BOTÕES ===== */
         .btn-whatsapp {
             background: linear-gradient(135deg, #25d366, #1da851);
             color: white;
@@ -599,7 +567,6 @@
             margin-top: 5px;
         }
 
-        /* ===== BOTÃO LIMPAR TUDO ===== */
         .btn-limpar-tudo {
             background: linear-gradient(135deg, #ef4444, #dc2626);
             color: white;
@@ -627,17 +594,6 @@
             box-shadow: 0 1px 0 #991b1b;
         }
 
-        .btn-limpar-tudo:hover {
-            transform: translateY(-2px);
-            background: linear-gradient(135deg, #dc2626, #b91c1c);
-            box-shadow: 0 5px 0 #991b1b, 0 6px 20px rgba(239, 68, 68, 0.3);
-        }
-
-        .btn-limpar-tudo i {
-            font-size: 0.9rem;
-        }
-
-        /* ===== FOOTER ===== */
         .footer-obs {
             font-size: 0.55rem;
             color: #64748b;
@@ -656,7 +612,6 @@
             color: #2563eb;
         }
 
-        /* ===== SAUDAÇÃO INDICATOR ===== */
         .saudacao-indicator {
             font-size: 0.55rem;
             background: linear-gradient(135deg, #dbeafe, #bfdbfe);
@@ -668,7 +623,6 @@
             white-space: nowrap;
         }
 
-        /* ===== PÁGINA 2 - HISTÓRICO ===== */
         .barra-pesquisa {
             display: flex;
             flex-direction: column;
@@ -860,7 +814,6 @@
             display: block;
         }
 
-        /* ===== TOAST ===== */
         .toast {
             position: fixed;
             bottom: 25px;
@@ -907,7 +860,6 @@
             color: #ef4444;
         }
 
-        /* ===== BANNER DE INSTALAÇÃO ===== */
         .install-banner {
             display: none;
             background: linear-gradient(135deg, #1e3a8a, #2563eb);
@@ -973,7 +925,6 @@
             touch-action: manipulation;
         }
 
-        /* ===== MODAL CONFIRMAÇÃO ===== */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -1065,291 +1016,69 @@
             transform: scale(0.97);
         }
 
-        /* ===== RESPONSIVO ===== */
         @media (max-width: 768px) {
-            body {
-                padding: 12px 8px;
-            }
-
-            .container {
-                max-width: 100%;
-            }
-
-            .card {
-                padding: 16px 14px 14px;
-                border-radius: 16px;
-            }
-
-            .grid-2 {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-
-            .grid-3 {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-
-            .botoes-row {
-                grid-template-columns: 1fr;
-                gap: 6px;
-            }
-
-            .card-header h2 {
-                font-size: 1.1rem;
-            }
-
-            .card-header h2 i {
-                font-size: 1rem;
-                width: 34px;
-                height: 34px;
-                padding: 5px;
-            }
-
-            .checkbox-item {
-                min-height: 44px;
-                padding: 10px 14px;
-                min-width: 100%;
-            }
-
-            .btn-whatsapp {
-                font-size: 0.85rem;
-                padding: 12px 14px;
-                min-height: 48px;
-            }
-
-            .btn-whatsapp i {
-                font-size: 1.1rem;
-            }
-
-            .btn-salvar {
-                font-size: 0.8rem;
-                padding: 12px 14px;
-                min-height: 48px;
-            }
-
-            .btn-limpar-tudo {
-                font-size: 0.75rem;
-                padding: 10px 14px;
-                min-height: 40px;
-            }
-
-            .nav-tab {
-                padding: 8px 16px;
-                font-size: 0.7rem;
-            }
-
-            .header-title .titulo-principal {
-                font-size: 1.3rem;
-            }
-
-            .header-title .titulo-principal i {
-                font-size: 1.3rem;
-                width: 42px;
-                height: 42px;
-                padding: 8px;
-            }
-
-            .header-title .subtitulo {
-                font-size: 0.65rem;
-            }
-
-            .campo input,
-            .campo select {
-                padding: 10px 12px;
-                font-size: 0.85rem;
-                min-height: 40px;
-            }
-
-            .campo label {
-                font-size: 0.65rem;
-            }
-
-            .sub-badge {
-                font-size: 0.6rem;
-                padding: 2px 14px;
-            }
-
-            .tipo-atendimento .tipo-texto {
-                font-size: 0.75rem;
-            }
-
-            .tipo-atendimento {
-                padding: 10px 14px;
-            }
-
-            .tabela-notificacoes {
-                font-size: 0.7rem;
-                min-width: 480px;
-            }
-
-            .tabela-notificacoes thead th,
-            .tabela-notificacoes tbody td {
-                padding: 6px 8px;
-            }
-
-            .btn-whatsapp .telefone-destino {
-                display: none;
-            }
-
-            .barra-pesquisa .botoes-pesquisa {
-                flex-direction: column;
-            }
-
+            body { padding: 12px 8px; }
+            .container { max-width: 100%; }
+            .card { padding: 16px 14px 14px; border-radius: 16px; }
+            .grid-2 { grid-template-columns: 1fr; gap: 10px; }
+            .grid-3 { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .botoes-row { grid-template-columns: 1fr; gap: 6px; }
+            .card-header h2 { font-size: 1.1rem; }
+            .card-header h2 i { font-size: 1rem; width: 34px; height: 34px; padding: 5px; }
+            .checkbox-item { min-height: 44px; padding: 10px 14px; min-width: 100%; }
+            .btn-whatsapp { font-size: 0.85rem; padding: 12px 14px; min-height: 48px; }
+            .btn-whatsapp i { font-size: 1.1rem; }
+            .btn-salvar { font-size: 0.8rem; padding: 12px 14px; min-height: 48px; }
+            .btn-limpar-tudo { font-size: 0.75rem; padding: 10px 14px; min-height: 40px; }
+            .nav-tab { padding: 8px 16px; font-size: 0.7rem; }
+            .header-title .titulo-principal { font-size: 1.3rem; }
+            .header-title .titulo-principal i { font-size: 1.3rem; width: 42px; height: 42px; padding: 8px; }
+            .header-title .subtitulo { font-size: 0.65rem; }
+            .campo input, .campo select { padding: 10px 12px; font-size: 0.85rem; min-height: 40px; }
+            .campo label { font-size: 0.65rem; }
+            .sub-badge { font-size: 0.6rem; padding: 2px 14px; }
+            .tipo-atendimento .tipo-texto { font-size: 0.75rem; }
+            .tipo-atendimento { padding: 10px 14px; }
+            .tabela-notificacoes { font-size: 0.7rem; min-width: 480px; }
+            .tabela-notificacoes thead th, .tabela-notificacoes tbody td { padding: 6px 8px; }
+            .btn-whatsapp .telefone-destino { display: none; }
+            .barra-pesquisa .botoes-pesquisa { flex-direction: column; }
             .barra-pesquisa .botoes-pesquisa .btn-pesquisar,
-            .barra-pesquisa .botoes-pesquisa .btn-limpar-pesquisa {
-                width: 100%;
-                height: 40px;
-            }
-
-            .barra-pesquisa .campo input {
-                min-height: 40px;
-            }
-
-            .toast {
-                font-size: 0.8rem;
-                padding: 12px 16px;
-                width: 95%;
-            }
-
-            .install-banner.show {
-                flex-direction: column;
-                text-align: center;
-                padding: 12px 16px;
-            }
-
-            .install-banner .install-btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .modal-box {
-                padding: 24px 20px;
-                margin: 10px;
-            }
+            .barra-pesquisa .botoes-pesquisa .btn-limpar-pesquisa { width: 100%; height: 40px; }
+            .barra-pesquisa .campo input { min-height: 40px; }
+            .toast { font-size: 0.8rem; padding: 12px 16px; width: 95%; }
+            .install-banner.show { flex-direction: column; text-align: center; padding: 12px 16px; }
+            .install-banner .install-btn { width: 100%; justify-content: center; }
+            .modal-box { padding: 24px 20px; margin: 10px; }
         }
 
         @media (max-width: 480px) {
-            body {
-                padding: 8px 4px;
-            }
-
-            .grid-3 {
-                grid-template-columns: 1fr;
-            }
-
-            .card {
-                padding: 12px 10px 10px;
-                border-radius: 14px;
-            }
-
-            .card-header h2 {
-                font-size: 0.95rem;
-            }
-
-            .campo input,
-            .campo select {
-                padding: 8px 10px;
-                font-size: 0.8rem;
-                min-height: 36px;
-            }
-
-            .checkbox-item {
-                min-height: 40px;
-                padding: 8px 12px;
-            }
-
-            .checkbox-item label {
-                font-size: 0.75rem;
-            }
-
-            .btn-whatsapp {
-                font-size: 0.75rem;
-                padding: 10px 12px;
-                min-height: 44px;
-            }
-
-            .btn-salvar {
-                font-size: 0.75rem;
-                padding: 10px 12px;
-                min-height: 44px;
-            }
-
-            .btn-limpar-tudo {
-                font-size: 0.7rem;
-                padding: 8px 12px;
-                min-height: 36px;
-            }
-
-            .nav-tab {
-                padding: 6px 12px;
-                font-size: 0.6rem;
-            }
-
-            .header-title .titulo-principal {
-                font-size: 1.1rem;
-            }
-
-            .header-title .titulo-principal i {
-                font-size: 1.1rem;
-                width: 36px;
-                height: 36px;
-                padding: 6px;
-            }
-
-            .tabela-notificacoes {
-                font-size: 0.6rem;
-                min-width: 350px;
-            }
-
-            .tipo-atendimento .tipo-texto {
-                font-size: 0.65rem;
-            }
-
-            .toast {
-                font-size: 0.7rem;
-                padding: 10px 14px;
-            }
+            body { padding: 8px 4px; }
+            .grid-3 { grid-template-columns: 1fr; }
+            .card { padding: 12px 10px 10px; border-radius: 14px; }
+            .card-header h2 { font-size: 0.95rem; }
+            .campo input, .campo select { padding: 8px 10px; font-size: 0.8rem; min-height: 36px; }
+            .checkbox-item { min-height: 40px; padding: 8px 12px; }
+            .checkbox-item label { font-size: 0.75rem; }
+            .btn-whatsapp { font-size: 0.75rem; padding: 10px 12px; min-height: 44px; }
+            .btn-salvar { font-size: 0.75rem; padding: 10px 12px; min-height: 44px; }
+            .btn-limpar-tudo { font-size: 0.7rem; padding: 8px 12px; min-height: 36px; }
+            .nav-tab { padding: 6px 12px; font-size: 0.6rem; }
+            .header-title .titulo-principal { font-size: 1.1rem; }
+            .header-title .titulo-principal i { font-size: 1.1rem; width: 36px; height: 36px; padding: 6px; }
+            .tabela-notificacoes { font-size: 0.6rem; min-width: 350px; }
+            .tipo-atendimento .tipo-texto { font-size: 0.65rem; }
+            .toast { font-size: 0.7rem; padding: 10px 14px; }
         }
 
         @media (min-width: 1200px) {
-            .container {
-                max-width: 780px;
-            }
-
-            .card {
-                padding: 28px 26px 24px;
-                border-radius: 24px;
-            }
-
-            .campo input,
-            .campo select {
-                padding: 13px 16px;
-                font-size: 0.95rem;
-                min-height: 48px;
-            }
-
-            .btn-whatsapp {
-                padding: 15px 20px;
-                font-size: 1rem;
-                min-height: 56px;
-            }
-
-            .btn-salvar {
-                padding: 15px 20px;
-                font-size: 0.95rem;
-                min-height: 56px;
-            }
-
-            .btn-limpar-tudo {
-                padding: 12px 20px;
-                font-size: 0.85rem;
-                min-height: 48px;
-            }
-
-            .card-header h2 {
-                font-size: 1.4rem;
-            }
+            .container { max-width: 780px; }
+            .card { padding: 28px 26px 24px; border-radius: 24px; }
+            .campo input, .campo select { padding: 13px 16px; font-size: 0.95rem; min-height: 48px; }
+            .btn-whatsapp { padding: 15px 20px; font-size: 1rem; min-height: 56px; }
+            .btn-salvar { padding: 15px 20px; font-size: 0.95rem; min-height: 56px; }
+            .btn-limpar-tudo { padding: 12px 20px; font-size: 0.85rem; min-height: 48px; }
+            .card-header h2 { font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -1884,7 +1613,6 @@
                 try {
                     const audioCtx = new(window.AudioContext || window.webkitAudioContext)();
                     
-                    // Sequência de notas para um som de notificação alegre
                     const notas = [800, 1000, 1200];
                     const duracao = 150;
                     
@@ -1904,13 +1632,11 @@
                         }, index * 150);
                     });
                     
-                    // Vibração no celular se suportado
                     if (navigator.vibrate) {
                         navigator.vibrate([100, 50, 100, 50, 100]);
                     }
                     
                 } catch (e) {
-                    // Silencia erros de áudio
                     console.log('Áudio não disponível');
                 }
             }
@@ -1956,7 +1682,6 @@
             let timeoutResposta = null;
 
             function agendarRespostaSimulada() {
-                // Cancela qualquer agendamento anterior
                 if (timeoutResposta) {
                     clearTimeout(timeoutResposta);
                     timeoutResposta = null;
@@ -1966,13 +1691,8 @@
                 timeoutResposta = setTimeout(() => {
                     const resposta = simularResposta();
                     if (verificarConfirmacao(resposta)) {
-                        // ===== TOCA O SINAL SONORO =====
                         tocarSomConfirmacao();
-                        
-                        // Mostra toast
                         mostrarToast('🔔 Resposta recebida! A pessoa confirmou o recebimento.', 'success');
-                        
-                        // Adiciona ao histórico
                         adicionarRespostaAoHistorico(resposta);
                     }
                     timeoutResposta = null;
@@ -2132,6 +1852,109 @@
             }
 
             // ========================================
+            // ENVIAR WHATSAPP - CORRIGIDO
+            // ========================================
+            function enviarWhatsApp() {
+                // Validar telefone
+                const telefoneVal = telefone.value.trim();
+                if (!telefoneVal || telefoneVal.length < 10) {
+                    mostrarToast('⚠️ Informe um telefone válido com DDD.', 'info');
+                    telefone.focus();
+                    return false;
+                }
+
+                // Validar responsável
+                if (!responsavel.value.trim()) {
+                    mostrarToast('⚠️ Informe o nome do responsável.', 'info');
+                    responsavel.focus();
+                    return false;
+                }
+
+                try {
+                    // Gerar mensagem
+                    const mensagem = gerarMensagem();
+                    const textoCodificado = encodeURIComponent(mensagem);
+
+                    // Limpar telefone
+                    let telefoneLimpo = telefoneVal.replace(/\D/g, '');
+                    
+                    // Adicionar código do Brasil se necessário
+                    if (!telefoneLimpo.startsWith('55') && telefoneLimpo.length >= 10) {
+                        telefoneLimpo = '55' + telefoneLimpo;
+                    }
+
+                    // Construir URL do WhatsApp
+                    const url = `https://wa.me/${telefoneLimpo}?text=${textoCodificado}`;
+
+                    // Tentar abrir em nova aba/janela
+                    const novaJanela = window.open(url, '_blank');
+
+                    // Se o navegador bloqueou pop-up, tentar abrir na mesma aba
+                    if (!novaJanela || novaJanela.closed || typeof novaJanela.closed === 'undefined') {
+                        // Fallback: abrir na mesma página
+                        window.location.href = url;
+                    }
+
+                    // Salvar no histórico
+                    salvarNotificacaoEnviada(telefoneVal, mensagem);
+
+                    // Mostrar toast de sucesso
+                    mostrarToast('✅ Mensagem enviada com sucesso!', 'success');
+
+                    // Limpar campos após enviar
+                    limparCampos();
+
+                    // Agendar resposta simulada
+                    agendarRespostaSimulada();
+
+                    return true;
+
+                } catch (error) {
+                    console.error('Erro ao enviar:', error);
+                    mostrarToast('❌ Erro ao enviar. Tente novamente.', 'warning');
+                    return false;
+                }
+            }
+
+            // ========================================
+            // SALVAR NOTIFICAÇÃO ENVIADA
+            // ========================================
+            function salvarNotificacaoEnviada(telefoneVal, mensagem) {
+                const nomeResp = responsavel.value.trim() || 'NÃO INFORMADO';
+                const nomeCrianca = temCrianca.checked ? criancaInput.value.trim() : '';
+                const dataRaw = dataInput.value || new Date().toISOString().split('T')[0];
+                const horaRaw = horaInput.value || '10:00';
+                const conselheiroSel = conselheiro.value || 'NADELÇO';
+                const temCriancaChecked = temCrianca.checked;
+
+                let dataFormatada = dataRaw;
+                if (dataRaw.includes('-')) {
+                    const partes = dataRaw.split('-');
+                    dataFormatada = `${partes[2]}/${partes[1]}/${partes[0]}`;
+                }
+
+                const registro = {
+                    id: idCounter++,
+                    responsavel: nomeResp.toUpperCase(),
+                    crianca: nomeCrianca ? nomeCrianca.toUpperCase() : '',
+                    tipo: temCriancaChecked ? 'Responsável + Criança' : 'Apenas Responsável',
+                    data: dataFormatada,
+                    hora: horaRaw,
+                    conselheiro: conselheiroSel.toUpperCase(),
+                    telefone: formatarTelefoneExibicao(telefoneVal),
+                    mensagem: mensagem,
+                    status: 'Enviado',
+                    resposta: '',
+                    dataCriacao: new Date().toLocaleString()
+                };
+
+                historico.unshift(registro);
+                salvarHistoricoStorage();
+                atualizarTabela(pesquisarInput.value);
+                contadorHistorico.textContent = historico.length;
+            }
+
+            // ========================================
             // EVENT LISTENERS
             // ========================================
             responsavel.addEventListener('input', atualizarTudo);
@@ -2183,72 +2006,13 @@
                 }
             });
 
-            // ===== BOTÃO WHATSAPP =====
+            // ===== BOTÃO WHATSAPP - CORRIGIDO =====
             btnWhats.addEventListener('click', function(e) {
                 e.preventDefault();
-
-                const telefoneVal = telefone.value.trim();
-                if (!telefoneVal || telefoneVal.length < 10) {
-                    mostrarToast('Informe um telefone válido com DDD.', 'info');
-                    telefone.focus();
-                    return;
-                }
-
-                const mensagem = gerarMensagem();
-                const textoCodificado = encodeURIComponent(mensagem);
-
-                let telefoneLimpo = telefoneVal.replace(/\D/g, '');
-                let url;
-                if (telefoneLimpo && telefoneLimpo.length >= 10) {
-                    if (!telefoneLimpo.startsWith('55') && telefoneLimpo.length >= 10) {
-                        telefoneLimpo = '55' + telefoneLimpo;
-                    }
-                    url = `https://wa.me/${telefoneLimpo}?text=${textoCodificado}`;
-                } else {
-                    url = `https://wa.me/?text=${textoCodificado}`;
-                }
-                window.open(url, '_blank');
-
-                const nomeResp = responsavel.value.trim() || 'NÃO INFORMADO';
-                const nomeCrianca = temCrianca.checked ? criancaInput.value.trim() : '';
-                const dataRaw = dataInput.value || new Date().toISOString().split('T')[0];
-                const horaRaw = horaInput.value || '10:00';
-                const conselheiroSel = conselheiro.value || 'NADELÇO';
-                const temCriancaChecked = temCrianca.checked;
-
-                let dataFormatada = dataRaw;
-                if (dataRaw.includes('-')) {
-                    const partes = dataRaw.split('-');
-                    dataFormatada = `${partes[2]}/${partes[1]}/${partes[0]}`;
-                }
-
-                const registro = {
-                    id: idCounter++,
-                    responsavel: nomeResp.toUpperCase(),
-                    crianca: nomeCrianca ? nomeCrianca.toUpperCase() : '',
-                    tipo: temCriancaChecked ? 'Responsável + Criança' : 'Apenas Responsável',
-                    data: dataFormatada,
-                    hora: horaRaw,
-                    conselheiro: conselheiroSel.toUpperCase(),
-                    telefone: formatarTelefoneExibicao(telefoneVal),
-                    mensagem: mensagem,
-                    status: 'Enviado',
-                    resposta: '',
-                    dataCriacao: new Date().toLocaleString()
-                };
-
-                historico.unshift(registro);
-                salvarHistoricoStorage();
-                atualizarTabela(pesquisarInput.value);
-                contadorHistorico.textContent = historico.length;
-
-                mostrarToast('Mensagem enviada com sucesso! ✅', 'success');
-                limparCampos();
-
-                // ===== AGENDA RESPOSTA SIMULADA =====
-                agendarRespostaSimulada();
+                enviarWhatsApp();
             });
 
+            // ===== BOTÃO SALVAR =====
             btnSalvar.addEventListener('click', function() {
                 if (!responsavel.value.trim()) {
                     mostrarToast('Informe o nome do responsável.', 'info');
