@@ -1360,6 +1360,19 @@
         <span id="toastMensagem">Mensagem enviada com sucesso!</span>
     </div>
 
+    <!-- ===== MODAL CONFIRMAÇÃO ===== -->
+    <div class="modal-overlay" id="modalConfirmacao">
+        <div class="modal-box">
+            <div class="modal-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <h3>Limpar tudo?</h3>
+            <p>Todos os registros do histórico serão permanentemente removidos. Esta ação não pode ser desfeita.</p>
+            <div class="modal-botoes">
+                <button class="modal-btn-cancelar" id="btnCancelarLimpar">Cancelar</button>
+                <button class="modal-btn-confirmar" id="btnConfirmarLimpar">Sim, limpar tudo</button>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <!-- ===== BANNER DE INSTALAÇÃO ===== -->
         <div class="install-banner" id="installBanner">
@@ -1940,10 +1953,15 @@
                 return respostas[Math.floor(Math.random() * respostas.length)];
             }
 
-            let timeoutResposta;
+            let timeoutResposta = null;
 
             function agendarRespostaSimulada() {
-                if (timeoutResposta) clearTimeout(timeoutResposta);
+                // Cancela qualquer agendamento anterior
+                if (timeoutResposta) {
+                    clearTimeout(timeoutResposta);
+                    timeoutResposta = null;
+                }
+                
                 const delay = 3000 + Math.random() * 5000;
                 timeoutResposta = setTimeout(() => {
                     const resposta = simularResposta();
@@ -1957,6 +1975,7 @@
                         // Adiciona ao histórico
                         adicionarRespostaAoHistorico(resposta);
                     }
+                    timeoutResposta = null;
                 }, delay);
             }
 
